@@ -1,0 +1,315 @@
+import { AFRAME } from "../../painter/root";
+import { createText } from "../../util";
+import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
+import interactionMixin from "../../painter/components/interaction-mixin";
+
+export default function () {
+    AFRAME.registerComponent('gui-slider', {
+        schema: {
+            activeColor: { type: 'string', default: key_orange },
+            backgroundColor: { type: 'string', default: key_offwhite },
+            borderColor: { type: 'string', default: key_grey },
+            targetbarsize: { type: 'number', default: 0 },
+            title: { type: 'string', default: '' },
+            handleColor: { type: 'string', default: key_grey_light },
+            handleInnerDepth: { type: 'number', default: 0.02 },
+            titlePosition: { type: 'string', default: '' },
+            titleScale: { type: 'string', default: '' },
+            handleInnerRadius: { type: 'number', default: 0.05 },
+            handleOuterDepth: { type: 'number', default: 0.04 },
+            handleOuterRadius: { type: 'number', default: 0.07 },
+            hoverColor: { type: 'string', default: key_white },
+            leftRightPadding: { type: 'number', default: 0.25 },
+            percent: { type: 'number', default: 0.5 },
+            sliderBarHeight: { type: 'number', default: 0.05 },
+            sliderBarDepth: { type: 'number', default: 0.01 },
+            topBottomPadding: { type: 'number', default: 0.125 },
+        },
+        init: function () {
+            let me = this;
+            var data = this.data;
+            var el = this.el;
+            var guiItem = el.getAttribute("gui-item");
+            var sliderWidth = guiItem.width - data.leftRightPadding * 2.0
+            var sliderHeight = guiItem.height - data.topBottomPadding * 2.0
+            let lowerBound = (guiItem.width - sliderWidth) / guiItem.width * .5;
+            let upperBound = 1 - lowerBound;
+
+
+            let targetBar: any = document.createElement('a-plane');
+            targetBar.setAttribute('height', `${me.data.targetbarsize || sliderHeight * 3}`);
+            targetBar.setAttribute('width', `${guiItem.width}`);
+            targetBar.setAttribute('material', `shader: flat; opacity: 0;  color: ${data.backgroundColor}; side:double;`);
+            targetBar.setAttribute('gui-interactable', {})
+            if (this.data.title) {
+                let text = document.createElement('a-troika-text');
+                text.setAttribute('anchor', 'left');
+                text.setAttribute('value', this.data.title);
+                if (this.data.titlePosition) {
+                    text.setAttribute('position', this.data.titlePosition);
+                }
+                if (this.data.titleScale) {
+                    text.setAttribute('scale', this.data.titleScale);
+                }
+                el.appendChild(text);
+            }
+            this.setupRayListener(targetBar, 'interaction', (evt) => {
+                if (me.mousedown) {
+                    console.log('The left mouse button is pressed during mouseover.');
+                    let x = mapPercentage(evt.uv.x, lowerBound, upperBound)
+                    data.percent = x;
+                    me.positionElements();
+                    targetBar.emit('change', { value: x })
+                } else {
+                    console.log('The mouse is over the element, but no button is pressed.');
+                }
+            });
+            targetBar.addEventListener('mousedown', function (evt) {
+                // Check if the primary (left) mouse button is pressed
+                me.mousedown = true;
+            });
+            document.addEventListener('mouseup', () => {
+                me.mousedown = false;
+            })
+
+            el.appendChild(targetBar);
+            let text = createText(me.getText(), { color: '#ffffff', fontFamily: '' });
+            let textContainer = document.createElement('a-entity');
+            textContainer.setAttribute('position', `${guiItem.width / 2} 0 0`);
+            textContainer.appendChild(text);
+            this.text = text;
+            el.appendChild(textContainer);
+            // el.setAttribute('geometry', `primitive: plane; height: ${guiItem.height}; width: ${guiItem.height};`);
+
+            let { first, second } = calculateSections(data.percent, sliderWidth);
+
+            var sliderActiveBar = document.createElement("a-entity");
+            sliderActiveBar.setAttribute('geometry', `primitive: box; width: ${first.width}; height: ${data.sliderBarHeight}; depth: ${data.sliderBarDepth};`);
+            sliderActiveBar.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${data.activeColor};`);
+            sliderActiveBar.setAttribute('position', `${first.offset} 0 ${data.sliderBarDepth - 0.01}`);
+            this.sliderActiveBar = sliderActiveBar;
+            el.appendChild(sliderActiveBar);
+
+            var sliderBar = document.createElement("a-entity");
+            sliderBar.setAttribute('geometry', `primitive: box; width: ${second.width}; height: ${data.sliderBarHeight}; depth: ${data.sliderBarDepth};`);
+            sliderBar.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${data.borderColor};`);
+            sliderBar.setAttribute('position', `${second.offset} 0 ${data.sliderBarDepth - 0.01}`);
+            this.sliderBar = sliderBar;
+            el.appendChild(sliderBar);
+
+            var handleContainer = document.createElement("a-entity");
+            handleContainer.setAttribute('geometry', `primitive: cylinder; radius: ${data.handleOuterRadius}; height: ${data.handleOuterDepth};`);
+            handleContainer.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${data.borderColor};`);
+            handleContainer.setAttribute('rotation', '90 0 0');
+            handleContainer.setAttribute('position', `${data.percent * sliderWidth - sliderWidth * 0.5} 0 ${data.handleOuterDepth - 0.01}`);
+            this.handleContainer = handleContainer;
+            el.appendChild(handleContainer);
+
+            var handle: any = document.createElement("a-entity");
+            handle.setAttribute('geometry', `primitive: cylinder; radius: ${data.handleInnerRadius}; height: ${data.handleInnerDepth};`);
+            handle.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${data.handleColor};`);
+            handle.setAttribute('position', `0 ${data.handleInnerDepth} 0`);
+            handleContainer.appendChild(handle);
+
+            el.addEventListener('mouseenter', function () {
+                handle.setAttribute('material', 'color', data.hoverColor);
+            });
+
+            el.addEventListener('mouseleave', function () {
+                handle.setAttribute('material', 'color', data.handleColor);
+            });
+        },
+        ...interactionMixin,
+        update: function () {
+            this.positionElements();
+        },
+        tick: function () {
+            this.onTick();
+        },
+        remove: function () {
+        },
+        pause: function () {
+        },
+        play: function () {
+        },
+        getText: function () {
+            return `${Math.round(this.data.percent * 100)}`;
+        },
+        positionElements: function () {
+            let el = this.el;
+            let data = this.data;
+            let sliderActiveBar = this.sliderActiveBar;
+            let handleContainer = this.handleContainer;
+            let sliderBar = this.sliderBar;
+            var guiItem = el.getAttribute("gui-item");
+            var sliderWidth = guiItem.width - data.leftRightPadding * 2.0;
+            this.text.setAttribute('troika-text', 'value', this.getText());
+            let { first, second } = calculateSections(data.percent, sliderWidth);
+            sliderActiveBar.setAttribute('geometry', `primitive: box; width: ${first.width}; height: ${data.sliderBarHeight}; depth: ${data.sliderBarDepth};`);
+            sliderActiveBar.setAttribute('position', `${first.offset} 0 ${data.sliderBarDepth - 0.01}`);
+            sliderBar.setAttribute('position', `${second.offset} 0 ${data.sliderBarDepth - 0.01}`);
+            sliderBar.setAttribute('geometry', `primitive: box; width: ${second.width}; height: ${data.sliderBarHeight}; depth: ${data.sliderBarDepth};`);
+            handleContainer.setAttribute('position', `${data.percent * sliderWidth - sliderWidth * 0.5} 0 ${data.handleOuterDepth - 0.01}`);
+        }
+    });
+
+    AFRAME.registerPrimitive('a-gui-slider', {
+        defaultComponents: {
+            'gui-item': { type: 'slider' },
+            'gui-slider': {}
+        },
+        mappings: {
+            'active-color': 'gui-slider.activeColor',
+            'background-color': 'gui-slider.backgroundColor',
+            'targetbarsize': 'gui-slider.targetbarsize',
+            'border-color': 'gui-slider.borderColor',
+            'handle-color': 'gui-slider.handleColor',
+            'handle-inner-depth': 'gui-slider.handleInnerDepth',
+            'handle-inner-radius': 'gui-slider.handleInnerRadius',
+            'handle-outer-depth': 'gui-slider.handleOuterDepth',
+            'handle-outer-radius': 'gui-slider.handleOuterRadius',
+            'height': 'gui-item.height',
+            'title-position': 'gui-slider.titlePosition',
+            'title-scale': 'gui-slider.titleScale',
+            'hover-color': 'gui-slider.hoverColor',
+            'left-right-padding': 'gui-slider.leftRightPadding',
+            'title': 'gui-slider.title',
+            'margin': 'gui-item.margin',
+            'percent': 'gui-slider.percent',
+            'slider-bar-depth': 'gui-slider.sliderBarDepth',
+            'slider-bar-height': 'gui-slider.sliderBarHeight',
+            'top-bottom-padding': 'gui-slider.topBottomPadding',
+            'width': 'gui-item.width',
+        }
+    });
+
+    AFRAME.registerComponent('gui-handle', {
+        schema: {
+            activeColor: { type: 'string', default: key_orange },
+            backgroundColor: { type: 'string', default: key_offwhite },
+            borderColor: { type: 'string', default: key_grey },
+            targetbarsize: { type: 'number', default: 0 },
+            handleColor: { type: 'string', default: key_grey_light },
+            handleInnerDepth: { type: 'number', default: 0.02 },
+            handleInnerRadius: { type: 'number', default: 0.05 },
+            handleOuterDepth: { type: 'number', default: 0.04 },
+            handleOuterRadius: { type: 'number', default: 0.07 },
+            hoverColor: { type: 'string', default: key_white },
+            leftRightPadding: { type: 'number', default: 0.25 },
+            percent: { type: 'number', default: 0.5 },
+            sliderBarHeight: { type: 'number', default: 0.05 },
+            sliderBarDepth: { type: 'number', default: 0.01 },
+            topBottomPadding: { type: 'number', default: 0.125 },
+        },
+        init: function () {
+            var data = this.data;
+            var el = this.el;
+            var guiItem = el.getAttribute("gui-item");
+            var sliderWidth = guiItem.width - data.leftRightPadding * 2.0
+            var handleContainer: any = document.createElement("a-entity");
+            handleContainer.setAttribute('gui-interactable', {})
+            handleContainer.setAttribute('geometry', `primitive: cylinder; radius: ${data.handleOuterRadius}; height: ${data.handleOuterDepth};`);
+            handleContainer.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${data.borderColor};`);
+            handleContainer.setAttribute('rotation', '90 0 0');
+            handleContainer.setAttribute('position', `${data.percent * sliderWidth - sliderWidth * 0.5} 0 ${data.handleOuterDepth - 0.01}`);
+            this.handleContainer = handleContainer;
+            el.appendChild(handleContainer);
+
+            var handle: any = document.createElement("a-entity");
+            handle.setAttribute('geometry', `primitive: cylinder; radius: ${data.handleInnerRadius}; height: ${data.handleInnerDepth};`);
+            handle.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${data.handleColor};`);
+            handle.setAttribute('position', `0 ${data.handleInnerDepth} 0`);
+            handleContainer.appendChild(handle);
+
+            el.addEventListener('mouseenter', function () {
+                handle.setAttribute('material', 'color', data.hoverColor);
+            });
+
+            el.addEventListener('mouseleave', function () {
+                handle.setAttribute('material', 'color', data.handleColor);
+            });
+        }
+    })
+    AFRAME.registerPrimitive('a-gui-handle', {
+        defaultComponents: {
+            'gui-item': {},
+            'gui-handle': {}
+        },
+        mappings: {
+            'active-color': 'gui-handle.activeColor',
+            'background-color': 'gui-handle.backgroundColor',
+            'targetbarsize': 'gui-handle.targetbarsize',
+            'border-color': 'gui-handle.borderColor',
+            'handle-color': 'gui-handle.handleColor',
+            'handle-inner-depth': 'gui-handle.handleInnerDepth',
+            'handle-inner-radius': 'gui-handle.handleInnerRadius',
+            'handle-outer-depth': 'gui-handle.handleOuterDepth',
+            'handle-outer-radius': 'gui-handle.handleOuterRadius',
+            'height': 'gui-item.height',
+            'hover-color': 'gui-handle.hoverColor',
+            'left-right-padding': 'gui-handle.leftRightPadding',
+            'margin': 'gui-item.margin',
+            'percent': 'gui-handle.percent',
+            'slider-bar-depth': 'gui-handle.sliderBarDepth',
+            'slider-bar-height': 'gui-handle.sliderBarHeight',
+            'top-bottom-padding': 'gui-handle.topBottomPadding',
+            'width': 'gui-item.width',
+        }
+    });
+    function calculateSections(percentage: number, totalWidth: number): {
+        first: {
+            width: number,
+            offset: number,
+        },
+        second: {
+            width: number,
+            offset: number
+        }
+    } {
+        // Calculate the width of the first section based on the percentage
+        const firstSectionWidth = totalWidth * percentage;
+
+        // Calculate the width of the second section as the remaining width
+        const secondSectionWidth = totalWidth - firstSectionWidth;
+
+        // Calculate the offsets from the center of the total width
+        // The offset is the distance from the center of the total area to the center of each section
+        // const firstSectionOffset = firstSectionWidth / 2;
+        // const secondSectionOffset = firstSectionOffset + secondSectionWidth / 2;
+        // For a centered position, the offset is calculated from the center of the total width
+        // Offset for the first section is half its width to the left of the center (-0.25 for a 50% split)
+        // Calculate offsets based on the center positioning requirements
+        // The first section's center offset from the total width's center
+        const firstSectionOffset = (firstSectionWidth / 2) - (totalWidth / 2);
+
+        // The second section's center offset; since it's the remainder, we calculate its center differently
+        const secondSectionOffset = (totalWidth / 2) - (secondSectionWidth / 2);
+
+        return {
+            first: {
+                width: firstSectionWidth,
+                offset: firstSectionOffset,
+            },
+            second: {
+                width: secondSectionWidth,
+                offset: secondSectionOffset
+            }
+        };
+    }
+
+    function mapPercentage(input: number, lowerBound: number, upperBound: number): number {
+
+        // Clamp the values below 0.2 to 0
+        if (input <= lowerBound) {
+            return 0;
+        }
+
+        // Clamp the values above 0.9 to 1
+        if (input >= upperBound) {
+            return 1;
+        }
+
+        // Linearly map the range [0.2, 0.9] to [0, 1]
+        return (input - lowerBound) / (upperBound - lowerBound);
+    }
+}

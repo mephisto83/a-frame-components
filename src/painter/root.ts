@@ -1,0 +1,1 @@
+export const AFRAME: any = (window as any).AFRAME || {}
