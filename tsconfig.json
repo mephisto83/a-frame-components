@@ -16,7 +16,7 @@
     "module": "esnext",
     "typeRoots": [
       "./node_modules/@types",
-      "./types"
+      "src/types"
     ],
     "moduleResolution": "node",
     "resolveJsonModule": true,
@@ -26,6 +26,6 @@
   },
   "include": [
     "src/**/*",
-    "types/**/*"
-  ]
+    "src/types/**/*"
+, "types"  ]
 }
