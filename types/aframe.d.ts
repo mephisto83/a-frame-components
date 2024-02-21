@@ -277,7 +277,7 @@ declare namespace JSX {
             // Generic Light Component Properties
             type?: 'ambient' | 'directional' | 'hemisphere' | 'point' | 'spot';
             color?: string;
-            intensity?: number;
+            intensity?: number | string;
 
             // Spot and Directional Light Exclusive
             angle?: number;
