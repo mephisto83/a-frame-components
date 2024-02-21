@@ -398,6 +398,7 @@ declare namespace JSX {
             position?: string;
             rotation?: string;
             scale?: string;
+            [propName: string]: any;
         };
         'a-rounded': {
             // Define the props matching the schema of your 'rounded' component
@@ -425,6 +426,7 @@ declare namespace JSX {
         'a-radio-component': {
             options?: string; // Since data is passed as a string (potentially a JSON-encoded string)
             value?: string;
+            [propName: string]: any;
         };
         'a-gui-cursor': {
             // React-specific props (e.g., key, ref) and common HTML attributes can be included if necessary
@@ -437,6 +439,7 @@ declare namespace JSX {
             'active-color'?: string;
             distance?: string | number;
             design?: string;
+            [propName: string]: any;
         };
         'a-gui-menu-container': {
             // Direct mappings from A-Frame to JSX props
@@ -468,6 +471,7 @@ declare namespace JSX {
             'hover-color'?: string;
             'active-color'?: string;
             'handle-color'?: string;
+            [propName: string]: any;
         };
         'a-gui-transformer': {
             [propName: string]: any;
