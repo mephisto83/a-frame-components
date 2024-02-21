@@ -27,7 +27,6 @@ export interface Result {
 
 
 export function createAndApplyAttributes(elementType, attributesStr) {
-    // Create the element
     const element = document.createElement(elementType);
 
     // Split the attributes string by spaces, considering quotes to correctly handle spaces within attribute values
