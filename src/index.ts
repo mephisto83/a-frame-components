@@ -1,4 +1,4 @@
 import painter from "./painter";
-export default async function load() {
+export async function load() {
     return painter();
 }
