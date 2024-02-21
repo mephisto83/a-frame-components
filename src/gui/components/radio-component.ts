@@ -51,6 +51,7 @@ export default function () {
                         interactiveType: 'radio',
                         onRender: (el) => {
                             el.addEventListener('click', (evt) => {
+                                me.data.value = option.value;
                                 me.el.emit('click', {
                                     value: option.value
                                 });

@@ -93,15 +93,10 @@ The synthesis of the types from a-frame-components will be perceived if you mark
 
 ```
 
-### Inference
-Why the Emphasis on node_modules/a-frame-components/types/**/*:
-Including the node_modules/a-frame-components/types/**/* in the include array concisely tells TypeScript to calibrate its bearings towards fetching from the in-package-type-definitions. This eases the flow of the right kinds of intrinsics about your components across your codebase.
+## Components 
 
-### Moral Check:
-The enlistment of this action leads to telescopic facilities for code hinting, type verifications, and the very blood flow of guided-coding practices.
+[Radio Buttons](radio-component.md)
 
-### Conclusively
-Your project will sing to the paragons of better structure, dialectic sanity, and order of amplitude if you tow with the very plexus of these vestments.
 
 ## License
 
