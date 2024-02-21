@@ -52,7 +52,7 @@ export default function () {
                         onRender: (el) => {
                             el.addEventListener('click', (evt) => {
                                 if (me.data.value !== option.value) {
-                                    me?.setAttribute('value', option.value)
+                                    me?.el?.setAttribute('value', option.value)
                                     me.el.emit('change', {
                                         value: option.value
                                     });
