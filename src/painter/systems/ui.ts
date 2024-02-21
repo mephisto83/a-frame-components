@@ -57,7 +57,7 @@ function addUnique<T>(array: T[], value: T): T[] {
 export default function () {
   AFRAME.registerSystem('ui', {
     init: function () {
-      this.initTextures();
+      // this.initTextures();
       this.liveInteractions = {}
       this.liveInteractingKeys = [];
       this.buttonsState = {};
@@ -192,19 +192,19 @@ export default function () {
       return this.liveInteractingKeys[0] === key;
     },
 
-    initTextures: function () {
-      var self = this;
-      var hoverTextureUrl = 'assets/images/ui-hover.png';
-      var pressedTextureUrl = 'assets/images/ui-pressed.png';
-      this.sceneEl.systems.material.loadTexture(hoverTextureUrl, { src: hoverTextureUrl }, onLoadedHoverTexture);
-      this.sceneEl.systems.material.loadTexture(pressedTextureUrl, { src: pressedTextureUrl }, onLoadedPressedTexture);
-      function onLoadedHoverTexture(texture) {
-        self.hoverTexture = texture;
-      }
-      function onLoadedPressedTexture(texture) {
-        self.pressedTexture = texture;
-      }
-    },
+    // initTextures: function () {
+    //   var self = this;
+    //   var hoverTextureUrl = 'assets/images/ui-hover.png';
+    //   var pressedTextureUrl = 'assets/images/ui-pressed.png';
+    //   this.sceneEl.systems.material.loadTexture(hoverTextureUrl, { src: hoverTextureUrl }, onLoadedHoverTexture);
+    //   this.sceneEl.systems.material.loadTexture(pressedTextureUrl, { src: pressedTextureUrl }, onLoadedPressedTexture);
+    //   function onLoadedHoverTexture(texture) {
+    //     self.hoverTexture = texture;
+    //   }
+    //   function onLoadedPressedTexture(texture) {
+    //     self.pressedTexture = texture;
+    //   }
+    // },
 
     closeAll: function () {
       var els: any = document.querySelectorAll('[ui]');
