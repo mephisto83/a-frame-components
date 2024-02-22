@@ -23,7 +23,7 @@ import transformer from "./transformer";
 import modelItem from "./model-item";
 import flashRed from "../../painter/components/flash-red";
 import canvasImage from "../../painter/components/canvas-image";
-import radioComponent from "./radio-component";
+import radioComponent from "./radio";
 import dualArcs from "./dual-arcs";
 import skeletonBody from "./skeleton-body";
 export default function () {
