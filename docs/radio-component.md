@@ -1,10 +1,10 @@
-# Documentation: Using the `a-radio-component` in A-Frame
+# Documentation: Using the `a-radio` in A-Frame
 
-The `a-radio-component` is a custom A-Frame component designed for creating interactive radio button groups in virtual reality environments. It allows users to select a single option from a set of choices. This document provides a comprehensive guide on how to use the `a-radio-component`.
+The `a-radio` is a custom A-Frame component designed for creating interactive radio button groups in virtual reality environments. It allows users to select a single option from a set of choices. This document provides a comprehensive guide on how to use the `a-radio`.
 
 ## Overview
 
-The `a-radio-component` is built with A-Frame, a web framework for building virtual reality experiences. It utilizes custom elements to create a radio button group, where each radio button can be interacted with using VR controllers or standard mouse input in a browser. The component supports customization options such as setting the initial selected value and dynamically updating the choices available.
+The `a-radio` is built with A-Frame, a web framework for building virtual reality experiences. It utilizes custom elements to create a radio button group, where each radio button can be interacted with using VR controllers or standard mouse input in a browser. The component supports customization options such as setting the initial selected value and dynamically updating the choices available.
 
 ![Radio Component](../imgs/radio-component.png "Radio Component")
 
@@ -20,7 +20,7 @@ Ensure you have A-Frame included in your project. You can include it directly fr
 
 ### Step 1: Import the Component
 
-First, import the `a-radio-component` into your project. Place the JavaScript file that contains the component's code in your project and include it in your HTML file or import it into your JavaScript module.
+First, import the `a-radio` into your project. Place the JavaScript file that contains the component's code in your project and include it in your HTML file or import it into your JavaScript module.
 
 ```javascript
 import gui from "./gui";
@@ -39,7 +39,7 @@ export default function SpaceShipScene() {
     }
     return (
         <a-scene>
-            <a-radio-component options={JSON.stringify([{
+            <a-radio options={JSON.stringify([{
                 text: 'Apple',
                 value: 'A',
                 id: 'A',
@@ -52,7 +52,7 @@ export default function SpaceShipScene() {
                 text: 'C',
                 value: 'C',
                 id: 'C'
-            }])} value={'A'}></a-radio-component>
+            }])} value={'A'}></a-radio>
         </a-scene>
     )
 }
@@ -60,11 +60,11 @@ export default function SpaceShipScene() {
 
 ### Step 2: Add the Component to Your Scene
 
-To use the `a-radio-component`, add an `<a-entity>` element to your A-Frame scene and specify the `a-radio-component` as a child of this entity. Use the `options` attribute to define the radio button options and the `value` attribute to set the initially selected option.
+To use the `a-radio`, add an `<a-entity>` element to your A-Frame scene and specify the `a-radio` as a child of this entity. Use the `options` attribute to define the radio button options and the `value` attribute to set the initially selected option.
 
 ```html
 <a-entity position="0 1 0">
-    <a-radio-component options='[{"text": "Apple", "value": "A", "id": "A", "width": 0.5}, {"text": "Banana", "value": "B", "id": "B"}, {"text": "Cherry", "value": "C", "id": "C"}]' value="A"></a-radio-component>
+    <a-radio options='[{"text": "Apple", "value": "A", "id": "A", "width": 0.5}, {"text": "Banana", "value": "B", "id": "B"}, {"text": "Cherry", "value": "C", "id": "C"}]' value="A"></a-radio>
 </a-entity>
 ```
 
@@ -91,29 +91,29 @@ You can further customize the appearance and behavior of the radio buttons by mo
 
 ### Step 3: Listening for Changes
 
-To react to user selections, listen for the `click` event on the `a-radio-component`. This event provides the selected option's value, which you can use to update your application state or trigger other actions.
+To react to user selections, listen for the `click` event on the `a-radio`. This event provides the selected option's value, which you can use to update your application state or trigger other actions.
 
 ```javascript
-document.querySelector('a-radio-component').addEventListener('click', function(event) {
+document.querySelector('a-radio').addEventListener('click', function(event) {
     console.log('Selected value:', event.detail.value);
 });
 ```
 
 ## Example
 
-Here is a complete example of including the `a-radio-component` in an A-Frame scene:
+Here is a complete example of including the `a-radio` in an A-Frame scene:
 
 ```html
 <!DOCTYPE html>
 <html>
 <head>
     <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
-    <script src="./path/to/a-radio-component.js"></script>
+    <script src="./path/to/a-radio.js"></script>
 </head>
 <body>
     <a-scene>
         <a-entity position="0 1 -3">
-            <a-radio-component options='[{"text": "Apple", "value": "A", "id": "A", "width": 0.5}, {"text": "Banana", "value": "B", "id": "B"}, {"text": "Cherry", "value": "C", "id": "C"}]' value="A"></a-radio-component>
+            <a-radio options='[{"text": "Apple", "value": "A", "id": "A", "width": 0.5}, {"text": "Banana", "value": "B", "id": "B"}, {"text": "Cherry", "value": "C", "id": "C"}]' value="A"></a-radio>
         </a-entity>
     </a-scene>
 </body>
@@ -124,6 +124,6 @@ In this example, the radio component is positioned in front of the camera, and u
 
 ## Conclusion
 
-The `a-radio-component` is a powerful tool for adding interactive radio button groups to your A-Frame VR experiences. By following the steps outlined in this document, you can incorporate customizable radio buttons into your scenes, enhancing
+The `a-radio` is a powerful tool for adding interactive radio button groups to your A-Frame VR experiences. By following the steps outlined in this document, you can incorporate customizable radio buttons into your scenes, enhancing
 
  the interactivity and usability of your VR applications.

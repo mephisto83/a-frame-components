@@ -427,7 +427,7 @@ declare namespace JSX {
             // This is useful for custom data-attributes or any properties not explicitly defined in the typings
             [propName: string]: any;
         };
-        'a-radio-component': {
+        'a-radio': {
             options?: string; // Since data is passed as a string (potentially a JSON-encoded string)
             value?: string;
             [propName: string]: any;
@@ -716,35 +716,6 @@ declare namespace JSX {
             'opacity'?: string | number;
             'text-depth'?: string | number;
             // A catch-all for additional or future-proofing attributes
-            [propName: string]: any;
-        };
-        'a-gui-radio': {
-            // Mappings for gui-interactable
-            'onclick'?: string;
-            'onhover'?: string;
-            'key-code'?: string;
-
-            // Mappings for gui-item general properties
-            'width'?: string | number;
-            'height'?: string | number;
-            'show'?: string | boolean;
-            'margin'?: string;
-
-            // Mappings for gui-radio specific properties
-            'on'?: string;
-            'value'?: string;
-            'active'?: string | boolean;
-            'checked'?: string | boolean;
-            'font-color'?: string;
-            'font-size'?: string | number;
-            'font-family'?: string;
-            'border-color'?: string;
-            'background-color'?: string;
-            'hover-color'?: string;
-            'active-color'?: string;
-            'handle-color'?: string;
-            'radiosizecoef'?: string | number;
-            // A catch-all for additional properties not explicitly defined above
             [propName: string]: any;
         };
         'a-gui-progressbar': {
