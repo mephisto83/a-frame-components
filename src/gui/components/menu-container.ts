@@ -60,16 +60,16 @@ export default function () {
             }
 
             this.children = this.el.getChildEntities();
-            this.el.addEventListener('item-clicked', (evt) => {
+
+            this.positionChildren(containerGuiItem);
+            let { entity, bucket, entryPanel } = this.createEntryPanel();
+            bucket.addEventListener('item-clicked', (evt) => {
                 const { detail } = evt;
                 if (detail?.data?.value !== me.data.value) {
                     me.el.emit('change', { value: detail?.data?.value })
                 }
                 evt.preventDefault();
             });
-
-            this.positionChildren(containerGuiItem);
-            let { entity, bucket, entryPanel } = this.createEntryPanel();
             let { cursorX, cursorY } = this.getInitialCursor(containerGuiItem);
             let { x, y, z } = this.getChildPositions({
                 childElement: this.children[0],
