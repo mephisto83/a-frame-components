@@ -77,7 +77,7 @@ export default function () {
                 cursorX,
                 cursorY
             });
-            entryPanel.addEventListener('changed', (evt) => {
+            entryPanel.addEventListener('item-clicked', (evt) => {
                 me.el.setAttribute('open', !me.data.open);
                 evt.preventDefault();
             })
