@@ -63,7 +63,7 @@ export default function () {
 
             this.positionChildren(containerGuiItem);
             let { entity, bucket, entryPanel } = this.createEntryPanel();
-            bucket.addEventListener('item-clicked', (evt) => {
+            this.el.addEventListener('item-clicked', (evt) => {
                 const { detail } = evt;
                 if (detail?.data?.value !== me.data.value) {
                     me.el.emit('change', { value: detail?.data?.value })
