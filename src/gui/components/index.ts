@@ -26,6 +26,7 @@ import canvasImage from "../../painter/components/canvas-image";
 import radioComponent from "./radio";
 import dualArcs from "./dual-arcs";
 import skeletonBody from "./skeleton-body";
+
 export default function () {
     dualArcs();
     skeletonBody();
