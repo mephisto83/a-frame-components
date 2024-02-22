@@ -68,7 +68,8 @@ export default function () {
                 if (detail?.data?.value !== me.data.value) {
                     me.el.emit('change', { value: detail?.data?.value })
                 }
-                evt.preventDefault();
+                evt.preventDefault(); 
+                evt.stopPropagation();
             });
             let { cursorX, cursorY } = this.getInitialCursor(containerGuiItem);
             let { x, y, z } = this.getChildPositions({
@@ -79,7 +80,8 @@ export default function () {
             });
             entryPanel.addEventListener('item-clicked', (evt) => {
                 me.el.setAttribute('open', !me.data.open);
-                evt.preventDefault();
+                evt.preventDefault(); 
+                evt.stopPropagation();
             })
             // entity.setAttribute('position', `${x} ${y} ${z}`);
             this.entryPanelContainer = entity;
