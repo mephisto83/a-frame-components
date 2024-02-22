@@ -69,16 +69,8 @@ export default function () {
                 cursorY
             });
             entryPanel.addEventListener('changed', (evt) => {
-                console.log(evt);
-                me.el.emit('open-changed', { open: evt.detail.data.checked })
+                entryPanel.setAttribute('open', !me.data.open);
                 evt.preventDefault();
-            })
-            entryPanel.addEventListener('open-changed', (evt) => {
-                const { detail } = evt;
-                entryPanel.setAttribute('open', !detail.open);
-            })
-            entryPanel.addEventListener('close-menu', (evt) => {
-                entryPanel.setAttribute('open', false);
             })
             // entity.setAttribute('position', `${x} ${y} ${z}`);
             this.entryPanelContainer = entity;
