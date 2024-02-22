@@ -343,14 +343,14 @@ export function createMenu({
             [`menu-item-width`]: width
         }
     )({});
-    menu.addEventListener('open-changed', (evt) => {
-        const { detail } = evt;
-        menu.setAttribute('open', !detail.open);
-    })
-    menu.addEventListener('close-menu', (evt) => {
-        const { detail } = evt;
-        menu.setAttribute('open', false);
-    })
+    // menu.addEventListener('open-changed', (evt) => {
+    //     const { detail } = evt;
+    //     menu.setAttribute('open', !detail.open);
+    // })
+    // menu.addEventListener('close-menu', (evt) => {
+    //     const { detail } = evt;
+    //     menu.setAttribute('open', false);
+    // })
     children.map((c) => {
         menu.appendChild(c.element({}));
         if (c.onRender) {
