@@ -57,7 +57,7 @@ export default function () {
         createMenu: function ({ width, text, height, options }) {
             let me = this;
             let open = false;
-            let menuContainer = document.createElement('a-gui-menu-container');
+            let menuContainer = document.createElement('a-menu-container');
             menuContainer.setAttribute('menu-direction', 'up');
             menuContainer.setAttribute('flex-direction', 'column');
             menuContainer.setAttribute('justify-content', 'flexStart');
@@ -92,7 +92,7 @@ export default function () {
             entity.setAttribute('position', `0 ${(-height / 2)} .1`)
             entity.appendChild(menuContainer);
             return entity;
-            //     <a-gui-menu-container
+            //     <a-menu-container
             //     ref={menuContainerRef}
             //     menu-direction={'up'}
             //     flex-direction="column"

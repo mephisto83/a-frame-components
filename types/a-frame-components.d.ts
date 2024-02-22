@@ -444,7 +444,7 @@ declare namespace JSX {
             design?: string;
             [propName: string]: any;
         };
-        'a-gui-menu-container': {
+        'a-menu-container': {
             // Direct mappings from A-Frame to JSX props
             width?: string;
             height?: string;

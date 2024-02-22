@@ -329,7 +329,7 @@ export function createMenu({
     forwardStep = .01,
     children = []
 }) {
-    let menu = createElement('a-gui-menu-container',
+    let menu = createElement('a-menu-container',
         {
             [`menu-direction`]: "up",
             [`flex-direction`]: "column",

@@ -73,6 +73,13 @@ export default function () {
                 me.el.emit('open-changed', { open: evt.detail.data.checked })
                 evt.preventDefault();
             })
+            entryPanel.addEventListener('open-changed', (evt) => {
+                const { detail } = evt;
+                entryPanel.setAttribute('open', !detail.open);
+            })
+            entryPanel.addEventListener('close-menu', (evt) => {
+                entryPanel.setAttribute('open', false);
+            })
             // entity.setAttribute('position', `${x} ${y} ${z}`);
             this.entryPanelContainer = entity;
             this.entryPanel = entryPanel;
@@ -101,6 +108,7 @@ export default function () {
             entryPanel.setAttribute('position', `0 0 0`);
             entryPanel.setAttribute('margin', "0 0 0.05 0")
             entryPanel.setAttribute('font-size', ".07")
+            entryPanel.addEventListener('clicked', () => { })
             let entity = document.createElement('a-entity');
             entity.appendChild(entryPanel);
             return { entity, entryPanel };
@@ -339,7 +347,7 @@ export default function () {
 
     });
 
-    AFRAME.registerPrimitive('a-gui-menu-container', {
+    AFRAME.registerPrimitive('a-menu-container', {
         defaultComponents: {
             'gui-item': { type: 'menu-container' },
             'gui-menu-container': {}
