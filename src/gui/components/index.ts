@@ -11,7 +11,6 @@ import input from "./input";
 import item from "./item";
 import label from "./label";
 import progressBar from "./progress-bar";
-import radio from "./radio";
 import rounded from './rounded';
 import slider from "./slider";
 import troikaTextComponent from "./troika-text-component";
@@ -53,7 +52,6 @@ export default function () {
     item();
     label();
     progressBar();
-    radio();
     rounded();
     slider();
 }
