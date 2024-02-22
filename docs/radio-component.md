@@ -6,6 +6,8 @@ The `a-radio-component` is a custom A-Frame component designed for creating inte
 
 The `a-radio-component` is built with A-Frame, a web framework for building virtual reality experiences. It utilizes custom elements to create a radio button group, where each radio button can be interacted with using VR controllers or standard mouse input in a browser. The component supports customization options such as setting the initial selected value and dynamically updating the choices available.
 
+![Radio Component](../imgs/radio-component.png "Radio Component")
+
 ## How to Use
 
 ### Prerequisites

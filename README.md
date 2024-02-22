@@ -95,7 +95,8 @@ The synthesis of the types from a-frame-components will be perceived if you mark
 
 ## Components 
 
-[Radio Buttons](radio-component.md)
+- [Gui Menu Container](docs/gui-menu-container.md)
+- [Radio Buttons](docs/radio-component.md)
 
 
 ## License

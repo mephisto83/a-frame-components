@@ -11,6 +11,9 @@ declare namespace JSX {
             on?: string;
             value?: string;
             active?: boolean;
+            width: string | number;
+            margin: string;
+            height: string | number;
             interactiveType?: string;
             paddingLeft?: number;
             show?: boolean;
