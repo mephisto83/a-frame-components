@@ -448,6 +448,7 @@ declare namespace JSX {
         'a-menu-container': {
             // Direct mappings from A-Frame to JSX props
             width?: string;
+            value?: string;
             height?: string;
             margin?: string;
             'text-value'?: string;

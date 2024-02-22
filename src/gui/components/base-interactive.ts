@@ -72,27 +72,20 @@ export default function () {
                     break;
             }
 
-            el.addEventListener(data.on, function (evt) {
+            el.addEventListener(data.on, function (evt: any) {
                 el.emit('clicked', {
-                    data
+                    data: me.data
+                });
+                el.emit('item-clicked', {
+                    data: me.data
                 })
                 if (me.data.enabled) {
                     // console.log('I was clicked at: ', evt.detail.intersection.point); // Commented out to use own made click event without defining detail
                     // data.checked = !data.checked;
                     // me.renderCheck(data);
                     el.emit('changed', {
-                        data
+                        data: me.data
                     })
-
-                    var guiInteractable = el.getAttribute("gui-interactable");
-                    //console.log("guiInteractable: "+guiInteractable);
-                    var clickActionFunctionName = guiInteractable.clickAction;
-                    //console.log("clickActionFunctionName: "+clickActionFunctionName);
-                    // find object
-                    var clickActionFunction: any = window[clickActionFunctionName];
-                    //console.log("clickActionFunction: "+clickActionFunction);
-                    // is object a function?
-                    if (typeof clickActionFunction === "function") clickActionFunction(evt);
                     evt.preventDefault();
                 }
             });

@@ -19,6 +19,7 @@ export default function () {
     AFRAME.registerComponent('gui-menu-container', {
         schema: {
             flexDirection: { type: 'string', default: 'row' },
+            value: { type: 'string', default: '' },
             selected: { type: 'number', default: 0 },
             open: { type: 'boolean', default: false },
             justifyContent: { type: 'string', default: 'flexStart' },
@@ -59,6 +60,13 @@ export default function () {
             }
 
             this.children = this.el.getChildEntities();
+            this.el.addEventListener('item-clicked', (evt) => {
+                const { detail } = evt;
+                if (detail?.data?.value !== me.data.value) {
+                    me.el.emit('change', { value: detail?.data?.value })
+                }
+            });
+
             this.positionChildren(containerGuiItem);
             let { entity, bucket, entryPanel } = this.createEntryPanel();
             let { cursorX, cursorY } = this.getInitialCursor(containerGuiItem);
@@ -100,7 +108,6 @@ export default function () {
             entryPanel.setAttribute('position', `0 0 0`);
             entryPanel.setAttribute('margin', "0 0 0.05 0")
             entryPanel.setAttribute('font-size', ".07")
-            entryPanel.addEventListener('clicked', () => { })
             let entity = document.createElement('a-entity');
             let entity2 = document.createElement('a-entity');
             entity.appendChild(entryPanel);
@@ -350,6 +357,7 @@ export default function () {
             'width': 'gui-item.width',
             'height': 'gui-item.height',
             'margin': 'gui-item.margin',
+            'value': 'gui-menu-container.value',
             'text-value': 'gui-menu-container.text',
             'selected': 'gui-menu-container.selected',
             'open': 'gui-menu-container.open',
