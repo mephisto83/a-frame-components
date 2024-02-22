@@ -9,6 +9,7 @@ declare namespace JSX {
     interface IntrinsicElements {
         'a-base-interactive': {
             on?: string;
+            title?: string;
             value?: string;
             active?: boolean;
             width: string | number;

@@ -60,7 +60,7 @@ export default function () {
 
             this.children = this.el.getChildEntities();
             this.positionChildren(containerGuiItem);
-            let { entity, entryPanel } = this.createEntryPanel();
+            let { entity, bucket, entryPanel } = this.createEntryPanel();
             let { cursorX, cursorY } = this.getInitialCursor(containerGuiItem);
             let { x, y, z } = this.getChildPositions({
                 childElement: this.children[0],
@@ -102,8 +102,10 @@ export default function () {
             entryPanel.setAttribute('font-size', ".07")
             entryPanel.addEventListener('clicked', () => { })
             let entity = document.createElement('a-entity');
+            let entity2 = document.createElement('a-entity');
             entity.appendChild(entryPanel);
-            return { entity, entryPanel };
+            entity.appendChild(entity2);
+            return { entity, bucket: entity2, entryPanel };
         },
         getInitialCursor: function (containerGuiItem: any) {
             var cursorX = 0;

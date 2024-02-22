@@ -15,6 +15,7 @@ export default function () {
             toggle: { type: 'boolean', default: false },
             toggleState: { type: 'boolean', default: false },
             checked: { type: 'boolean', default: false },
+            title: { type: 'string', default: '' },
             radiosizecoef: { type: 'number', default: 1 },
             fontSize: { type: 'number', default: 0.2 },
             fontFamily: { type: 'string', default: '' },
@@ -67,7 +68,7 @@ export default function () {
                     break;
                 case 'button':
                 default:
-                    this.setText(data.value);
+                    this.setText(data.title || data.value);
                     break;
             }
 
@@ -276,6 +277,7 @@ export default function () {
             'padding-left': 'base-interactive.paddingLeft',
             'enabled': 'menuable.enabled',
             'value': 'base-interactive.value',
+            'title': 'base-interactive.title',
             'active': 'base-interactive.active',
             'checked': 'base-interactive.checked',
             'font-color': 'base-interactive.fontColor',
