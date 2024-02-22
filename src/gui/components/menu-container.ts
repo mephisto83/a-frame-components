@@ -69,7 +69,7 @@ export default function () {
                 cursorY
             });
             entryPanel.addEventListener('changed', (evt) => {
-                entryPanel.setAttribute('open', !me.data.open);
+                me.el.setAttribute('open', !me.data.open);
                 evt.preventDefault();
             })
             // entity.setAttribute('position', `${x} ${y} ${z}`);
