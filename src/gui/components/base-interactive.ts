@@ -83,11 +83,11 @@ export default function () {
                     // console.log('I was clicked at: ', evt.detail.intersection.point); // Commented out to use own made click event without defining detail
                     // data.checked = !data.checked;
                     // me.renderCheck(data);
-                    el.emit('changed', {
-                        data: me.data
-                    })
-                    evt.preventDefault();
+                    // el.emit('changed', {
+                    //     data: me.data
+                    // })
                 }
+                evt.preventDefault();
             });
 
             ////WAI ARIA Support

@@ -65,6 +65,7 @@ export default function () {
                 if (detail?.data?.value !== me.data.value) {
                     me.el.emit('change', { value: detail?.data?.value })
                 }
+                evt.preventDefault();
             });
 
             this.positionChildren(containerGuiItem);
