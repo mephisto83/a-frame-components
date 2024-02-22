@@ -457,10 +457,10 @@ declare namespace JSX {
             dur?: string;
             easing?: string;
             'align-items'?: string;
-            'item-padding'?: string;
-            'menu-item-width'?: string;
-            'menu-item-height'?: string;
-            'forward-step'?: string;
+            'item-padding'?: string | number;
+            'menu-item-width'?: string | number;
+            'menu-item-height'?: string | number;
+            'forward-step'?: string | number;
             'menu-item-margin'?: string;
             'menu-direction'?: string;
             opacity?: string | number;
