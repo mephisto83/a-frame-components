@@ -26,13 +26,13 @@ export interface Result {
 }
 
 
-export function createAndApplyAttributes(elementType, attributesStr) {
+export function createAndApplyAttributes(elementType: any, attributesStr: any) {
     const element = document.createElement(elementType);
 
     // Split the attributes string by spaces, considering quotes to correctly handle spaces within attribute values
     const attributes = attributesStr.match(/([^\s="']+="[^"]*"|[^ ]+)/g);
 
-    attributes.forEach(attr => {
+    attributes.forEach((attr: any) => {
         // Split each attribute by the first occurrence of "=" to separate the key and value
         let [key, value] = attr.split(/=(.+)/);
 
@@ -58,8 +58,8 @@ export function createAndApplyAttributes(elementType, attributesStr) {
     return element;
 }
 
-export function createElement(elementType, attributesDic: { [str: string]: any }) {
-    let element = null;
+export function createElement(elementType: any, attributesDic: { [str: string]: any }) {
+    let element: any = null;
     return function (moreAttr?: { [str: string]: any }) {
         // Create the element
         element = element || document.createElement(elementType);
@@ -152,7 +152,7 @@ export class Element implements Item {
         const {
             containerSize,
             positions
-        } = calculatePositionsAndContainerSize(items.map(t => t.containerSize), this.alignment, this.direction, this.margin);
+        } = calculatePositionsAndContainerSize(items.map(t => t.containerSize), this.alignment, 'flexStart', this.direction, this.margin);
         let els = this.children.map((element, index) => {
             let pos = positions[index];
             return position(element, `${pos.x} ${pos.y} ${.02}`)
@@ -196,7 +196,7 @@ function defaultMargin() {
         top: 0,
     }
 }
-export function createContainer(type = 'a-entity', attributes, margin?: Margin) {
+export function createContainer(type = 'a-entity', attributes: any, margin?: Margin) {
     let element = createElement(type, attributes);
     return new Element({
         element,
@@ -206,9 +206,9 @@ export function createContainer(type = 'a-entity', attributes, margin?: Margin) 
     });
 }
 export function createComponent(type = 'a-entity',
-    attributes,
-    height,
-    width,
+    attributes: any,
+    height: any,
+    width: any,
     margin?: Margin,
     onRender?: (el: any) => void) {
     let element = createElement(type, attributes);
@@ -227,7 +227,7 @@ export function createBaseInteractive({
     width = .8,
     type = "button",
     fontSize = .17
-}) {
+}: any) {
 
     let element = createElement('a-base-interactive', {
         width,
@@ -351,7 +351,7 @@ export function createMenu({
     //     const { detail } = evt;
     //     menu.setAttribute('open', false);
     // })
-    children.map((c) => {
+    children.map((c: any) => {
         menu.appendChild(c.element({}));
         if (c.onRender) {
             c.onRender(c.element({}));
@@ -366,45 +366,61 @@ export function createMenu({
 }
 export type Alignment = 'flexStart' | 'flexEnd' | 'center';
 export type Direction = 'vertical' | 'horizontal';
+export type JustifyContent = 'flexStart' | 'center' | 'flexEnd';
+
 
 export function calculatePositionsAndContainerSize(
     items: Item[],
     alignment: Alignment,
+    justifyContent: JustifyContent, // This is used to determine the starting vertical position
     direction: Direction,
     margin: Margin
 ): Result {
     let maxContainerWidth = 0;
     let maxContainerHeight = 0;
-    let currentPosition = 0;
+    let totalSize = 0; // This will track the total size of items along the main axis
 
-    // First Pass: Calculate total container size
+    // Calculate total container size and totalSize of items
     items.forEach((item, index) => {
         if (direction === 'vertical') {
             const effectiveWidth = item.width + margin.left + margin.right;
             maxContainerWidth = Math.max(maxContainerWidth, effectiveWidth);
-            currentPosition += item.height + (index === 0 ? margin.top : 0) + margin.bottom;
+            totalSize += item.height + (index < items.length - 1 ? margin.bottom : 0); // Adjusted for correct margin calculation
         } else { // 'horizontal'
             const effectiveHeight = item.height + margin.top + margin.bottom;
             maxContainerHeight = Math.max(maxContainerHeight, effectiveHeight);
-            currentPosition += item.width + (index === 0 ? margin.left : 0) + margin.right;
+            totalSize += item.width + (index < items.length - 1 ? margin.right : 0);
         }
     });
 
+    // Adjust totalSize for final margin (only once, not per item)
     if (direction === 'vertical') {
-        maxContainerHeight = currentPosition + margin.bottom; // Include bottom margin at the end
+        totalSize += margin.top; // Adjusted to add top margin
+        maxContainerHeight = totalSize;
     } else {
-        maxContainerWidth = currentPosition + margin.right; // Include right margin at the end
+        totalSize += margin.left; // Adjusted for horizontal direction
+        maxContainerWidth = totalSize;
+    }
+
+    let currentPosition = 0;
+    // Calculate starting position based on justifyContent
+    if (justifyContent === 'center') {
+        currentPosition = -(totalSize / 2); // Start from center and go both ways
+    } else if (justifyContent === 'flexEnd') {
+        currentPosition = -totalSize; // Start from bottom
+    } else { // Default to flexStart or other cases
+        currentPosition = 0; // Start from top
     }
 
     let positions: Position[] = [];
-    currentPosition = 0;
 
-    // Second Pass: Adjust positions based on the total calculated container size
+    // Adjust positions based on alignment and the total calculated container size
     items.forEach((item, index) => {
         let x: number;
         let y: number;
 
         if (direction === 'vertical') {
+            // Calculate x based on alignment
             switch (alignment) {
                 case 'flexStart':
                     x = margin.left + item.width / 2;
@@ -416,9 +432,11 @@ export function calculatePositionsAndContainerSize(
                     x = maxContainerWidth / 2;
                     break;
             }
+            // Calculate y, starting from top and moving downwards
             y = currentPosition + margin.top + item.height / 2;
-            currentPosition += item.height + (index === 0 ? margin.top : 0) + margin.bottom;
+            currentPosition += item.height + margin.bottom;
         } else {
+            // Horizontal direction logic remains unchanged
             switch (alignment) {
                 case 'flexStart':
                     y = margin.top + item.height / 2;
@@ -431,10 +449,10 @@ export function calculatePositionsAndContainerSize(
                     break;
             }
             x = currentPosition + margin.left + item.width / 2;
-            currentPosition += item.width + (index === 0 ? margin.left : 0) + margin.right;
+            currentPosition += item.width + margin.right;
         }
 
-        positions.push({ x: x - (maxContainerWidth / 2), y: y - (maxContainerHeight / 2) });
+        positions.push({ x: x - (maxContainerWidth / 2), y: -y + (maxContainerHeight / 2) }); // Adjust y to invert direction
     });
 
     return {
@@ -446,7 +464,8 @@ export function calculatePositionsAndContainerSize(
     };
 }
 
-export function createText(text, { color, fontFamily }) {
+
+export function createText(text: any, { color, fontFamily }: any) {
     var textEntity = document.createElement("a-entity");
     textEntity.setAttribute('troika-text', `value: ${text}; 
                                         align:left; 

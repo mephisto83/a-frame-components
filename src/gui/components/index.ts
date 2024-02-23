@@ -22,12 +22,14 @@ import transformer from "./transformer";
 import modelItem from "./model-item";
 import flashRed from "../../react/components/flash-red";
 import canvasImage from "../../react/components/canvas-image";
+import container from "./container";
 import radioComponent from "./radio";
 import dualArcs from "./dual-arcs";
 import skeletonBody from "./skeleton-body";
 
 export default function () {
     dualArcs();
+    container();
     skeletonBody();
     transformer();
     radioComponent();
