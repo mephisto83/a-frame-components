@@ -351,10 +351,10 @@ export default function () {
         },
         ...mixin,
         getWidth: function () {
-            return parseFloat(`${this.data.menuItemHeight}`);
+            return parseFloat(`${this.data.menuItemWidth}`);
         },
         getHeight: function () {
-            return parseFloat(`${this.data.menuItemWidth}`);
+            return parseFloat(`${this.data.menuItemHeight}`);
         },
 
     });
