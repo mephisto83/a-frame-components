@@ -1,5 +1,6 @@
 import { AFRAME } from "../../react/root";
 import { createContainer, createElement, createInteractiveButton } from "../../util";
+import mixin from "./mixin";
 export default function () {
     AFRAME.registerComponent('radio-component', {
         schema: {
@@ -83,6 +84,7 @@ export default function () {
                 }
             }
         },
+        ...mixin,
         getWidth: function () {
             let me = this;
             return parseFloat(`${me.radioContainer.getWidth()}`);
