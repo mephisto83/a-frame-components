@@ -9,14 +9,14 @@ export default {
         let change = false;
 
         const currentWidth = el.getAttribute('width');
-        const newWidth = container.getWidth().toString();
+        const newWidth = container.getWidth ? container.getWidth().toString() : (container.getAttribute('width') || '0');
         if (currentWidth !== newWidth) {
             el.setAttribute('width', newWidth);
             change = true;
         }
 
         const currentHeight = el.getAttribute('height');
-        const newHeight = container.getHeight().toString();
+        const newHeight = container.getHeight ? container.getHeight().toString() : (container.getAttribute('height') || '0');
         if (currentHeight !== newHeight) {
             el.setAttribute('height', newHeight);
             change = true;
