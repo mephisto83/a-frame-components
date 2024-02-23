@@ -732,9 +732,10 @@ declare namespace JSX {
             [propertyName: string]: any;
         };
         'a-container': {
-            alignment: string, // flexStart, flexEnd, center
-            direction: string, // vertical, horizontal
-            margin: string,// top right bottom left
+            alignment?: string, // flexStart, flexEnd, center
+            direction?: string, // vertical, horizontal
+            margin?: string,// top right bottom left
+            [propertyName: string]: any;
         };
     }
 }
