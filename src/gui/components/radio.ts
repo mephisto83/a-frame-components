@@ -84,8 +84,8 @@ export default function () {
                         me.options.map((option: RadioOption) => {
                             let button = createElement("a-base-interactive",
                                 {
-                                    width: .3,
-                                    ...option,
+                                    width: (option as any).width || .3,
+                                    value: option.text || option.value,
                                     interactiveType: 'radio',
                                     ['font-size']: .07
                                 }
