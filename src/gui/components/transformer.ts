@@ -1,7 +1,7 @@
-import { AFRAME } from "../../painter/root";
-import interactionMixin from "../../painter/components/interaction-mixin";
-import { PAINTER_CONSTANTS } from "../../painter/constants";
-import { raiseCustomEvent } from "../../painter/util";
+import { AFRAME } from "../../react/root";
+import interactionMixin from "../../react/components/interaction-mixin";
+import { PAINTER_CONSTANTS } from "../../react/constants";
+import { raiseCustomEvent } from "../../react/util";
 
 type Point = {
     x: number;

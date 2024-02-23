@@ -1,6 +1,6 @@
-import { AFRAME } from "../../painter/root";
-import { GrabAndDropEvents, GrabOutDetails, GrabOverDetails, calculateEndPoint, customEventListener, getInputDevice, lerp3, setInputDevice, } from "../../painter/systems/grabanddrop";
-import { raiseCustomEvent } from "../../painter/util";
+import { AFRAME } from "../../react/root";
+import { GrabAndDropEvents, GrabOutDetails, GrabOverDetails, calculateEndPoint, customEventListener, getInputDevice, lerp3, setInputDevice, } from "../../react/systems/grabanddrop";
+import { raiseCustomEvent } from "../../react/util";
 export default function () {
     const THREE: any = (window as any).THREE;
     AFRAME.registerComponent('grabanddropzone', {

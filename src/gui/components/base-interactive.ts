@@ -1,5 +1,5 @@
-import { AFRAME } from "../../painter/root";
-import { GetBackgroundColor } from "../../painter/systems/ui";
+import { AFRAME } from "../../react/root";
+import { GetBackgroundColor } from "../../react/systems/ui";
 import { key_grey, key_grey_dark, key_grey_light, key_offwhite, key_orange, key_white } from "../vars";
 
 export default function () {

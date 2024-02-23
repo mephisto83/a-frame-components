@@ -1,7 +1,7 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { createText } from "../../util";
 import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
-import interactionMixin from "../../painter/components/interaction-mixin";
+import interactionMixin from "../../react/components/interaction-mixin";
 
 export default function () {
     AFRAME.registerComponent('gui-slider', {

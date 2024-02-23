@@ -445,6 +445,7 @@ export function calculatePositionsAndContainerSize(
         }
     };
 }
+
 export function createText(text, { color, fontFamily }) {
     var textEntity = document.createElement("a-entity");
     textEntity.setAttribute('troika-text', `value: ${text}; 
@@ -541,6 +542,7 @@ export const containerStlye: any = {
     maxWidth: 400,
     zIndex: 1000, // Ensure it's above other content
 }
+
 export const btnstyle: any = {
     display: 'inline-block',
     padding: '10px 15px',

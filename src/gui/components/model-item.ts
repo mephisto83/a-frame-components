@@ -1,5 +1,5 @@
-import { AFRAME } from "../../painter/root";
-import { GetColor } from "../../painter/systems/ui";
+import { AFRAME } from "../../react/root";
+import { GetColor } from "../../react/systems/ui";
 export default function () {
     AFRAME.registerComponent('model-item', {
         schema: {

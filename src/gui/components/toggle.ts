@@ -1,4 +1,4 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { key_orange, key_offwhite, key_grey, key_grey_light, key_grey_dark } from "../vars";
 
 export default function () {

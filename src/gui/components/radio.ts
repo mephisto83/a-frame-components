@@ -1,4 +1,4 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { createContainer, createInteractiveButton } from "../../util";
 export default function () {
     AFRAME.registerComponent('radio-component', {

@@ -1,5 +1,5 @@
 import { Text } from 'troika-three-text'
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
 const THREE: any = (window as any).THREE;
 

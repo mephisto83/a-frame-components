@@ -1,4 +1,4 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { IK, } from './three-ik';
 import { Vector3 } from 'three';
 

@@ -1,4 +1,4 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { GetColor } from "../systems/ui";
 const THREE: any = (window as any).THREE;
 

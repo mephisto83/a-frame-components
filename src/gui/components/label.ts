@@ -1,4 +1,4 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 import { key_grey_dark, key_offwhite } from "../vars";
 export default function () {
   AFRAME.registerComponent('gui-label', {

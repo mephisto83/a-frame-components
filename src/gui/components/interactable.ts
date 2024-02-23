@@ -1,4 +1,4 @@
-import { AFRAME } from "../../painter/root";
+import { AFRAME } from "../../react/root";
 
 export default function () {
     AFRAME.registerComponent('gui-interactable', {

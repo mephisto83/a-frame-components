@@ -731,5 +731,10 @@ declare namespace JSX {
             // Catch-all for additional data-* attributes or others not explicitly declared above
             [propertyName: string]: any;
         };
+        'a-container': {
+            alignment: string, // flexStart, flexEnd, center
+            direction: string, // vertical, horizontal
+            margin: string,// top right bottom left
+        };
     }
 }
