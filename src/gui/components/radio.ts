@@ -82,7 +82,7 @@ export default function () {
                     if (this.data.options) {
                         let buttonContainer = document.createElement('a-container');
                         buttonContainer.setAttribute('direction', 'horizontal')
-                        buttonContainer.setAttribute('alignment', 'flexStart')
+                        buttonContainer.setAttribute('alignment', 'center')
                         buttonContainer.setAttribute('margin', '.1 .1 .1 .1')
                         me.options.map((option: RadioOption) => {
                             let button = createElement("a-base-interactive",
