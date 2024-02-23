@@ -95,6 +95,7 @@ export default function () {
             ////WAI ARIA Support
             el.setAttribute('role', 'radio');
             me.renderCheck(data);
+            me.updateElementSize(me, me.el);
 
         },
         setButtonEvents: function ({ el, background, data, guiItem }) {
@@ -201,8 +202,8 @@ export default function () {
             }
         },
         update: function (oldData) {
+            let me = this;
             var data = this.data;
-            var el = this.el;
             this.renderCheck(data)
             if (this.data.show !== oldData.show) {
                 this.el.setAttribute('visible', this.data.show)
@@ -219,6 +220,7 @@ export default function () {
             } else {
                 console.log("no textEntity!");
             }
+            me.updateElementSize(me, me.el);
         },
         setText: function (newText) {
             let data = this.data;

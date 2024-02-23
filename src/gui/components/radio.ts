@@ -79,6 +79,7 @@ export default function () {
                     me.radioContainer = buttonContainer;
                     me.el.appendChild(me.radioContainer);
                     me.updateChecked();
+                    me.updateElementSize(me.radioContainer, me.el);
                 }
             }
         },
@@ -94,7 +95,7 @@ export default function () {
 
     AFRAME.registerPrimitive('a-radio', {
         defaultComponents: {
-            'radio-component': {}
+            'radio-component': {},
         },
         mappings: {
             'options': 'radio-component.options',
