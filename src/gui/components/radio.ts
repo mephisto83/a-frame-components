@@ -89,7 +89,7 @@ export default function () {
                                 {
                                     width: (option as any).width || .3,
                                     height: me.data.optionHeight || .2,
-                                    margin: '0 0 0.05 0',
+                                    margin: '0 0 0 0',
                                     value: option.text || option.value,
                                     interactiveType: 'radio',
                                     ['font-size']: .07
