@@ -1,5 +1,6 @@
 import { AFRAME } from "../../react/root";
 import { key_grey } from "../vars";
+import mixin from "./mixin";
 
 export default function () {
     var onAppendChildToContainer = function (elem, f) {
@@ -30,7 +31,7 @@ export default function () {
             menuItemMargin: { type: 'number', default: .02 },
             easing: { type: 'string', default: 'easeInOutQuad' },
             dur: { type: 'number', default: 400 },
-            forwardStep: { type: 'number', default: 0.01 },
+            forwardStep: { type: 'number', default: 0.05 },
             menuItemHeight: { type: 'number', default: 1.0 },
             menuDirection: { type: 'string', default: 'down' },
             opacity: { type: 'number', default: 0.0 },
@@ -68,7 +69,7 @@ export default function () {
                 if (detail?.data?.value !== me.data.value) {
                     me.el.emit('change', { value: detail?.data?.value })
                 }
-                evt.preventDefault(); 
+                evt.preventDefault();
                 evt.stopPropagation();
             });
             let { cursorX, cursorY } = this.getInitialCursor(containerGuiItem);
@@ -80,7 +81,7 @@ export default function () {
             });
             entryPanel.addEventListener('item-clicked', (evt) => {
                 me.el.setAttribute('open', !me.data.open);
-                evt.preventDefault(); 
+                evt.preventDefault();
                 evt.stopPropagation();
             })
             // entity.setAttribute('position', `${x} ${y} ${z}`);
@@ -347,6 +348,12 @@ export default function () {
                 this.el.parentNode.insertBefore(panelBackground, this.el);
             }
 
+        },
+        getWidth: function () {
+            return parseFloat(`${this.data.menuItemHeight}`);
+        },
+        getHeight: function () {
+            return parseFloat(`${this.data.menuItemWidth}`);
         },
 
     });

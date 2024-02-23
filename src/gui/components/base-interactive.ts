@@ -1,4 +1,5 @@
 import { AFRAME } from "../../react/root";
+import mixin from "./mixin";
 import { GetBackgroundColor } from "../../react/systems/ui";
 import { key_grey, key_grey_dark, key_grey_light, key_offwhite, key_orange, key_white } from "../vars";
 
@@ -31,6 +32,7 @@ export default function () {
             disabledTextColor: { type: 'string', default: '#BEBEBE' },
             handleColor: { type: 'string', default: '#444444' },
         },
+        ...mixin,
         init: function () {
             let me = this;
             var data = this.data;

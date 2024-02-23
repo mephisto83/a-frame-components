@@ -38,91 +38,58 @@ export default function () {
             me.optionValues = {};
             me.options = JSON.parse(this.data.options);
             if (this.data.options) {
-                if (false) {
-                    let buttonContainer = createContainer('a-entity', {
-                        radius: .1,
-                        color: "#000",
-                        opacity: .7
-                    }, { left: 0.05, right: .05, top: .1, bottom: .1 })
 
+                if (this.data.options) {
+                    let buttonContainer = document.createElement('a-container');
+                    buttonContainer.setAttribute('direction', 'horizontal')
+                    buttonContainer.setAttribute('alignment', 'flexStart')
+                    buttonContainer.setAttribute('margin', '0 0 0 0')
                     me.options.map((option: RadioOption) => {
-                        let button = createInteractiveButton({
-                            width: .3,
-                            ...option,
-                            interactiveType: 'radio',
-                            onRender: (el) => {
-                                el.addEventListener('click', (evt) => {
-                                    if (me.data.value !== option.value) {
-                                        me?.el?.setAttribute('value', option.value)
-                                        me.el.emit('change', {
-                                            value: option.value
-                                        });
-                                    }
-                                    me.data.value = option.value;
-
-                                    me.el.emit('click', {
-                                        value: option.value
-                                    });
-                                    evt.preventDefault();
-                                })
-                                me.optionValues = {
-                                    ...me.optionValues,
-                                    [option.value]: el
-                                }
+                        let button = createElement("a-base-interactive",
+                            {
+                                width: (option as any).width || .3,
+                                height: me.data.optionHeight || .2,
+                                margin: '0 0 0 0',
+                                value: option.text || option.value,
+                                interactiveType: 'radio',
+                                ['font-size']: .07
                             }
-                        })
+                            //`width="1" interactive-type="button" height="0.2" value="${text}" margin="0 0 0.05 0" font-size=".07"`
+                        )();
+                        button.addEventListener('click', (evt) => {
+                            if (me.data.value !== option.value) {
+                                me?.el?.setAttribute('value', option.value)
+                                me.el.emit('change', {
+                                    value: option.value
+                                });
+                            }
+                            me.data.value = option.value;
+
+                            me.el.emit('click', {
+                                value: option.value
+                            });
+                            evt.preventDefault();
+                        });
+                        me.optionValues = {
+                            ...me.optionValues,
+                            [option.value]: button
+                        }
                         buttonContainer.appendChild(button);
                     })
-                    let { element } = buttonContainer.render();
-                    me.radioContainer = element.element();
+                    me.radioContainer = buttonContainer;
                     me.el.appendChild(me.radioContainer);
                     me.updateChecked();
                 }
-                else {
-                    if (this.data.options) {
-                        let buttonContainer = document.createElement('a-container');
-                        buttonContainer.setAttribute('direction', 'horizontal')
-                        buttonContainer.setAttribute('alignment', 'center')
-                        buttonContainer.setAttribute('margin', '.1 .1 .1 .1')
-                        me.options.map((option: RadioOption) => {
-                            let button = createElement("a-base-interactive",
-                                {
-                                    width: (option as any).width || .3,
-                                    height: me.data.optionHeight || .2,
-                                    margin: '0 0 0 0',
-                                    value: option.text || option.value,
-                                    interactiveType: 'radio',
-                                    ['font-size']: .07
-                                }
-                                //`width="1" interactive-type="button" height="0.2" value="${text}" margin="0 0 0.05 0" font-size=".07"`
-                            )();
-                            button.addEventListener('click', (evt) => {
-                                if (me.data.value !== option.value) {
-                                    me?.el?.setAttribute('value', option.value)
-                                    me.el.emit('change', {
-                                        value: option.value
-                                    });
-                                }
-                                me.data.value = option.value;
-
-                                me.el.emit('click', {
-                                    value: option.value
-                                });
-                                evt.preventDefault();
-                            });
-                            me.optionValues = {
-                                ...me.optionValues,
-                                [option.value]: button
-                            }
-                            buttonContainer.appendChild(button);
-                        })
-                        me.radioContainer = buttonContainer;
-                        me.el.appendChild(me.radioContainer);
-                        me.updateChecked();
-                    }
-                }
             }
-        }
+        },
+        getWidth: function () {
+            let me = this;
+            return parseFloat(`${me.radioContainer.getWidth()}`);
+        },
+        getHeight: function () {
+            let me = this;
+            return parseFloat(`${me.radioContainer.getHeight()}`);
+        },
     });
 
     AFRAME.registerPrimitive('a-radio', {
