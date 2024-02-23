@@ -1,8 +1,8 @@
 export default {
     getWidth: function () {
-        return parseFloat(`${this.guiWidth.width}`);
+        return parseFloat(`${this.guiItem.width}`);
     },
     getHeight: function () {
-        return parseFloat(`${this.guiWidth.height}`);
+        return parseFloat(`${this.guiItem.height}`);
     },
 }
