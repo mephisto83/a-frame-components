@@ -1,6 +1,5 @@
 import * as root_ from './root';
 import * as ui_ from './systems/ui';
-import * as painter_ from './systems/react';
 import * as line_ from './brushes/line'
 import * as rainbox_ from './brushes/rainbow';
 import * as single_sphere_ from './brushes/single-sphere';
