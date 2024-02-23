@@ -81,10 +81,15 @@ export default function () {
                 else {
                     if (this.data.options) {
                         let buttonContainer = document.createElement('a-container');
+                        buttonContainer.setAttribute('direction', 'horizontal')
+                        buttonContainer.setAttribute('alignment', 'flexStart')
+                        buttonContainer.setAttribute('margin', '.1 .1 .1 .1')
                         me.options.map((option: RadioOption) => {
                             let button = createElement("a-base-interactive",
                                 {
                                     width: (option as any).width || .3,
+                                    height: me.data.optionHeight || .2,
+                                    margin: '0 0 0.05 0',
                                     value: option.text || option.value,
                                     interactiveType: 'radio',
                                     ['font-size']: .07
