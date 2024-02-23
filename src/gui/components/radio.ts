@@ -78,6 +78,9 @@ export default function () {
                         buttonContainer.appendChild(button);
                     })
                     me.radioContainer = buttonContainer;
+                    me.radioContainer.addEventListener('size-update', (evt) => {
+                        me.updateElementSize(me.radioContainer, me.el);
+                    })
                     me.el.appendChild(me.radioContainer);
                     me.updateChecked();
                     me.updateElementSize(me.radioContainer, me.el);
