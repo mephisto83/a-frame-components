@@ -101,7 +101,7 @@ export default function () {
                     containerElement.components['gui-menu-container'].init();
                 })
             })
-
+            this.updateElementSize(me, me.el);
         },
         createEntryPanel: function () {
             let entryPanel: any = document.createElement('a-base-interactive');
@@ -349,6 +349,7 @@ export default function () {
             }
 
         },
+        ...mixin,
         getWidth: function () {
             return parseFloat(`${this.data.menuItemHeight}`);
         },
