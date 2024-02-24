@@ -222,24 +222,31 @@ export default function () {
             }
             me.updateElementSize(me, me.el);
         },
-        getWidth: function () {
-            switch (this.data.orientation) {
-                case 'vertical':
-                    return parseFloat(`${this.data.height}`);
-                default:
-                    return parseFloat(`${this.data.width}`);
-            }
-        },
-        getHeight: function () {
-            switch (this.data.orientation) {
-                case 'vertical':
-                    return parseFloat(`${this.data.width}`);
-                default:
-                    return parseFloat(`${this.data.height}`);
-            }
-        },
-        update: function () {
+        // getWidth: function () {
+        //     switch (this.data.orientation) {
+        //         case 'vertical':
+        //             return parseFloat(`${this.data.height}`);
+        //         default:
+        //             return parseFloat(`${this.data.width}`);
+        //     }
+        // },
+        // getHeight: function () {
+        //     switch (this.data.orientation) {
+        //         case 'vertical':
+        //             return parseFloat(`${this.data.width}`);
+        //         default:
+        //             return parseFloat(`${this.data.height}`);
+        //     }
+        // },
+        update: function (oldData: any) {
             let me = this;
+            if (oldData?.orientation) {
+                if (oldData?.orientation !== this.data.orientation) {
+                    let temp = this.data.width;
+                    this.data.width = this.data.height;
+                    this.data.height = temp;
+                }
+            }
             assignProperties(me.guiSlider, this.data);
             me.updateOrientation();
         }
