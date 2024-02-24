@@ -38,7 +38,6 @@ export default function () {
             var el = this.el;
             let guiItem: any = el.getAttribute("gui-item");
             this.guiItem = guiItem;
-            var toggleState = this.toggleState = data.toggle;
             var guiInteractable = el.getAttribute("gui-interactable");
             this.guiInteractable = guiInteractable;
             this.renderCheck = this.renderCheck.bind(this);
@@ -173,7 +172,6 @@ export default function () {
                                                 depthOffset:1;
                                                 `);
             iconEntity.setAttribute('position', `${iconEntityX} 0 0.05`); // 0.05 y axis adjustment for fontawesome
-            //        textEntity.setAttribute('troika-text-material', `shader: flat;`);
             this.el.appendChild(iconEntity);
         },
         renderCheck: function (data) {
@@ -208,9 +206,7 @@ export default function () {
 
                 this.setText(this.data.value);
 
-            } else {
-                console.log("no textEntity!");
-            }
+            } 
             me.updateElementSize(me, me.el);
         },
         setText: function (newText) {

@@ -18,7 +18,6 @@ declare namespace JSX {
             interactiveType?: string;
             paddingLeft?: number;
             show?: boolean;
-            enabled?: boolean;
             toggle?: boolean;
             toggleState?: boolean;
             checked?: boolean;
