@@ -225,17 +225,17 @@ export default function () {
         getWidth: function () {
             switch (this.data.orientation) {
                 case 'vertical':
-                    return parseFloat(`${this.data.width}`);
-                default:
                     return parseFloat(`${this.data.height}`);
+                default:
+                    return parseFloat(`${this.data.width}`);
             }
         },
         getHeight: function () {
             switch (this.data.orientation) {
                 case 'vertical':
-                    return parseFloat(`${this.data.height}`);
-                default:
                     return parseFloat(`${this.data.width}`);
+                default:
+                    return parseFloat(`${this.data.height}`);
             }
         },
         update: function () {
