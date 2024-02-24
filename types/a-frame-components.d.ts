@@ -661,6 +661,7 @@ declare namespace JSX {
             'targetbarsize'?: string | number;
             'border-color'?: string;
             'handle-color'?: string;
+            'orientation'?: 'horizontal' | 'vertical';
             'handle-inner-depth'?: string | number;
             'handle-inner-radius'?: string | number;
             'handle-outer-depth'?: string | number;
