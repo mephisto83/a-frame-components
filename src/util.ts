@@ -483,7 +483,7 @@ export function createText(text: any, { color, fontFamily }: any) {
                                         baseline:center;
                                         letterSpacing:0;
                                         color:${color};
-                                        font:${fontFamily || "assets/fonts/Plaster-Regular.ttf"};
+                                        font:${fontFamily || ''};
                                         fontSize:${'14px'};
                                         depthOffset:1;
                                         maxWidth:611;
