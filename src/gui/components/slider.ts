@@ -24,6 +24,8 @@ export default function () {
         sliderBarHeight: { type: 'number', default: 0.05 },
         sliderBarDepth: { type: 'number', default: 0.01 },
         topBottomPadding: { type: 'number', default: 0.125 },
+        titleTextFont: { type: 'string', default: '' },
+        percentageTextFont: { type: 'string', default: '' },
     };
 
     AFRAME.registerComponent('gui-slider', {
@@ -47,6 +49,9 @@ export default function () {
             targetBar.setAttribute('gui-interactable', {})
             if (this.data.title) {
                 let text = document.createElement('a-troika-text');
+                if (this.data.percentageTextFont) {
+                    text.setAttribute('font', this.data.percentageTextFont);
+                }
                 text.setAttribute('anchor', 'left');
                 text.setAttribute('value', this.data.title);
                 if (this.data.titlePosition) {
@@ -75,7 +80,7 @@ export default function () {
             })
 
             el.appendChild(targetBar);
-            let text = createText(me.getText(), { color: '#ffffff', fontFamily: '' });
+            let text = createText(me.getText(), { color: '#ffffff', fontFamily: this.data.titleTextFont || '' });
             let textContainer = document.createElement('a-entity');
             textContainer.setAttribute('position', `${guiItem.width / 2} 0 0`);
             textContainer.appendChild(text);
@@ -181,6 +186,9 @@ export default function () {
         'slider-bar-height': 'gui-slider.sliderBarHeight',
         'top-bottom-padding': 'gui-slider.topBottomPadding',
         'width': 'gui-item.width',
+        'title-text-font': 'gui-slider.titleTextFont',
+        'percentage-text-font': 'gui-slider.percentageTextFont',
+
     }
     const guiSliderComponents = {
         'gui-item': { type: 'slider' },
@@ -293,6 +301,8 @@ export default function () {
             'top-bottom-padding': 'slider.top-bottom-padding',
             'bar-length': 'slider.barLength',
             'bar-thickness': 'slider.barThickness',
+            'title-text-font': 'slider.title-text-font',
+            'percentage-text-font': 'slider.percentage-text-font',
             orientation: 'slider.orientation',
         }
     });

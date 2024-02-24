@@ -659,6 +659,8 @@ declare namespace JSX {
             'active-color'?: string;
             'background-color'?: string;
             'targetbarsize'?: string | number;
+            'title-text-font'?: string; // "assets/fonts/Plaster-Regular.ttf"
+            'percentage-text-font'?: string; // "assets/fonts/Plaster-Regular.ttf"
             'border-color'?: string;
             'handle-color'?: string;
             'orientation'?: 'horizontal' | 'vertical';
