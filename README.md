@@ -103,8 +103,8 @@ This setup ensures that the children of the `a-container` are vertically arrange
   
 Manage event listeners with the 'userEventListenerOn' hook. Pass the event ,  a handler, and a css selector for the component.
 
-[useEventListenerOn](docs/use-event-listener-on.md)
-[useBindEventOn](docs/use-event-listener-on.md);
+- [useEventListenerOn](docs/use-event-listener-on.md)
+- [useBindEventOn](docs/use-event-listener-on.md)
 
 ```
 import { useEventListenerOn } from 'a-frame-components';
