@@ -59,13 +59,10 @@ export default function () {
             }
             this.setupRayListener(targetBar, 'interaction', (evt) => {
                 if (me.mousedown) {
-                    console.log('The left mouse button is pressed during mouseover.');
                     let x = mapPercentage(evt.uv.x, lowerBound, upperBound)
                     data.percent = x;
                     me.positionElements();
                     targetBar.emit('change', { value: x })
-                } else {
-                    console.log('The mouse is over the element, but no button is pressed.');
                 }
             });
             targetBar.addEventListener('mousedown', function (evt) {
@@ -196,6 +193,8 @@ export default function () {
     AFRAME.registerComponent('slider', {
         schema: {
             ...guiSliderSchema,
+            'barLength': { type: 'number', default: 2 },
+            'barThickness': { type: 'number', default: .3 },
             orientation: { type: 'string', default: 'horizontal' }
         },
         ...mixin,
@@ -205,7 +204,11 @@ export default function () {
             let container = document.createElement('a-entity');
             me.guiSlider = guiSlider;
             me.container = container;
-            assignProperties(guiSlider, this.data);
+            assignProperties(guiSlider, {
+                ... this.data,
+                width: this.data.barLength,
+                height: this.data.barThickness
+            });
             container.appendChild(guiSlider);
             me.el.appendChild(container);
             me.updateOrientation();
@@ -223,10 +226,22 @@ export default function () {
             me.updateElementSize(me, me.el);
         },
         getWidth: function () {
-            return parseFloat(`${this.data.width}`);
+            let me = this;
+            switch (me.data.orientation) {
+                case 'vertical':
+                    return parseFloat(`${this.data.barThickness}`);
+                default:
+                    return parseFloat(`${this.data.barLength}`);
+            }
         },
         getHeight: function () {
-            return parseFloat(`${this.data.height}`);
+            let me = this;
+            switch (me.data.orientation) {
+                case 'vertical':
+                    return parseFloat(`${this.data.barLength}`);
+                default:
+                    return parseFloat(`${this.data.barThickness}`);
+            }
         },
         update: function (oldData: any) {
             let me = this;
@@ -237,7 +252,11 @@ export default function () {
                     this.data.height = temp;
                 }
             }
-            assignProperties(me.guiSlider, this.data);
+            assignProperties(me.guiSlider, {
+                ... this.data,
+                width: this.data.barLength,
+                height: this.data.barThickness
+            });
             me.updateOrientation();
         }
     });
@@ -266,8 +285,8 @@ export default function () {
             'slider-bar-depth': 'slider.slider-bar-depth',
             'slider-bar-height': 'slider.slider-bar-height',
             'top-bottom-padding': 'slider.top-bottom-padding',
-            'width': 'slider.width',
-            'height': 'slider.height',
+            'bar-length': 'slider.barLength',
+            'bar-thickness': 'slider.barThickness',
             orientation: 'slider.orientation',
         }
     });
