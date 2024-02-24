@@ -654,7 +654,7 @@ declare namespace JSX {
             // A catch-all for additional properties not explicitly defined above
             [propName: string]: any;
         };
-        'a-gui-slider': {
+        'a-slider': {
             // Mappings for gui-slider specific properties
             'active-color'?: string;
             'background-color'?: string;

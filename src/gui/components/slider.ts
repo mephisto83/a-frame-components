@@ -2,29 +2,33 @@ import { AFRAME } from "../../react/root";
 import { createText } from "../../util";
 import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
 import interactionMixin from "../../react/components/interaction-mixin";
+import mixin from "./mixin";
 
 export default function () {
+    let guiSliderSchema = {
+        activeColor: { type: 'string', default: key_orange },
+        backgroundColor: { type: 'string', default: key_offwhite },
+        borderColor: { type: 'string', default: key_grey },
+        targetbarsize: { type: 'number', default: 0 },
+        title: { type: 'string', default: '' },
+        handleColor: { type: 'string', default: key_grey_light },
+        handleInnerDepth: { type: 'number', default: 0.02 },
+        titlePosition: { type: 'string', default: '' },
+        titleScale: { type: 'string', default: '' },
+        handleInnerRadius: { type: 'number', default: 0.05 },
+        handleOuterDepth: { type: 'number', default: 0.04 },
+        handleOuterRadius: { type: 'number', default: 0.07 },
+        hoverColor: { type: 'string', default: key_white },
+        leftRightPadding: { type: 'number', default: 0.25 },
+        percent: { type: 'number', default: 0.5 },
+        sliderBarHeight: { type: 'number', default: 0.05 },
+        sliderBarDepth: { type: 'number', default: 0.01 },
+        topBottomPadding: { type: 'number', default: 0.125 },
+    };
+
     AFRAME.registerComponent('gui-slider', {
-        schema: {
-            activeColor: { type: 'string', default: key_orange },
-            backgroundColor: { type: 'string', default: key_offwhite },
-            borderColor: { type: 'string', default: key_grey },
-            targetbarsize: { type: 'number', default: 0 },
-            title: { type: 'string', default: '' },
-            handleColor: { type: 'string', default: key_grey_light },
-            handleInnerDepth: { type: 'number', default: 0.02 },
-            titlePosition: { type: 'string', default: '' },
-            titleScale: { type: 'string', default: '' },
-            handleInnerRadius: { type: 'number', default: 0.05 },
-            handleOuterDepth: { type: 'number', default: 0.04 },
-            handleOuterRadius: { type: 'number', default: 0.07 },
-            hoverColor: { type: 'string', default: key_white },
-            leftRightPadding: { type: 'number', default: 0.25 },
-            percent: { type: 'number', default: 0.5 },
-            sliderBarHeight: { type: 'number', default: 0.05 },
-            sliderBarDepth: { type: 'number', default: 0.01 },
-            topBottomPadding: { type: 'number', default: 0.125 },
-        },
+        schema: guiSliderSchema,
+        ...mixin,
         init: function () {
             let me = this;
             var data = this.data;
@@ -152,37 +156,102 @@ export default function () {
             handleContainer.setAttribute('position', `${data.percent * sliderWidth - sliderWidth * 0.5} 0 ${data.handleOuterDepth - 0.01}`);
         }
     });
-
+    const guiSliderMappings = {
+        'active-color': 'gui-slider.activeColor',
+        'background-color': 'gui-slider.backgroundColor',
+        'targetbarsize': 'gui-slider.targetbarsize',
+        'border-color': 'gui-slider.borderColor',
+        'handle-color': 'gui-slider.handleColor',
+        'handle-inner-depth': 'gui-slider.handleInnerDepth',
+        'handle-inner-radius': 'gui-slider.handleInnerRadius',
+        'handle-outer-depth': 'gui-slider.handleOuterDepth',
+        'handle-outer-radius': 'gui-slider.handleOuterRadius',
+        'height': 'gui-item.height',
+        'title-position': 'gui-slider.titlePosition',
+        'title-scale': 'gui-slider.titleScale',
+        'hover-color': 'gui-slider.hoverColor',
+        'left-right-padding': 'gui-slider.leftRightPadding',
+        'title': 'gui-slider.title',
+        'margin': 'gui-item.margin',
+        'percent': 'gui-slider.percent',
+        'slider-bar-depth': 'gui-slider.sliderBarDepth',
+        'slider-bar-height': 'gui-slider.sliderBarHeight',
+        'top-bottom-padding': 'gui-slider.topBottomPadding',
+        'width': 'gui-item.width',
+    }
+    const guiSliderComponents = {
+        'gui-item': { type: 'slider' },
+        'gui-slider': {}
+    };
     AFRAME.registerPrimitive('a-gui-slider', {
-        defaultComponents: {
-            'gui-item': { type: 'slider' },
-            'gui-slider': {}
-        },
-        mappings: {
-            'active-color': 'gui-slider.activeColor',
-            'background-color': 'gui-slider.backgroundColor',
-            'targetbarsize': 'gui-slider.targetbarsize',
-            'border-color': 'gui-slider.borderColor',
-            'handle-color': 'gui-slider.handleColor',
-            'handle-inner-depth': 'gui-slider.handleInnerDepth',
-            'handle-inner-radius': 'gui-slider.handleInnerRadius',
-            'handle-outer-depth': 'gui-slider.handleOuterDepth',
-            'handle-outer-radius': 'gui-slider.handleOuterRadius',
-            'height': 'gui-item.height',
-            'title-position': 'gui-slider.titlePosition',
-            'title-scale': 'gui-slider.titleScale',
-            'hover-color': 'gui-slider.hoverColor',
-            'left-right-padding': 'gui-slider.leftRightPadding',
-            'title': 'gui-slider.title',
-            'margin': 'gui-item.margin',
-            'percent': 'gui-slider.percent',
-            'slider-bar-depth': 'gui-slider.sliderBarDepth',
-            'slider-bar-height': 'gui-slider.sliderBarHeight',
-            'top-bottom-padding': 'gui-slider.topBottomPadding',
-            'width': 'gui-item.width',
-        }
+        defaultComponents: guiSliderComponents,
+        mappings: guiSliderMappings
     });
 
+    function assignProperties(el: any, data: any) {
+        for (let i in data) {
+            el.setAttribute(i, data[i]);
+        }
+    }
+    AFRAME.registerComponent('slider', {
+        schema: {
+            ...guiSliderSchema,
+            orientation: { type: 'string', default: 'horizontal' }
+        },
+        ...mixin,
+        init: function () {
+            let me = this;
+            let guiSlider = document.createElement('a-gui-slider');
+            let container = document.createElement('a-entity');
+            me.guiSlider = guiSlider;
+            me.container = container;
+            assignProperties(guiSlider, this.data);
+            container.appendChild(guiSlider);
+            me.el.appendChild(container);
+            me.updateOrientation();
+        },
+        updateOrientation: function () {
+            let me = this;
+            switch (me.data.orientation) {
+                case 'vertical':
+                    me.container.setAttribute('animation_rotationorientation', '`property: rotation; to:0 0 90; dur:500; easing:easeInOutCubic;`');
+                    break;
+                default:
+                    break;
+            }
+        },
+        getWidth: function () {
+            switch (this.data.orientation) {
+                case 'vertical':
+                    return parseFloat(`${this.guiItem.width}`);
+                default:
+                    return parseFloat(`${this.guiItem.height}`);
+            }
+        },
+        getHeight: function () {
+            switch (this.data.orientation) {
+                case 'vertical':
+                    return parseFloat(`${this.guiItem.height}`);
+                default:
+                    return parseFloat(`${this.guiItem.width}`);
+            }
+        },
+        update: function () {
+            let me = this;
+            assignProperties(me.guiSlider, this.data);
+            me.updateOrientation();
+        }
+    });
+    AFRAME.registerPrimitive('a-slider', {
+        defaultComponents: {
+            'gui-item': { type: 'slider' },
+            'slider': {}
+        },
+        mappings: {
+            ...guiSliderMappings,
+            orientation: 'slider.orientation',
+        }
+    });
     AFRAME.registerComponent('gui-handle', {
         schema: {
             activeColor: { type: 'string', default: key_orange },
@@ -256,6 +325,7 @@ export default function () {
             'width': 'gui-item.width',
         }
     });
+
     function calculateSections(percentage: number, totalWidth: number): {
         first: {
             width: number,
