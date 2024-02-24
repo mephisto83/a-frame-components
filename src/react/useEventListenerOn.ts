@@ -82,3 +82,16 @@ export default function useEventListenerOn(
 
     return { [`frame-id`]: selectedId }
 }
+
+export function useBindEventOn(
+    evtName: string,
+    attributeName: string,
+    getFunction: (event: Event) => any,
+    initSelector?: string
+): { [`frame-id`]: string } {
+    const res = useEventListenerOn(evtName, (evt: Event, element: Element) => {
+        element.setAttribute(attributeName, getFunction(evt));
+    }, initSelector)
+
+    return res;
+}

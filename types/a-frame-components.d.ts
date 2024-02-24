@@ -8,6 +8,12 @@ declare module 'a-frame-components' {
         evtHandler: (event: Event, element: Element) => void,
         initSelector?: string
     ): { [`frame-id`]: string }
+    export function useBindEventOn(
+        evtName: string,
+        attributeName: string,
+        getFunction: (event: Event) => any,
+        initSelector?: string
+    ): { [`frame-id`]: string }
 }
 declare namespace JSX {
     interface IntrinsicElements {
