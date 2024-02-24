@@ -5,7 +5,7 @@ declare module 'a-frame-components' {
     export async function load(): Promise<void>;
     export function useEventListenerOn(
         evtName: string,
-        evtHandler: (event: Event) => void,
+        evtHandler: (event: Event, element: Element) => void,
         initSelector?: string
     ): { [`frame-id`]: string }
 }
