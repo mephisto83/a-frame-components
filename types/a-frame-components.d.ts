@@ -3,7 +3,11 @@
 declare module 'a-frame-components' {
     // Export all of your package's public methods, elements, and other members like it:
     export async function load(): Promise<void>;
-    export function useEventListenerOn(selector: string, evtName: string, evtHandler: (event: Event) => void): void
+    export function useEventListenerOn(
+        evtName: string,
+        evtHandler: (event: Event) => void,
+        initSelector?: string
+    ): { [`frame-id`]: string }
 }
 declare namespace JSX {
     interface IntrinsicElements {
