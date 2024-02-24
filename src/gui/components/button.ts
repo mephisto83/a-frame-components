@@ -347,7 +347,7 @@ export default function () {
             } else {
                 console.log("no textEntity!");
             }
-
+            this.updateElementSize(this, this.el);
         },
         setActiveState: function (activeState) {
             // console.log("in setActiveState function, new state: " + activeState);
