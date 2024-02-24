@@ -214,10 +214,10 @@ export default function () {
             let me = this;
             switch (me.data.orientation) {
                 case 'vertical':
-                    me.container.setAttribute('animation_rotationorientation', `property: rotation; to:0 0 90; dur:500; easing:easeInOutCubic;`);
+                    me.container.setAttribute('animation__rotation', `property: rotation; to:0 0 90; dur:500; easing:easeInOutCubic;`);
                     break;
                 default:
-                    me.container.setAttribute('animation_rotationorientation', `property: rotation; to:0 0 0; dur:500; easing:easeInOutCubic;`);
+                    me.container.setAttribute('animation__rotation', `property: rotation; to:0 0 0; dur:500; easing:easeInOutCubic;`);
                     break;
             }
         },
