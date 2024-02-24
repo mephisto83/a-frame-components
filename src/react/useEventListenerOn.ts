@@ -1,4 +1,5 @@
 import { useEffect, useState, useRef } from 'react';
+import { generateUniqueId } from '../util';
 
 export default function useEventListenerOn(
     evtName: string,
@@ -77,14 +78,4 @@ export default function useEventListenerOn(
     }, [initSelector])
 
     return { [`frame-id`]: selectedId }
-}
-function generateUniqueId(prefix: string = 'component'): string {
-    // Current timestamp
-    const timestamp = Date.now();
-
-    // Random number to reduce the chance of collision
-    const randomNumber = Math.floor(Math.random() * 10000);
-
-    // Combine prefix, timestamp, and random number
-    return `${prefix}-${timestamp}-${randomNumber}`;
 }

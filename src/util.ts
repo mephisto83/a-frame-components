@@ -25,6 +25,16 @@ export interface Result {
     containerSize: Container;
 }
 
+export function generateUniqueId(prefix: string = 'component'): string {
+    // Current timestamp
+    const timestamp = Date.now();
+
+    // Random number to reduce the chance of collision
+    const randomNumber = Math.floor(Math.random() * 10000);
+
+    // Combine prefix, timestamp, and random number
+    return `${prefix}-${timestamp}-${randomNumber}`;
+}
 
 export function createAndApplyAttributes(elementType: any, attributesStr: any) {
     const element = document.createElement(elementType);

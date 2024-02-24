@@ -1,5 +1,7 @@
 import { AFRAME } from "../../react/root";
 import { customEventListener } from "../../react/systems/grabanddrop";
+import { raiseCustomEvent } from "../../react/util";
+import { generateUniqueId } from "../../util";
 import { key_grey } from "../vars";
 import mixin from "./mixin";
 
@@ -55,6 +57,8 @@ export default function () {
         init: function () {
             let me = this;
             var containerGuiItem = this.el.getAttribute("gui-item");
+            let id = generateUniqueId();
+            me.internalId = id;
 
             if (this.data.isTopContainer) {
                 this.setBackground();
@@ -81,12 +85,15 @@ export default function () {
                 cursorY
             });
             entryPanel.addEventListener('item-clicked', (evt) => {
+                if (!me.data.open) {
+                    raiseCustomEvent('menu-open', { id: me.internalId });
+                };
                 me.el.setAttribute('open', !me.data.open);
                 evt.preventDefault();
                 evt.stopPropagation();
             })
-            let cleanup = customEventListener('item-clicked', (detail, evt) => {
-                if (evt.target !== entryPanel) {
+            let cleanup = customEventListener('menu-open', (detail: { id: string }, evt) => {
+                if (detail.id !== me.internalId) {
                     if (me.data.open) {
                         me.el.setAttribute('open', false);
                     }
