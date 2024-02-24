@@ -264,11 +264,11 @@ export interface GrabDetails {
     ghost?: Ghost
 }
 // The hook can optionally accept a callback to be executed when the event is triggered
-export const customEventListener = <T extends any>(eventName: string, callback: (detail: T) => void) => {
+export const customEventListener = <T extends any>(eventName: string, callback: (detail: T, evt?: any) => void) => {
 
     // Event handler to call the provided callback
     const handler = async (event: CustomEvent<T>) => {
-        await callback(event.detail);
+        await callback(event.detail, event);
     };
 
     // Add event listener

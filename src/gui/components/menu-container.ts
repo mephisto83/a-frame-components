@@ -1,4 +1,5 @@
 import { AFRAME } from "../../react/root";
+import { customEventListener } from "../../react/systems/grabanddrop";
 import { key_grey } from "../vars";
 import mixin from "./mixin";
 
@@ -84,6 +85,14 @@ export default function () {
                 evt.preventDefault();
                 evt.stopPropagation();
             })
+            let cleanup = customEventListener('item-clicked', (detail, evt) => {
+                if (evt.target !== entryPanel) {
+                    if (me.data.open) {
+                        me.el.setAttribute('open', false);
+                    }
+                }
+            });
+            this.cleanup = cleanup;
             // entity.setAttribute('position', `${x} ${y} ${z}`);
             this.entryPanelContainer = entity;
             this.entryPanel = entryPanel;
@@ -330,7 +339,10 @@ export default function () {
             }
         },
         tick: function () { },
-        remove: function () { },
+        remove: function () {
+            if (this.cleanup)
+                this.cleanup();
+        },
         pause: function () { },
         play: function () { },
         getElementSize: function () { },
