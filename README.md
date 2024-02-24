@@ -8,9 +8,10 @@ This repository offers a variety of AFrame components that you can use to create
 
 ## Features
 
-- **Component 1**: Radio.
-- **Component 2**: Container.
-- **Component 3**: Menu.
+- Radio
+- Container
+- Menu
+- Button
 
 ## Installation
 
@@ -164,6 +165,7 @@ The synthesis of the types from a-frame-components will be perceived if you mark
 - [Gui Menu Container](docs/menu-container.md)
 - [Radio Buttons](docs/radio-component.md)
 - [Container](docs/container.md)
+- [Button](docs/gui-button.md)
 
 
 ## License
