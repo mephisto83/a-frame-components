@@ -36,6 +36,7 @@ export default function () {
             itemSize: { type: 'number', default: .5 },
             iconFont: { type: 'string', default: '' },
             icon: { type: 'string', default: '' },
+            speed: { type: 'string', default: 0 },
             iconFontSize: { type: 'string', default: '' },
             options: {
                 parse: (val) => {
@@ -308,7 +309,7 @@ export default function () {
                         me.currentIndexScroll = me.currentIndexScroll + this.outerBoxWidth;
                     }
                 }
-                me.currentIndexScroll = lerp(me.currentIndexScroll, me.targetScroll, .1)
+                me.currentIndexScroll = lerp(me.currentIndexScroll, me.targetScroll, this.data.speed || .3)
             }
             // me.sprocket.setAttribute('rotation', `${currentRotation % 360} 0 0`)
             // this.currentRotation += .1
@@ -355,8 +356,8 @@ export default function () {
             buttonContainer.setAttribute('position', `0 0 0.01`);
             buttonContainer.setAttribute('text-position', `0 ${(-me.guiItem.height / 2) + 0.04} .04`)
             // buttonContainer.setAttribute('onclick', `testButtonAction`);
-            buttonContainer.addEventListener('click', () => { 
-                
+            buttonContainer.addEventListener('click', () => {
+
             })
             buttonContainer.setAttribute('height', me.guiItem.height);
             buttonContainer.setAttribute('margin', `0 0 0.01 0`);
@@ -509,6 +510,7 @@ export default function () {
             'icon-font': 'infinite-list.iconFont',
             'icon-font-size': 'infinite-list.iconFontSize',
             'icon': 'infinite-list.icon',
+            speed: 'infinite-list.speed',
             sourceId: 'infinite-list.sourceId',
             options: 'infinite-list.options',
             width: 'infinite-list.width',

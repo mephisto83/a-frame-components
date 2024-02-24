@@ -574,6 +574,7 @@ declare namespace JSX {
             'icon-font'?: string,
             'icon-font-size'?: string,
             'icon'?: string,
+            speed?: string | number,
             // Allow any other property
             [propName: string]: any;
         };
