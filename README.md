@@ -13,6 +13,7 @@ This repository offers a variety of AFrame components that you can use to create
 - Menu
 - Button
 - Base-interactive
+- Slider
 
 ## Installation
 
@@ -84,37 +85,6 @@ export default function SpaceShipScene() {
 
 For each component, you'll find detailed API documentation below:
 
-### Component 1: `a-radio`
-
-- **Property**: Description and Usage
-  - **`options`**: This property is used to specify the options available for selection within the radio component. The data should be passed as a string, and it can potentially be a JSON-encoded string if multiple options are provided. This allows for dynamic generation of radio buttons based on the data provided.
-  - **`value`**: The `value` property represents the currently selected option of the radio buttons. It is also a string that corresponds to one of the values specified in the `options` property. This can be used to pre-select an option when rendering the component or to retrieve the current selection.
-
-- **Example**: How to Use This Property
-  ```html
-  let options = JSON.stringify([{ text: 'Apple',   value: 'A', id: 'A', width: 1 }, { text: 'C',value: 'C',id: 'C',width: 1}]);
-  <a-radio id="radio" options={options} value={"A"}></a-radio>
-  ```
-
-  In this example, `options` is bound to an array of strings directly in the template, specifying the available options for the radio buttons. The `v-model` directive is used to create a two-way binding on the `value` property, effectively linking it to `selectedOption` in the component's data. As the user selects different options, `selectedOption` will be updated to reflect the current selection. This approach simplifies handling user input and can be easily extended with additional properties as needed.
-
-Based on the provided description, the `a-container` component seems to be a layout component designed to control the alignment, direction, and spacing of its child elements. Here's a detailed explanation and usage example:
-
-### Component: `a-container`
-
-#### Properties:
-- **alignment**: Controls the alignment of child components along the cross axis. Accepts `flexStart`, `flexEnd`, or `center`.
-  - **Usage**: This property is useful for aligning items when the container's direction is vertical (aligns horizontally) or horizontal (aligns vertically).
-
-- **direction**: Sets the main axis direction of the container. Accepts `horizontal` or `vertical`.
-  - **Usage**: Determines the orientation of child components within the container, either laid out horizontally or vertically.
-
-- **justify-content**: Controls the distribution of child components along the main axis. Accepts `flexStart`, `flexEnd`, or `center`.
-  - **Usage**: This property is similar to `alignment` but applies along the main axis, allowing control over the spacing and distribution of children.
-
-- **margin**: Specifies the margin around the container using a shorthand format (top right bottom left).
-  - **Usage**: Adjusts the outer spacing of the container, allowing it to be positioned more precisely within its parent or among siblings.
-
 #### Example:
 To use the `a-container` component for creating a layout with vertically centered items, distributed evenly along the main axis, and with a specific margin around the container, you might define it like this:
 
@@ -185,6 +155,7 @@ export default function SpaceShipScene() {
 - [Container](docs/container.md)
 - [Button](docs/gui-button.md)
 - [Base Interactive](docs/base-interactive.md)
+- [Slider](docs/slider.md)
 
 
 ## License
