@@ -96,7 +96,7 @@ For each component, you'll find detailed API documentation below:
   <a-radio id="radio" options={options} value={"A"}></a-radio>
   ```
 
-  In this example, `:options` is bound to an array of strings directly in the template, specifying the available options for the radio buttons. The `v-model` directive is used to create a two-way binding on the `value` property, effectively linking it to `selectedOption` in the component's data. As the user selects different options, `selectedOption` will be updated to reflect the current selection. This approach simplifies handling user input and can be easily extended with additional properties as needed.
+  In this example, `options` is bound to an array of strings directly in the template, specifying the available options for the radio buttons. The `v-model` directive is used to create a two-way binding on the `value` property, effectively linking it to `selectedOption` in the component's data. As the user selects different options, `selectedOption` will be updated to reflect the current selection. This approach simplifies handling user input and can be easily extended with additional properties as needed.
 
 Based on the provided description, the `a-container` component seems to be a layout component designed to control the alignment, direction, and spacing of its child elements. Here's a detailed explanation and usage example:
 
