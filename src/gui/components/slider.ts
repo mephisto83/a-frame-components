@@ -223,17 +223,17 @@ export default function () {
         getWidth: function () {
             switch (this.data.orientation) {
                 case 'vertical':
-                    return parseFloat(`${this.guiItem.width}`);
+                    return parseFloat(`${this.data.width}`);
                 default:
-                    return parseFloat(`${this.guiItem.height}`);
+                    return parseFloat(`${this.data.height}`);
             }
         },
         getHeight: function () {
             switch (this.data.orientation) {
                 case 'vertical':
-                    return parseFloat(`${this.guiItem.height}`);
+                    return parseFloat(`${this.data.height}`);
                 default:
-                    return parseFloat(`${this.guiItem.width}`);
+                    return parseFloat(`${this.data.width}`);
             }
         },
         update: function () {
@@ -267,8 +267,8 @@ export default function () {
             'slider-bar-depth': 'slider.sliderBarDepth',
             'slider-bar-height': 'slider.sliderBarHeight',
             'top-bottom-padding': 'slider.topBottomPadding',
-            'width': 'gui-item.width',
-            'height': 'gui-item.height',
+            'width': 'slider.width',
+            'height': 'slider.height',
             orientation: 'slider.orientation',
         }
     });
