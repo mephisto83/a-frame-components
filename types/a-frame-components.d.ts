@@ -37,7 +37,6 @@ declare namespace JSX {
             handleColor?: string;
         }
         'a-scene': {
-            // Common a-scene properties
             antialias?: "true" | "false";
             assets?: string;
             background?: string;
