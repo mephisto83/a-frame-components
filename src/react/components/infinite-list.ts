@@ -203,14 +203,14 @@ export default function () {
             })
             this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions)
             let innerBox = document.createElement('a-gui-flex-container');
-            Promise.all([
-                loadFontAtlas("assets/fonts/BebasNeue-Regular.png"),
-                loadFont("assets/fonts/BebasNeue-Regular-msdf.json"),
-            ]).then(([atlas, font]: [any, any]) => {
-                me.atlas = atlas;
-                me.font = font;
-                me.loadedFont = true;
-            });
+            // Promise.all([
+            //     loadFontAtlas("assets/fonts/BebasNeue-Regular.png"),
+            //     loadFont("assets/fonts/BebasNeue-Regular-msdf.json"),
+            // ]).then(([atlas, font]: [any, any]) => {
+            //     me.atlas = atlas;
+            //     me.font = font;
+            //     me.loadedFont = true;
+            // });
         },
         ...InteractionMixin,
         update: function (oldData) {
