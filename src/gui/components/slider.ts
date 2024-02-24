@@ -248,7 +248,27 @@ export default function () {
             'slider': {}
         },
         mappings: {
-            ...guiSliderMappings,
+            'active-color': 'slider.activeColor',
+            'background-color': 'slider.backgroundColor',
+            'targetbarsize': 'slider.targetbarsize',
+            'border-color': 'slider.borderColor',
+            'handle-color': 'slider.handleColor',
+            'handle-inner-depth': 'slider.handleInnerDepth',
+            'handle-inner-radius': 'slider.handleInnerRadius',
+            'handle-outer-depth': 'slider.handleOuterDepth',
+            'handle-outer-radius': 'slider.handleOuterRadius',
+            'title-position': 'slider.titlePosition',
+            'title-scale': 'slider.titleScale',
+            'hover-color': 'slider.hoverColor',
+            'left-right-padding': 'slider.leftRightPadding',
+            'title': 'slider.title',
+            'margin': 'item.margin',
+            'percent': 'slider.percent',
+            'slider-bar-depth': 'slider.sliderBarDepth',
+            'slider-bar-height': 'slider.sliderBarHeight',
+            'top-bottom-padding': 'slider.topBottomPadding',
+            'width': 'gui-item.width',
+            'height': 'gui-item.height',
             orientation: 'slider.orientation',
         }
     });
