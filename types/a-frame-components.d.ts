@@ -571,6 +571,9 @@ declare namespace JSX {
             itemsize?: string | number;
             selected?: string;
             hideclose?: string | boolean;
+            'icon-font'?: string,
+            'icon-font-size'?: string,
+            'icon'?: string,
             // Allow any other property
             [propName: string]: any;
         };

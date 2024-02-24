@@ -34,6 +34,9 @@ export default function () {
             width: { type: 'number', default: 3 },
             itemtemplate: { type: 'string' },
             itemSize: { type: 'number', default: .5 },
+            iconFont: { type: 'string', default: '' },
+            icon: { type: 'string', default: '' },
+            iconFontSize: { type: 'string', default: '' },
             options: {
                 parse: (val) => {
                     console.log(val);
@@ -152,9 +155,11 @@ export default function () {
                 me.targetScroll = Math.min(me.targetScroll, me.itemHeight * me.options.length);
             });
             closeButton.setAttribute('value', '')
-            closeButton.setAttribute('icon-font', 'assets/fonts/ionicons.ttf')
-            closeButton.setAttribute('icon', 'f128')
-            closeButton.setAttribute('icon-font-size', '0.1')
+            if (this.data.iconFont) {
+                closeButton.setAttribute('icon-font', this.data.iconFont)
+                closeButton.setAttribute('icon', this.data.icon || 'f128')
+                closeButton.setAttribute('icon-font-size', this.data.iconFontSize || '0.1')
+            }
             closeButton.setAttribute('margin', '0 0 0.05 0.02')
             closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`)
             if (!this.data.hideClose) {
@@ -539,6 +544,9 @@ export default function () {
             itemtemplate: 'infinite-list.itemtemplate',
             selectionevent: 'infinite-list.selectionevent',
             closeevent: 'infinite-list.closeevent',
+            'icon-font': 'infinite-list.iconFont',
+            'icon-font-size': 'infinite-list.iconFontSize',
+            'icon': 'infinite-list.icon',
             sourceId: 'infinite-list.sourceId',
             options: 'infinite-list.options',
             width: 'infinite-list.width',
