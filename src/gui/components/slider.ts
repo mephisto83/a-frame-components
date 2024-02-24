@@ -222,22 +222,12 @@ export default function () {
             }
             me.updateElementSize(me, me.el);
         },
-        // getWidth: function () {
-        //     switch (this.data.orientation) {
-        //         case 'vertical':
-        //             return parseFloat(`${this.data.height}`);
-        //         default:
-        //             return parseFloat(`${this.data.width}`);
-        //     }
-        // },
-        // getHeight: function () {
-        //     switch (this.data.orientation) {
-        //         case 'vertical':
-        //             return parseFloat(`${this.data.width}`);
-        //         default:
-        //             return parseFloat(`${this.data.height}`);
-        //     }
-        // },
+        getWidth: function () {
+            return parseFloat(`${this.data.width}`);
+        },
+        getHeight: function () {
+            return parseFloat(`${this.data.height}`);
+        },
         update: function (oldData: any) {
             let me = this;
             if (oldData?.orientation) {
