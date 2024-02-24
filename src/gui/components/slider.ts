@@ -229,7 +229,7 @@ export default function () {
             let me = this;
             switch (me.data.orientation) {
                 case 'vertical':
-                    return parseFloat(`${this.data.barThickness}`);
+                    return parseFloat(`${this.data.targetbarsize || this.data.barThickness}`);
                 default:
                     return parseFloat(`${this.data.barLength}`);
             }
@@ -240,7 +240,7 @@ export default function () {
                 case 'vertical':
                     return parseFloat(`${this.data.barLength}`);
                 default:
-                    return parseFloat(`${this.data.barThickness}`);
+                    return parseFloat(`${this.data.targetbarsize || this.data.barThickness}`);
             }
         },
         update: function (oldData: any) {
