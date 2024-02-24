@@ -20,7 +20,9 @@ To use the components from this repository in your AFrame project, follow these 
 1. **Include AFrame**: Ensure AFrame is included in your HTML file:
 
     ```html
-    <script src="https://aframe.io/releases/<some version>/aframe.min.js"></script>
+  <head>
+    <script src="https://aframe.io/releases/1.5.0/aframe.min.js"></script>
+  </head>
     ```
 
 2. **Add Component Scripts**: Include the desired component scripts in your HTML file after including AFrame. You can link directly to the files in this repository (though we recommend downloading or bundling them for production use):
