@@ -73,7 +73,7 @@ export default function useEventListenerOn(
         if (!initSelector) {
             let id = generateUniqueId();
             setSelectId(id);
-            setSelector(`#${id}`);
+            setSelector(`[frame-id="${id}"]`);
         }
     }, [initSelector])
 
