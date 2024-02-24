@@ -125,6 +125,7 @@ export default function () {
             //gui item general
             alignment: 'dynamic-container.alignment', // flexStart, flexEnd, center
             direction: 'dynamic-container.direction', // vertical, horizontal
+            'justify-content': 'dynamic-container.justifyContent',// flexStart, flexEnd, center
             margin: 'dynamic-container.margin',// top right bottom left
         }
     });
