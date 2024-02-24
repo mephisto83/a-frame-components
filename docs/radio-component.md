@@ -1,4 +1,4 @@
-# Documentation: Using the `a-radio` in A-Frame
+# Using the `a-radio` in A-Frame
 
 The `a-radio` is a custom A-Frame component designed for creating interactive radio button groups in virtual reality environments. It allows users to select a single option from a set of choices. This document provides a comprehensive guide on how to use the `a-radio`.
 
