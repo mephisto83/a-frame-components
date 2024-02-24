@@ -220,6 +220,7 @@ export default function () {
                     me.container.setAttribute('animation__rotation', `property: rotation; to:0 0 0; dur:500; easing:easeInOutCubic;`);
                     break;
             }
+            me.updateElementSize(me, me.el);
         },
         getWidth: function () {
             switch (this.data.orientation) {
