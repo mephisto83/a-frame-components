@@ -20,31 +20,63 @@ To use the components from this repository in your AFrame project, follow these 
 1. **Include AFrame**: Ensure AFrame is included in your HTML file:
 
     ```html
-    <script src="https://aframe.io/releases/1.2.0/aframe.min.js"></script>
+    <script src="https://aframe.io/releases/<some version>/aframe.min.js"></script>
     ```
 
 2. **Add Component Scripts**: Include the desired component scripts in your HTML file after including AFrame. You can link directly to the files in this repository (though we recommend downloading or bundling them for production use):
 
-    ```html
-    <script src="path/to/component1.js"></script>
-    <script src="path/to/component2.js"></script>
+    ```console
+    npm install a-frame-components
     ```
 
 ## Usage
 
 After installing the components, you can use them in your AFrame scenes by adding them to your entities. Here are some examples:
 
-```html
-<a-entity component1="property: value;"></a-entity>
-<a-entity component2="property: value;"></a-entity>
+```react
+import { useEffect, useState } from "react";
+import { load } from 'a-frame-components';
+
+export default function SpaceShipScene() {
+    const [loaded, setLoaded] = useState(false);
+    useEffect(() => {
+        load().then(() => {
+            setLoaded(true);
+        });
+    }, [])
+    if (!loaded) {
+        return <></>
+    }
+    const margin = '.1 .1 .1 .1'
+    return (
+        <a-scene>
+            <a-entity position="0 2.5 -2">
+                <a-container direction="vertical" alignment="flexStart" margin={margin}>
+                    <a-container direction="horizontal" alignment="flexStart" margin={margin}>
+                        <a-menu-container
+                            id="menu"
+                            forward-step="0.05"
+                            text-value="Menu 1 a"
+                            menu-direction={'up'}
+                            flex-direction="column"
+                            justify-content="flexStart"
+                            align-items="flexStart"
+                            component-padding="0.01"
+                            menu-item-height={`.2`}
+                            menu-item-width={`1.0`}>
+                            <a-base-interactive
+                                font-size=".07"
+                                value={'word1'}
+                                title={'Title 1'}
+                                interactive-type={'button'}
+                                width={1}
+                                height={"0.2"}
+                                margin="0 0 0.05 0"
+                            />
+                        </a-menu-container>
+                        ...
 ```
 
-```html
-<!-- Basic usage of Component 1 -->
-<a-scene>
-  <a-entity component1></a-entity>
-</a-scene>
-```
 ## API Documentation
 
 For each component, you'll find detailed API documentation below:
