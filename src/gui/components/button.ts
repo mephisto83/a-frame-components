@@ -382,9 +382,9 @@ export default function () {
             if (this.data.textPosition) {
                 textEntity.setAttribute('position', this.data.textPosition);
             } else if (guiItem.bevel) {
-                textEntity.setAttribute('position', `0 0 ${guiItem.depth + (guiItem.bevelThickness / 2) + 0.05}`);
+                textEntity.setAttribute('position', `0 0 ${guiItem.depth + (guiItem.bevelThickness / 2) + 0.01}`);
             } else {
-                textEntity.setAttribute('position', `0 0 ${(guiItem.depth / 2) + 0.05}`);
+                textEntity.setAttribute('position', `0 0 ${(guiItem.depth / 2) + 0.01}`);
             }
             //        textEntity.setAttribute('troika-text-material', `shader: flat;`);
             this.buttonEntity.appendChild(textEntity);
