@@ -55,6 +55,7 @@ export default function () {
                 if (this.data.titleScale) {
                     text.setAttribute('scale', this.data.titleScale);
                 }
+                this.titleText = text;
                 el.appendChild(text);
             }
             this.setupRayListener(targetBar, 'interaction', (evt) => {
@@ -121,8 +122,13 @@ export default function () {
             });
         },
         ...interactionMixin,
-        update: function () {
+        update: function (oldData) {
             this.positionElements();
+            if (oldData?.title !== this.data.title) {
+                if (this.titleText) {
+                    this.titleText.setAttribute('value', this.data.title);
+                }
+            }
         },
         tick: function () {
             this.onTick();
