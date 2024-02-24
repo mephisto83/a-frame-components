@@ -2,6 +2,7 @@ import { AFRAME } from "../../react/root";
 import { GrabAndDropEvents, GrabStartDetails, setInputDevice } from "../../react/systems/grabanddrop";
 import { raiseCustomEvent } from "../../react/util";
 import { key_grey, key_grey_dark, key_offwhite, key_orange, key_orange_light } from "../vars";
+import mixin from "./mixin";
 
 export default function () {
     /* global AFRAME */
@@ -262,6 +263,7 @@ export default function () {
 
 
         },
+        ...mixin,
         play: function () {
 
         },
