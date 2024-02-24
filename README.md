@@ -8,10 +8,9 @@ This repository offers a variety of AFrame components that you can use to create
 
 ## Features
 
-- **Component 1**: Description of what it does and its benefits.
-- **Component 2**: Description of what it does and its benefits.
-- **Component 3**: Description of what it does and its benefits.
-- (Add more components as needed.)
+- **Component 1**: Radio.
+- **Component 2**: Container.
+- **Component 3**: Menu.
 
 ## Installation
 
