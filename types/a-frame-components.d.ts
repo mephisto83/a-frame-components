@@ -666,7 +666,6 @@ declare namespace JSX {
             'handle-inner-radius'?: string | number;
             'handle-outer-depth'?: string | number;
             'handle-outer-radius'?: string | number;
-            'height'?: string | number;
             'title-position'?: string;
             'title-scale'?: string | number;
             'hover-color'?: string;
@@ -677,8 +676,8 @@ declare namespace JSX {
             'slider-bar-depth'?: string | number;
             'slider-bar-height'?: string | number;
             'top-bottom-padding'?: string | number;
-            'width'?: string | number;
-
+            'bar-length': string | number;
+            'bar-thickness': string | number;
             // Catch-all property for any additional unspecified custom attributes
             [propName: string]: any;
         };
