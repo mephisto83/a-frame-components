@@ -12,7 +12,6 @@ export default function () {
             interactiveType: { type: 'string', default: '' },
             paddingLeft: { type: 'number', default: 0.1 },
             show: { type: 'boolean', default: true },
-            enabled: { type: 'boolean', default: true },
             toggle: { type: 'boolean', default: false },
             toggleState: { type: 'boolean', default: false },
             checked: { type: 'boolean', default: false },
@@ -81,14 +80,6 @@ export default function () {
                 el.emit('item-clicked', {
                     data: me.data
                 })
-                if (me.data.enabled) {
-                    // console.log('I was clicked at: ', evt.detail.intersection.point); // Commented out to use own made click event without defining detail
-                    // data.checked = !data.checked;
-                    // me.renderCheck(data);
-                    // el.emit('changed', {
-                    //     data: me.data
-                    // })
-                }
                 evt.preventDefault();
             });
 
@@ -272,7 +263,6 @@ export default function () {
             'margin': 'gui-item.margin',
             'on': 'base-interactive.on',
             'padding-left': 'base-interactive.paddingLeft',
-            'enabled': 'menuable.enabled',
             'value': 'base-interactive.value',
             'title': 'base-interactive.title',
             'active': 'base-interactive.active',

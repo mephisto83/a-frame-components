@@ -12,6 +12,7 @@ This repository offers a variety of AFrame components that you can use to create
 - Container
 - Menu
 - Button
+- Base-interactive
 
 ## Installation
 
@@ -183,6 +184,7 @@ export default function SpaceShipScene() {
 - [Radio Buttons](docs/radio-component.md)
 - [Container](docs/container.md)
 - [Button](docs/gui-button.md)
+- [Base Interactive](docs/base-interactive.md)
 
 
 ## License
