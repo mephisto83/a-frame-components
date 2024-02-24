@@ -78,6 +78,9 @@ export default function useEventListenerOn(
             setSelectId(id);
             setSelector(`[frame-id="${id}"]`);
         }
+        else {
+            setSelector(initSelector);
+        }
     }, [initSelector])
 
     return { [`frame-id`]: selectedId }
