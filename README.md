@@ -128,13 +128,37 @@ To use the `a-container` component for creating a layout with vertically centere
 
 This setup ensures that the children of the `a-container` are vertically arranged, centered both along the main and cross axis, and the container itself has a specified margin from its surroundings.
 
-## Contributing
+## Events
 
-We welcome contributions to improve and expand our collection of AFrame components! If you're interested in contributing, please follow these steps:
+Manage event listeners with the 'userEventListenerOn' hook. Pass a css selector for the component, the event , and a handler;
 
-1. **Fork the Repository**: Click on the 'Fork' button at the top right of this page.
-2. **Make Your Changes**: Add a new component or improve existing ones.
-3. **Submit a Pull Request**: Open a new pull request for your changes and describe what your changes do and why they should be included.
+```
+import { useEventListenerOn } from 'a-frame-components';
+    
+export default function SpaceShipScene() {
+    useEventListenerOn('[id="menu"]', 'change', (evt: any) => {
+        console.log(evt);
+    })
+
+    return (
+      <>
+        <a-scene>
+          <a-menu-container id="menu">
+            <a-base-interactive
+                font-size=".07"
+                value={'word1'}
+                title={'Title 1'}
+                interactive-type={'button'}
+                width={1}
+                height={"0.2"}
+                margin="0 0 0.05 0"
+            />
+          </a-menu-container>
+        </a-scene>
+      </>
+    )
+}
+```
 
 ## How to Include Type Definitions from a-frame-components in Your TypeScript Project
 ### Ensure TypeScript can fully utilize the a-frame-components package's TypeScript type definitions by incorporating them in your compilation configuration.
