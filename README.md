@@ -104,16 +104,18 @@ This setup ensures that the children of the `a-container` are vertically arrange
 Manage event listeners with the 'userEventListenerOn' hook. Pass the event ,  a handler, and a css selector for the component.
 
 [useEventListenerOn](docs/use-event-listener-on.md)
+[useBindEventOn](docs/use-event-listener-on.md);
 
 ```
 import { useEventListenerOn } from 'a-frame-components';
     
 export default function SpaceShipScene() {
     useEventListenerOn('click', () => console.log('Element clicked'), '#menu');
-    
+    let guiProps = useBindEventOn('change', 'title', (evt)=>event.detail.value)
     return (
       <>
         <a-scene>
+           <a-gui-button value="a b asdfutton" {...guiProps} />
           <a-menu-container id="menu">
             <a-base-interactive
                 font-size=".07"
