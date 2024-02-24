@@ -1,11 +1,13 @@
-import { useEffect, useRef } from 'react';
+import { useEffect, useState, useRef } from 'react';
 
 export default function useEventListenerOn(
-    selector: string,
     evtName: string,
-    evtHandler: (event: Event) => void
-): void {
+    evtHandler: (event: Event) => void,
+    initSelector?: string
+): { [`frame-id`]: string } {
     const observer = useRef<MutationObserver | null>(null);
+    const [selector, setSelector] = useState(initSelector);
+    const [selectedId, setSelectId] = useState(null);
     const lastHandler = useRef<(event: Event) => void>();
 
     useEffect(() => {
@@ -65,4 +67,24 @@ export default function useEventListenerOn(
             }
         };
     }, [selector, evtName, evtHandler]);
+
+    useEffect(() => {
+        if (!initSelector) {
+            let id = generateUniqueId();
+            setSelectId(id);
+            setSelector(`#${id}`);
+        }
+    }, [initSelector])
+
+    return { [`frame-id`]: selectedId }
+}
+function generateUniqueId(prefix: string = 'component'): string {
+    // Current timestamp
+    const timestamp = Date.now();
+
+    // Random number to reduce the chance of collision
+    const randomNumber = Math.floor(Math.random() * 10000);
+
+    // Combine prefix, timestamp, and random number
+    return `${prefix}-${timestamp}-${randomNumber}`;
 }

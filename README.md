@@ -130,16 +130,16 @@ This setup ensures that the children of the `a-container` are vertically arrange
 
 ## Events
   
-Manage event listeners with the 'userEventListenerOn' hook. Pass a css selector for the component, the event , and a handler;
+Manage event listeners with the 'userEventListenerOn' hook. Pass the event ,  a handler, and a css selector for the component.
+
+[useEventListenerOn](docs/use-event-listener-on.md)
 
 ```
 import { useEventListenerOn } from 'a-frame-components';
     
 export default function SpaceShipScene() {
-    useEventListenerOn('[id="menu"]', 'change', (evt: any) => {
-        console.log(evt);
-    })
-
+    useEventListenerOn('click', () => console.log('Element clicked'), '#menu');
+    
     return (
       <>
         <a-scene>
