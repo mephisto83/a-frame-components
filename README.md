@@ -135,16 +135,7 @@ We welcome contributions to improve and expand our collection of AFrame componen
 3. **Submit a Pull Request**: Open a new pull request for your changes and describe what your changes do and why they should be included.
 
 ## How to Include Type Definitions from a-frame-components in Your TypeScript Project
-### Ensure TypeScript can fully utilize the a-frame-components package's TypeScript type definitions by incorporating them in your compilation configuration. Follow these wholesome configurations to embrace the in-packaged TypeScript types.
-
-1. Get to Know Your tsconfig.json
-The tsconfig.json file is the center-stage of any settings inherent to the cycle and reach of TypeScript within your project. It delivers the capstone instructions to TypeScript's compiler.
-
-2. Aim to include The Paths
-Modulate your tsconfig.json file by sprucing it up with a direction for "the known" TypeScript sources, specifically focusing on the rich types springing from your a-frame-components NPM package.
-
-Construct the tsconfig.json for Enlightenment
-The synthesis of the types from a-frame-components will be perceived if you mark a structured setting like so within your tsconfig.json:
+### Ensure TypeScript can fully utilize the a-frame-components package's TypeScript type definitions by incorporating them in your compilation configuration.
 
 ```json
 {
