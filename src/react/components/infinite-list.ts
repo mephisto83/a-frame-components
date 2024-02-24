@@ -112,39 +112,6 @@ export default function () {
             sliderContainer.appendChild(slider);
             outerBox.appendChild(sliderContainer);
 
-            // let upButton = document.createElement('a-gui-icon-label-button');
-            // upButton.setAttribute('width', '0.125')
-            // upButton.setAttribute('height', '0.125')
-            // upButton.setAttribute('onclick', 'testButtonAction')
-            // upButton.setAttribute('icon-font', 'assets/fonts/ionicons.ttf')
-            // upButton.addEventListener('click', () => {
-            //     me.el.emit('scroll-up', {})
-            //     me.targetScroll -= (me.itemHeight * me.visible_items / me.data.columns);
-            //     me.targetScroll = Math.max(me.targetScroll, 0);
-            // });
-            // upButton.setAttribute('icon', 'f10c')
-            // upButton.setAttribute('icon-font-size', '0.1')
-            // upButton.setAttribute('value', '')
-            // upButton.setAttribute('margin', '0 0 0.05 0.02')
-            // upButton.setAttribute('position', `${outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`)
-            // outerBox.appendChild(upButton);
-
-            // let downButton = document.createElement('a-gui-icon-label-button');
-            // downButton.setAttribute('width', '0.125')
-            // downButton.setAttribute('height', '0.125')
-            // downButton.addEventListener('click', () => {
-            //     me.el.emit('scroll-down', {})
-            //     me.targetScroll += (me.itemHeight * me.visible_items / me.data.columns);;
-            //     me.targetScroll = Math.min(me.targetScroll, (me.itemHeight * me.options.length / me.data.columns));
-            // });
-            // downButton.setAttribute('value', '')
-            // downButton.setAttribute('icon-font', 'assets/fonts/ionicons.ttf')
-            // downButton.setAttribute('icon', 'f103')
-            // downButton.setAttribute('icon-font-size', '0.1')
-            // downButton.setAttribute('margin', '0 0 0.05 0.02')
-            // downButton.setAttribute('position', `${outerBoxWidth / 2 - .1} ${-windowHeight / 2 + .1} 0`)
-            // outerBox.appendChild(downButton);
-
 
             let closeButton = document.createElement('a-gui-icon-label-button');
             closeButton.setAttribute('width', '0.25')
@@ -200,17 +167,9 @@ export default function () {
                         //(me.itemHeight * (me.options?.length || 0) / me.data.columns) * value
                     }
                 }
-            })
-            this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions)
-            let innerBox = document.createElement('a-gui-flex-container');
-            // Promise.all([
-            //     loadFontAtlas("assets/fonts/BebasNeue-Regular.png"),
-            //     loadFont("assets/fonts/BebasNeue-Regular-msdf.json"),
-            // ]).then(([atlas, font]: [any, any]) => {
-            //     me.atlas = atlas;
-            //     me.font = font;
-            //     me.loadedFont = true;
-            // });
+            });
+            this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions);
+            me.loadedFont = true;
         },
         ...InteractionMixin,
         update: function (oldData) {
