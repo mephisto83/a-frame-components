@@ -3,13 +3,13 @@ import { generateUniqueId } from '../util';
 
 export default function useEventListenerOn(
     evtName: string,
-    evtHandler: (event: Event) => void,
+    evtHandler: (event: Event, element: Element) => void,
     initSelector?: string
 ): { [`frame-id`]: string } {
     const observer = useRef<MutationObserver | null>(null);
     const [selector, setSelector] = useState(initSelector);
     const [selectedId, setSelectId] = useState(null);
-    const lastHandler = useRef<(event: Event) => void>();
+    const lastHandler = useRef<(event: Event, element: Element) => void>();
 
     useEffect(() => {
         // Function to safely remove the existing event listener
@@ -26,9 +26,12 @@ export default function useEventListenerOn(
                 // Remove existing event listener if any
                 removeEventListener(element);
                 // Add the new event listener
-                element.addEventListener(evtName, evtHandler);
+                let handler = (evt => {
+                    evtHandler(evt, element);
+                });
+                element.addEventListener(evtName, handler);
                 // Update the reference to the current handler
-                lastHandler.current = evtHandler;
+                lastHandler.current = handler;
                 return element; // Return the element for potential use
             }
         };
