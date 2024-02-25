@@ -302,7 +302,7 @@ export default function () {
             'active': 'base-interactive.active',
             'being-edited': 'base-interactive.beingEdited',
             'checked': 'base-interactive.checked',
-            'cursor-position': 'base-interaction.cursorPosition',
+            'cursor-position': 'base-interactive.cursorPosition',
             'font-color': 'base-interactive.fontColor',
             'font-size': 'base-interactive.fontSize',
             'font-family': 'base-interactive.fontFamily',
