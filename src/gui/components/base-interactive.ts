@@ -200,6 +200,7 @@ export default function () {
         update: function (oldData) {
             let me = this;
             var data = this.data;
+            this.guiItem = this.el.getAttribute('gui-item');
             if (this.guiItem.width !== oldData.width) {
                 this.background.setAttribute('width', this.guiItem.width)
             }
