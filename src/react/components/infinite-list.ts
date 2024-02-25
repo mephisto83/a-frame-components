@@ -286,30 +286,35 @@ export default function () {
                     me.sprocket.appendChild(entity);
                     me.visibleObjects[option.id] = entity;
                 })
-            }
-            // console.log(`me.currentIndexScroll: ${me.currentIndexScroll}`)
-            // this.currentIndex = Math.floor(me.currentIndexScroll % me.visible_items);
-            this.currentRotation = me.currentIndexScroll;
-            for (let key in me.visibleObjects) {
-                let indexKey = parseInt(key);
-                let posY = calculateItemPosition(indexKey, itemHeight, me.currentIndexScroll, columns) + (itemHeight / 2)
-                let posX = calculateColumn(indexKey, itemWidth, columns) - (this.outerBoxWidth / 2) + (itemWidth / 2);
-                me.visibleObjects[key].setAttribute('position', `${posX} ${posY} 0`);
-
-            }
-            // me.time = me.time || 0
-            // me.time += .001;
-            // me.currentIndexScroll -= Math.sin(me.time) * .001
-            if (Math.abs(me.currentIndexScroll - me.targetScroll) > .0001) {
-                if (Math.abs(me.currentIndexScroll - me.targetScroll) > this.outerBoxWidth) {
-                    if (me.currentIndexScroll > me.targetScroll) {
-                        me.currentIndexScroll = me.currentIndexScroll - this.outerBoxWidth;
+                // console.log(`me.currentIndexScroll: ${me.currentIndexScroll}`)
+                // this.currentIndex = Math.floor(me.currentIndexScroll % me.visible_items);
+                this.currentRotation = me.currentIndexScroll;
+                for (let key in me.visibleObjects) {
+                    let indexKey = parseInt(key);
+                    let posY = calculateItemPosition(indexKey, itemHeight, me.currentIndexScroll, columns) + (itemHeight / 2)
+                    let posX = calculateColumn(indexKey, itemWidth, columns) - (this.outerBoxWidth / 2) + (itemWidth / 2);
+                    me.visibleObjects[key].setAttribute('position', `${posX} ${posY} 0`);
+                    if (indexKey > (range[1] - columns) || indexKey < (range[0] + columns)) {
+                        me.visibleObjects[key].setAttribute('opacity', 0);
                     }
                     else {
-                        me.currentIndexScroll = me.currentIndexScroll + this.outerBoxWidth;
+                        me.visibleObjects[key].setAttribute('opacity', 1);
                     }
                 }
-                me.currentIndexScroll = lerp(me.currentIndexScroll, me.targetScroll, this.data.speed || .3)
+                // me.time = me.time || 0
+                // me.time += .001;
+                // me.currentIndexScroll -= Math.sin(me.time) * .001
+                if (Math.abs(me.currentIndexScroll - me.targetScroll) > .0001) {
+                    if (Math.abs(me.currentIndexScroll - me.targetScroll) > this.outerBoxWidth) {
+                        if (me.currentIndexScroll > me.targetScroll) {
+                            me.currentIndexScroll = me.currentIndexScroll - this.outerBoxWidth;
+                        }
+                        else {
+                            me.currentIndexScroll = me.currentIndexScroll + this.outerBoxWidth;
+                        }
+                    }
+                    me.currentIndexScroll = lerp(me.currentIndexScroll, me.targetScroll, this.data.speed || .3)
+                }
             }
             // me.sprocket.setAttribute('rotation', `${currentRotation % 360} 0 0`)
             // this.currentRotation += .1
