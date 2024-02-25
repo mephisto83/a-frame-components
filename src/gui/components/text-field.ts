@@ -30,7 +30,9 @@ export default function () {
                 me.baseInteractive.setAttribute('height', this.data.height);
                 update = true;
             }
-            me.updateElementSize(me, me.el);
+            if (update) {
+                me.updateElementSize(me, me.el);
+            }
         },
         init: function () {
             let me = this;
