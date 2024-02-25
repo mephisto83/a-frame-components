@@ -114,7 +114,7 @@ export default function () {
                                                 baseline:center;
                                                 letterSpacing:0;
                                                 color:${this.data.fontColor || '#ffffff'};
-                                                font:${this.data.fontFamily || "assets/fonts/Plaster-Regular.ttf"};
+                                                font:${this.data.fontFamily};
                                                 fontSize:${'14px'};
                                                 depthOffset:1;
                                                 maxWidth:611;
