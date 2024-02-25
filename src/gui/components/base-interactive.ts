@@ -14,8 +14,10 @@ export default function () {
             paddingLeft: { type: 'number', default: 0.1 },
             show: { type: 'boolean', default: true },
             toggle: { type: 'boolean', default: false },
+            beingEdited: { type: 'boolean', default: false },
             toggleState: { type: 'boolean', default: false },
             checked: { type: 'boolean', default: false },
+            cursorPosition: { type: 'number', default: 0 },
             title: { type: 'string', default: '' },
             radiosizecoef: { type: 'number', default: 1 },
             fontSize: { type: 'number', default: 0.2 },
@@ -252,6 +254,8 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
             textEntity.setAttribute('troika-text', `value`, `${newText}`);
+            textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
+            textEntity.setAttribute('troika-text', 'cursor-position', this.data.cursorPosition);
             textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
 
             this.el.appendChild(textEntity);
@@ -295,7 +299,9 @@ export default function () {
             'value': 'base-interactive.value',
             'title': 'base-interactive.title',
             'active': 'base-interactive.active',
+            'being-edited': 'base-interactive.beingEdited',
             'checked': 'base-interactive.checked',
+            'cursor-position': 'base-interaction.cursorPosition',
             'font-color': 'base-interactive.fontColor',
             'font-size': 'base-interactive.fontSize',
             'font-family': 'base-interactive.fontFamily',

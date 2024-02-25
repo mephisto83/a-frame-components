@@ -46,7 +46,9 @@ export default function () {
                     return value ? value.join(' ') : ''
                 }
             },
+            beingEdited: { type: 'boolean', default: false },
             color: { type: 'color', default: '#FFF' },
+            cursorPosition: { type: 'number', default: 0 },
             colorRanges: { // experimental
                 type: 'string',
                 default: null,
@@ -109,9 +111,24 @@ export default function () {
             // textEntity.setObject3D('mesh', textMesh)
 
             textMesh.sync(() => {
-                if (textMesh?.textRenderInfo) this.setRenderInfo(textMesh.textRenderInfo);
+                if (textMesh?.textRenderInfo) {
+                    this.setRenderInfo(textMesh.textRenderInfo);
+                    if (this.data.beingEdited) {
+                        this.placeCursor()
+                    }
+                }
                 this.troikaTextEntity.setObject3D('mesh', group);
             });
+        },
+        placeCursor: function () {
+            if (!this.textCursor) {
+                this.textCursor = document.createElement('a-plane');
+                this.textCursor.setAttribute('material', 'color', `#ffffff`);
+                this.textCursor.setAttribute('position', '0 0 0.02');
+                this.textCursor.setAttribute('scale', '.15 .15 .15');
+                this.textCursor.setAttribute('rotation', '-45 0 0');
+                this.el.appendChild(this.textCursor);
+            }
         },
         setRenderInfo: function (renderInfo) {
             this.renderInfo = renderInfo;

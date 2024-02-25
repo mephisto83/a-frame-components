@@ -80,6 +80,25 @@ export default function () {
                     me.el.emit('change', { value: me.input.value });
                 }
             });
+            // Function to log the cursor position
+            const logCursorPosition = () => {
+                // Assuming inputElement is an HTMLInputElement
+                console.log(me.input.selectionStart);
+                me.baseInteractive.setAttribute('cursor-position', me.input.selectionStart);
+            };
+
+            // Listen for keydown and keyup events
+            me.input.addEventListener('keydown', logCursorPosition);
+            me.input.addEventListener('keyup', logCursorPosition);
+
+            // Listen for mouse clicks
+            me.input.addEventListener('click', logCursorPosition);
+
+            // Listen for input events (covers cut, paste, autocomplete, etc.)
+            me.input.addEventListener('input', logCursorPosition);
+
+            // Listen for drag and drop
+            me.input.addEventListener('dragend', logCursorPosition);
             me.updateElementSize(me, me.el);
         },
         remove: function () {
@@ -102,4 +121,13 @@ export default function () {
             'height': 'text-field.height',
         }
     });
+    function getCursorPosition(inputElement: HTMLInputElement): number | null {
+        // Check if the selectionStart property is supported
+        if (typeof inputElement.selectionStart === "number") {
+            return inputElement.selectionStart;
+        } else {
+            console.error("The browser does not support selectionStart");
+            return null; // Return null if selectionStart is not supported
+        }
+    }
 }
