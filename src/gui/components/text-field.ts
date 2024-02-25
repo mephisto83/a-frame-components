@@ -10,13 +10,13 @@ export default function () {
         },
         update: function (oldData: any) {
             let me = this;
-            if (oldData?.fontSize || this.data.fontSize) {
+            if (oldData?.fontSize !== this.data.fontSize) {
                 me.baseInteractive.setAttribute('font-size', this.data.fontSize);
             }
-            if (oldData?.width || this.data.width) {
+            if (oldData?.width !== this.data.width) {
                 me.baseInteractive.setAttribute('width', this.data.width);
             }
-            if (oldData?.height || this.data.height) {
+            if (oldData?.height !== this.data.height) {
                 me.baseInteractive.setAttribute('height', this.data.height);
             }
         },
@@ -40,8 +40,9 @@ export default function () {
                     if (value) {
                         let { max, min } = value;
                         if (max && min) {
-                            if (false)
+                            if (false) {
                                 me.el.setAttribute('width', Math.abs(max.x - min.x));
+                            }
                             me.el.setAttribute('height', Math.max(Math.abs(max.y - min.y), minimumHeight));
                         }
                     }

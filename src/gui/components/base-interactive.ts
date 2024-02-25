@@ -52,7 +52,8 @@ export default function () {
             background.setAttribute('width', guiItem.width)
             background.setAttribute('height', guiItem.height)
             background.setAttribute('radius', Math.min(parseFloat(`${guiItem.width}`), parseFloat(`${guiItem.height}`)) * .1)
-            background.setAttribute('color', GetBackgroundColor())
+            background.setAttribute('color', GetBackgroundColor());
+            this.background = background;
             el.appendChild(background);
             switch (data.interactiveType) {
                 case 'icon-button':
@@ -194,6 +195,12 @@ export default function () {
         update: function (oldData) {
             let me = this;
             var data = this.data;
+            if (this.data.width !== oldData.width) {
+                this.background.setAttribute('width', this.guiItem.width)
+            }
+            if (this.data.height !== oldData.height) {
+                this.background.setAttribute('height', this.guiItem.height)
+            }
             this.renderCheck(data)
             if (this.data.show !== oldData.show) {
                 this.el.setAttribute('visible', this.data.show)
