@@ -80,14 +80,12 @@ export default function () {
             me.options = options;
             let sprocket = document.createElement('a-entity');
             me.sprocket = sprocket;
-            // sprocket.setAttribute('position', `0 ${-windowHeight / 2 + .1} 0`)
-            sprocket.setAttribute('position', `0 0 0`)
+            sprocket.setAttribute('position', `0 ${-windowHeight / 2 + .1} 0`)
             me.el.appendChild(sprocket);
             me.itemHeight = itemHeight;
             me.itemWidth = itemWidth;
             me.windowHeight = windowHeight;
             me.windowMargin = { y: .3 }
-            // me.el.setAttribute('position', `0  ${windowHeight / 2} 0`);
             me.el.setAttribute('position', `0 0 0`);
 
             let outerBox: any = document.createElement('a-gui-flex-container');
