@@ -228,10 +228,8 @@ export default function () {
             var textEntityX = 0;
             switch (data.interactiveType) {
                 case 'button':
-                    textEntityX = -this.guiItem.width * 0.5 + this.data.paddingLeft;
-                    break;
                 case 'text':
-                    textEntityX = this.data.paddingLeft;
+                    textEntityX = -this.guiItem.width * 0.5 + this.data.paddingLeft;
                     break;
                 default:
                     textEntityX = this.guiItem.height - this.guiItem.width * 0.5;
