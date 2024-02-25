@@ -222,7 +222,7 @@ export default function () {
                 if (boundingBox) {
                     me.el.emit('text-size-change', { value: boundingBox })
                 }
-                oldEntity.parentNode.removeChild(oldEntity);
+                // oldEntity.parentNode.removeChild(oldEntity);
                 this.setText(this.data.value);
             }
             me.updateElementSize(me, me.el);
@@ -241,7 +241,7 @@ export default function () {
                     break;
             }
 
-            var textEntity: any = document.createElement("a-entity");
+            var textEntity: any = this.textEntity || document.createElement("a-entity");
             this.textEntity = textEntity;
             textEntity.setAttribute('troika-text', `align:left; 
                                                 anchor:left; 
