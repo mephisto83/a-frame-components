@@ -14,7 +14,7 @@ export default function () {
                 me.baseInteractive.setAttribute('font-size', this.data.fontSize);
             }
             if (oldData?.width !== this.data.width) {
-                me.baseInteractive.setAttribute('width', this.data.width - (this.paddingLeft * 2));
+                me.baseInteractive.setAttribute('width', this.data.width);
             }
             if (oldData?.height !== this.data.height) {
                 me.baseInteractive.setAttribute('height', this.data.height);
@@ -27,7 +27,7 @@ export default function () {
             this.paddingLeft = .1;
             let baseInteractive = document.createElement('a-base-interactive');
             me.baseInteractive = baseInteractive;
-            me.baseInteractive.setAttribute('padding-left', this.paddingLeft)
+            me.baseInteractive.setAttribute('padding-left', this.paddingLeft / 2)
             me.baseInteractive.setAttribute('interactive-type', 'text');
             me.el.appendChild(baseInteractive);
             me.input = document.createElement('input');
