@@ -229,7 +229,7 @@ export default function () {
 
             // If using sub-entity, remove it
             if (this.troikaTextEntity !== this.el) {
-                this.el.removeChild(this.troikaTextEntity)
+                this.troikaTextEntity.parentNode.removeChild(this.troikaTextEntity)
             }
         }
 
