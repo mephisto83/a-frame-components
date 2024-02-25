@@ -567,6 +567,8 @@ declare namespace JSX {
             sourceId?: string;
             options?: string;
             width?: string | number;
+            height?: string | number;
+            margin?: string | number;
             columns?: string | number;
             itemsize?: string | number;
             selected?: string;

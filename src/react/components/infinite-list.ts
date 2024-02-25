@@ -4,6 +4,7 @@ import { FontLoader } from 'three/examples/jsm/loaders/FontLoader.js';
 import { GetBackgroundColor, GetColor } from '../systems/ui';
 import InteractionMixin from './interaction-mixin';
 import { PAINTER_CONSTANTS } from '../constants';
+import mixin from '../../gui/components/mixin';
 const THREE: any = (window as any).THREE;
 
 
@@ -32,6 +33,8 @@ export default function () {
             hideClose: { type: 'boolean', default: false },
             columns: { type: 'number', default: 4 },
             width: { type: 'number', default: 3 },
+            height: { type: 'number', default: 2.2 },
+            boxMargin: { type: 'number', default: .2 },
             itemtemplate: { type: 'string' },
             itemSize: { type: 'number', default: .5 },
             iconFont: { type: 'string', default: '' },
@@ -56,8 +59,8 @@ export default function () {
             let itemHeight = this.data.itemSize || .5;
             let itemWidth = this.data.itemSize || .5;
             let outerBoxWidth = this.data.width || 3;
-            let boxHeight = 2.2;
-            let boxMargin = .2
+            let boxHeight = this.data.height || 2.2;
+            let boxMargin = this.data.boxMargin || .2
             let windowHeight = boxHeight - boxMargin;
             this.outerBoxWidth = outerBoxWidth;
             this.system = system;
@@ -171,6 +174,13 @@ export default function () {
             });
             this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions);
             me.loadedFont = true;
+        },
+        ...mixin,
+        getWidth: function () {
+            return parseFloat(`${this.data.width}`);
+        },
+        getHeight: function () {
+            return parseFloat(`${this.data.height}`);
         },
         ...InteractionMixin,
         update: function (oldData) {
@@ -519,6 +529,8 @@ export default function () {
             sourceId: 'infinite-list.sourceId',
             options: 'infinite-list.options',
             width: 'infinite-list.width',
+            height: 'infinite-list.height',
+            margin: 'infinite-list.boxMargin',
             columns: 'infinite-list.columns',
             itemsize: 'infinite-list.itemSize',
             selected: 'infinite-list.selected',
