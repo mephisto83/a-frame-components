@@ -137,7 +137,7 @@ export default function () {
             if (this.textCursor) {
                 let caretPositions = this.getCaretPositions();
                 if (caretPositions) {
-                    let scaleX = .01
+                    let scaleX = .025
                     let x = caretPositions[((this.caretIndex - 1) * 4) + 1] ??
                         caretPositions[caretPositions.length - 3]
                     let y = caretPositions[(this.caretIndex * 4) + 2] ??
