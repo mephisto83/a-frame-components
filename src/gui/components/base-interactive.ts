@@ -252,6 +252,7 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
             textEntity.setAttribute('troika-text', `value`, `${newText}`);
+            textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
 
             this.el.appendChild(textEntity);
         },
