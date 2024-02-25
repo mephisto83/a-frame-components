@@ -80,6 +80,7 @@ export default function () {
                     me.el.emit('change', { value: me.input.value });
                 }
             });
+            me.updateElementSize(me, me.el);
         },
         remove: function () {
             let me = this;
