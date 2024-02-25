@@ -41,8 +41,8 @@ export default function () {
                         let { max, min } = value;
                         if (max && min) {
                             if (false)
-                                me.setAttribute('width', Math.abs(max.x - min.x));
-                            me.setAttribute('height', Math.max(Math.abs(max.y - min.y), minimumHeight));
+                                me.el.setAttribute('width', Math.abs(max.x - min.x));
+                            me.el.setAttribute('height', Math.max(Math.abs(max.y - min.y), minimumHeight));
                         }
                     }
                 }
