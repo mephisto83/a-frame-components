@@ -52,33 +52,31 @@ export default function () {
             },
             selected: { type: 'string' },
         },
-        init: function () {
+        setup: function () {
             let me = this;
-            this.onInit();
-            var system = this.el.sceneEl.systems.ui; // Access by system name
             let itemHeight = this.data.itemSize || .5;
             let itemWidth = this.data.itemSize || .5;
             let outerBoxWidth = this.data.width || 3;
             let boxHeight = this.data.height || 2.2;
             let boxMargin = this.data.boxMargin || .2
             let windowHeight = boxHeight - boxMargin;
+            this.boxHeight = boxHeight;
             this.outerBoxWidth = outerBoxWidth;
-            this.system = system;
-            me.imageMargin = .01
-            me.itemMargin = .1
             this.guiItem = { width: itemWidth, height: itemHeight }
             this.stepSize = .1;
             me.radius = .25; // Radius of the circle
             me.fontSize = .001;
             me.currentRotation = 0;
             me.visible_items = getNumberOfVisibleItems(itemHeight + me.itemMargin, windowHeight, this.data.columns); // Number of items visible at a time
+            me.imageMargin = .01
+            me.itemMargin = .1
             me.currentIndex = 0;
             me.currentIndexScroll = 0;
             me.targetScroll = 0
             me.visibleObjects = {};
             let options = me.getOptions();
             me.options = options;
-            let sprocket = document.createElement('a-entity');
+            let sprocket = me.sprocket || document.createElement('a-entity');
             me.sprocket = sprocket;
             sprocket.setAttribute('position', `0 ${-windowHeight / 2 + .1} 0`)
             me.el.appendChild(sprocket);
@@ -86,8 +84,24 @@ export default function () {
             me.itemWidth = itemWidth;
             me.windowHeight = windowHeight;
             me.windowMargin = { y: .3 }
-            me.el.setAttribute('position', `0 0 0`);
-
+        },
+        updateSubComponents: function () {
+            let outerBoxWidth = this.outerBoxWidth;
+            let boxHeight = this.boxHeight;
+            let windowHeight = this.windowHeight;
+            this.slider.setAttribute('width', `${boxHeight}`);
+            this.outerBox.setAttribute('width', `${outerBoxWidth}`);
+            this.outerBox.setAttribute('height', `${boxHeight}`);
+            this.sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - .1} 0 .1`);
+            this.closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`);
+            this.updateElementSize(this, this.el);
+        },
+        init: function () {
+            let me = this;
+            this.onInit();
+            var system = this.el.sceneEl.systems.ui; // Access by system name
+            this.setup();
+            this.system = system;
             let outerBox: any = document.createElement('a-gui-flex-container');
             outerBox.setAttribute('flex-direction', "column")
             outerBox.setAttribute('justify-content', "center")
@@ -95,14 +109,12 @@ export default function () {
             outerBox.setAttribute('gui-interactable', {})
             outerBox.setAttribute('component-padding', ".1")
             outerBox.setAttribute('opacity', ".25")
-            outerBox.setAttribute('width', `${outerBoxWidth}`)
-            outerBox.setAttribute('height', `${boxHeight}`)
             outerBox.setAttribute('panel-color', GetBackgroundColor())
             outerBox.setAttribute('panel-rounded', "0.1");
+            this.outerBox = outerBox;
             me.el.appendChild(outerBox);
 
             let slider = document.createElement('a-gui-slider');
-            slider.setAttribute('width', `${boxHeight}`);
             slider.setAttribute('percent', `${0}`);
             slider.setAttribute('targetbarsize', `0.5`);
             slider.addEventListener('change', (evt: any) => {
@@ -110,10 +122,10 @@ export default function () {
                 me.targetScroll = (me.itemHeight * (me.options?.length || 0) / me.data.columns) * value;
             });
             let sliderContainer = document.createElement('a-entity');
-            sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - .1} 0 .1`);
             sliderContainer.setAttribute('rotation', `0 0 90`);
-
+            this.sliderContainer = sliderContainer;
             sliderContainer.appendChild(slider);
+            this.slider = slider;
             outerBox.appendChild(sliderContainer);
 
 
@@ -132,10 +144,11 @@ export default function () {
                 closeButton.setAttribute('icon-font-size', this.data.iconFontSize || '0.1')
             }
             closeButton.setAttribute('margin', '0 0 0.05 0.02')
-            closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`)
+
             if (!this.data.hideClose) {
                 outerBox.appendChild(closeButton);
             }
+            this.closeButton = closeButton;
 
             outerBox.classList.add('raycastable');
             const canvas = this.el.sceneEl.canvas;
@@ -168,11 +181,11 @@ export default function () {
                         if (maxHeight) {
                             slider.setAttribute('percent', `${Math.max(0, Math.min(me.targetScroll / maxHeight, 1))}`)
                         }
-                        //(me.itemHeight * (me.options?.length || 0) / me.data.columns) * value
                     }
                 }
             });
             this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions);
+            this.updateSubComponents();
             me.loadedFont = true;
         },
         ...mixin,
@@ -195,6 +208,10 @@ export default function () {
                     vo.parentNode.removeChild(vo);
                     delete me.visibleObjects[key]
                 }
+            }
+            if (this.data.width !== oldData?.width || this.data.height !== oldData?.height) {
+                this.setup();
+                this.updateSubComponents();
             }
         },
         handleInifniteListInteractions: function (args) {
