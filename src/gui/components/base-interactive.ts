@@ -237,7 +237,7 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
             textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
-            textEntity.addEventListener('textfontset', () => {
+            textEntity.addEventListener('synccomplete', () => {
                 me.getSizeOfTroikaText();
             });
             //        textEntity.setAttribute('troika-text-material', `shader: flat;`);
@@ -245,7 +245,7 @@ export default function () {
         },
         getSizeOfTroikaText: function () {
             // Use the object3D to access the mesh and its geometry
-            const textMesh = this.el.getObject3D('mesh');
+            const textMesh = this.textEntity.getObject3D('mesh');
 
             // Ensure the mesh and its geometry are available
             if (textMesh && textMesh.geometry) {
