@@ -255,13 +255,13 @@ export default function () {
                                                 depthOffset:1;
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
-                textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
-                textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
-                textEntity.setAttribute('troika-text', 'cursor-position', this.data.cursorPosition);
                 textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
 
                 this.el.appendChild(textEntity);
             }
+            textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
+            textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
+            textEntity.setAttribute('troika-text', 'cursor-position', this.data.cursorPosition);
             textEntity.setAttribute('troika-text', `value`, `${newText}`);
         },
         getSizeOfTroikaText: function () {
