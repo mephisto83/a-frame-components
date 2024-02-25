@@ -203,6 +203,10 @@ export default function () {
                 console.log("has textEntity: " + this.textEntity);
 
                 var oldEntity = this.textEntity;
+                let boundingBox = oldEntity?.components?.["troika-text"]?.troikaTextEntity?.object3D?.children[0]?.children[0]?.geometry?.boundingBox;
+                if (boundingBox) {
+                    me.el.emit('text-size-change', { value: boundingBox })
+                }
                 oldEntity.parentNode.removeChild(oldEntity);
 
                 this.setText(this.data.value);
@@ -237,10 +241,6 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
             textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
-            textEntity.addEventListener('synccomplete', () => {
-                me.getSizeOfTroikaText();
-            });
-            //        textEntity.setAttribute('troika-text-material', `shader: flat;`);
             this.el.appendChild(textEntity);
         },
         getSizeOfTroikaText: function () {
