@@ -123,10 +123,11 @@ export default function () {
         },
         placeCursor: function () {
             if (!this.textCursor) {
+                let scaleX = .01
                 this.textCursor = document.createElement('a-plane');
                 this.textCursor.setAttribute('material', 'color', `#ffffff`);
                 this.textCursor.setAttribute('position', '0 0 0.02');
-                this.textCursor.setAttribute('scale', '.01 .1 1');
+                this.textCursor.setAttribute('scale', scaleX + ' .1 1');
                 this.textCursor.setAttribute('rotation', '0 0 0');
                 this.el.appendChild(this.textCursor);
             }
@@ -136,11 +137,12 @@ export default function () {
             if (this.textCursor) {
                 let caretPositions = this.getCaretPositions();
                 if (caretPositions) {
+                    let scaleX = .01
                     let x = caretPositions[((this.caretIndex - 1) * 4) + 1] ??
                         caretPositions[caretPositions.length - 3]
                     let y = caretPositions[(this.caretIndex * 4) + 2] ??
                         caretPositions[(caretPositions.length - 3) + 2]
-                    this.textCursor.setAttribute('position', `${x || 0} ${y || 0} 0.02`);
+                    this.textCursor.setAttribute('position', `${(x || 0) + scaleX} ${y || 0} 0.02`);
                 }
             }
         },
