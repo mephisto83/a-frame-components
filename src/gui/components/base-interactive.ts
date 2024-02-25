@@ -60,6 +60,8 @@ export default function () {
                 case 'button':
                     this.setButtonEvents({ el, background, data, guiItem });
                     break;
+                case 'text':
+                    break;
                 default:
                     this.setRadioButton({ el, data, guiItem });
                     break;
