@@ -33,13 +33,19 @@ export default function () {
             me.input.style.left = '-9999px'; // Place it outside of the viewport
             baseInteractive.addEventListener('text-size-change', (evt: any) => {
                 console.log(evt);
-                let { detail } = evt;
-                let { value } = detail;
-                let { max, min } = value;
-                if (false)
-                    me.setAttribute('width', Math.abs(max.x - min.x));
-                me.setAttribute('height', Math.max(Math.abs(max.y - min.y), minimumHeight));
 
+                let { detail } = evt;
+                if (detail) {
+                    let { value } = detail;
+                    if (value) {
+                        let { max, min } = value;
+                        if (max && min) {
+                            if (false)
+                                me.setAttribute('width', Math.abs(max.x - min.x));
+                            me.setAttribute('height', Math.max(Math.abs(max.y - min.y), minimumHeight));
+                        }
+                    }
+                }
             })
             document.body.appendChild(me.input);
 
