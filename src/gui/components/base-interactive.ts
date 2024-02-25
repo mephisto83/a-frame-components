@@ -242,7 +242,7 @@ export default function () {
             }
 
             var textEntity: any = this.textEntity;
-            if (textEntity) {
+            if (!textEntity) {
                 textEntity = document.createElement("a-entity");
                 this.textEntity = textEntity;
                 textEntity.setAttribute('troika-text', `align:left; 
