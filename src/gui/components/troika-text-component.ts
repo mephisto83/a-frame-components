@@ -151,8 +151,8 @@ export default function () {
             return null;
         },
         getCaretPositions: function () {
-            if (this.renderInfo) {
-                return this.renderInfo?.caretPositions || null;
+            if (this.troikaTextMesh) {
+                return this.troikaTextMesh?.textRenderInfo?.caretPositions || null;
             }
             return null;
         },
@@ -178,7 +178,7 @@ export default function () {
                 const assetItem = document.querySelector(data.font);
                 font = assetItem.getAttribute('src');
             }
-
+            this.caretIndex = this.data.cursorPosition;
             mesh.anchorX = anchorMapping[data.anchor === 'align' ? data.align : data.anchor] || 'center'
             mesh.anchorY = baselineMapping[data.baseline] || 'middle'
             mesh.color = data.color
