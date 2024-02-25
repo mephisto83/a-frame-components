@@ -125,9 +125,20 @@ export default function () {
                 this.textCursor = document.createElement('a-plane');
                 this.textCursor.setAttribute('material', 'color', `#ffffff`);
                 this.textCursor.setAttribute('position', '0 0 0.02');
-                this.textCursor.setAttribute('scale', '.15 .15 .15');
-                this.textCursor.setAttribute('rotation', '-45 0 0');
+                this.textCursor.setAttribute('scale', '.02 .15 1');
+                this.textCursor.setAttribute('rotation', '0 0 0');
                 this.el.appendChild(this.textCursor);
+            }
+            this.positionCaret();
+        },
+        positionCaret: function () {
+            if (this.textCursor) {
+                let caretPositions = this.getCaretPositions();
+                if (caretPositions) {
+                    let x = caretPositions[this.caretIndex * 4] ??
+                        caretPositions[caretPositions.length - 3]
+                    this.textCursor.setAttribute('position', `${x} 0 0.02`);
+                }
             }
         },
         setRenderInfo: function (renderInfo) {
@@ -196,6 +207,7 @@ export default function () {
             mesh.maxWidth = data.maxWidth
             mesh.sync()
 
+            this.positionCaret();
             // Pass material config down to child entity
             if (entity !== this.el) {
                 var materialAttr = this.el.getAttribute('troika-text-material')
