@@ -152,7 +152,7 @@ export default function () {
         },
         getCaretPositions: function () {
             if (this.renderInfo) {
-                this.renderInfo?.caretPositions || null;
+                return this.renderInfo?.caretPositions || null;
             }
             return null;
         },
