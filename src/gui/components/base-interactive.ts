@@ -241,9 +241,11 @@ export default function () {
                     break;
             }
 
-            var textEntity: any = this.textEntity || document.createElement("a-entity");
-            this.textEntity = textEntity;
-            textEntity.setAttribute('troika-text', `align:left; 
+            var textEntity: any = this.textEntity;
+            if (textEntity) {
+                textEntity = document.createElement("a-entity");
+                this.textEntity = textEntity;
+                textEntity.setAttribute('troika-text', `align:left; 
                                                 anchor:left; 
                                                 baseline:center;
                                                 letterSpacing:0;
@@ -253,13 +255,14 @@ export default function () {
                                                 depthOffset:1;
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
-            textEntity.setAttribute('troika-text', `value`, `${newText}`);
-            textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
-            textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
-            textEntity.setAttribute('troika-text', 'cursor-position', this.data.cursorPosition);
-            textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
+                textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
+                textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
+                textEntity.setAttribute('troika-text', 'cursor-position', this.data.cursorPosition);
+                textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
 
-            this.el.appendChild(textEntity);
+                this.el.appendChild(textEntity);
+            }
+            textEntity.setAttribute('troika-text', `value`, `${newText}`);
         },
         getSizeOfTroikaText: function () {
             // Use the object3D to access the mesh and its geometry

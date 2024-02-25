@@ -137,7 +137,7 @@ export default function () {
                 if (caretPositions) {
                     let x = caretPositions[this.caretIndex * 4] ??
                         caretPositions[caretPositions.length - 3]
-                    this.textCursor.setAttribute('position', `${x} 0 0.02`);
+                    this.textCursor.setAttribute('position', `${x || 0} 0 0.02`);
                 }
             }
         },
