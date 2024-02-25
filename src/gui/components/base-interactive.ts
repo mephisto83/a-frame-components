@@ -239,30 +239,20 @@ export default function () {
                     break;
             }
 
-            var textEntity = document.createElement("a-troika-text");
+            var textEntity: any = document.createElement("a-entity");
             this.textEntity = textEntity;
-            // textEntity.setAttribute('troika-text', `value: ${newText}; 
-            //                                     align:left; 
-            //                                     anchor:left; 
-            //                                     baseline:center;
-            //                                     letterSpacing:0;
-            //                                     color:${this.data.fontColor};
-            //                                     font:${this.data.fontFamily};
-            //                                     fontSize:${this.data.fontSize};
-            //                                     depthOffset:1;
-            //                                     maxWidth:${this.guiItem.width / 1.05};
-            //                                     `);
-            textEntity.setAttribute(`value`, `${newText}`);
-            textEntity.setAttribute(`align`, `left`);
-            textEntity.setAttribute(`anchor`, `left`)
-            textEntity.setAttribute(`baseline`, `center`)
-            textEntity.setAttribute(`letterSpacing`, `0`);
-            textEntity.setAttribute(`color`, `${this.data.fontColor}`);
-            textEntity.setAttribute(`font`, `${this.data.fontFamily}`);
-            textEntity.setAttribute(`fontSize`, `${this.data.fontSize}`);
-            textEntity.setAttribute(`depthOffset`, `1`);
-            textEntity.setAttribute(`maxWidth`, `${this.guiItem.width / 1.05}`);
-            textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
+            textEntity.setAttribute('troika-text', `align:left; 
+                                                anchor:left; 
+                                                baseline:center;
+                                                letterSpacing:0;
+                                                color:${this.data.fontColor};
+                                                font:${this.data.fontFamily};
+                                                fontSize:${this.data.fontSize};
+                                                depthOffset:1;
+                                                maxWidth:${this.guiItem.width / 1.05};
+                                                `);
+            textEntity.setAttribute('troika-text', `value`, `${newText}`);
+
             this.el.appendChild(textEntity);
         },
         getSizeOfTroikaText: function () {

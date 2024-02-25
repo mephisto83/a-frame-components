@@ -111,7 +111,6 @@ export default function () {
             textMesh.sync(() => {
                 if (textMesh?.textRenderInfo) this.setRenderInfo(textMesh.textRenderInfo);
                 this.troikaTextEntity.setObject3D('mesh', group);
-
             });
         },
         setRenderInfo: function (renderInfo) {
