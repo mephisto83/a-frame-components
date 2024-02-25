@@ -387,7 +387,6 @@ export default function () {
             buttonContainer.setAttribute('font-size', '.05')
             buttonContainer.setAttribute('position', `0 0 0.01`);
             buttonContainer.setAttribute('text-position', `0 ${(-me.guiItem.height / 2) + 0.04} .04`)
-            // buttonContainer.setAttribute('onclick', `testButtonAction`);
             buttonContainer.addEventListener('click', () => {
 
             })
@@ -420,7 +419,7 @@ export default function () {
                                                 baseline:center;
                                                 letterSpacing:0;
                                                 color:${this.data.fontColor || '#ffffff'};
-                                                font:${this.data.fontFamily || "assets/fonts/Plaster-Regular.ttf"};
+                                                font:${this.data.fontFamily};
                                                 fontSize:${'14px'};
                                                 depthOffset:1;
                                                 maxWidth:611;

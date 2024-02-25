@@ -71,7 +71,6 @@ export default function () {
                 imageEntity.setAttribute('url', url || '')
             })
             let loraStyle1 = me.createButton({
-                onclick: `testButtonAction`,
                 args: `${id}`,
                 value: 'Model',
                 position: '0 0 .01'

@@ -34,7 +34,6 @@ export default function () {
             buttonContainer.setAttribute('font-size', '.05')
             buttonContainer.setAttribute('position', `0 0 0.01`);
             buttonContainer.setAttribute('text-position', `0 ${(-me.guiItem.height / 2) + 0.04} .04`)
-            buttonContainer.setAttribute('onclick', `testButtonAction`);
             buttonContainer.setAttribute('height', me.guiItem.height);
             buttonContainer.setAttribute('margin', `0 0 0.01 0`);
             buttonContainer.setAttribute('width', me.guiItem.width);
