@@ -68,6 +68,9 @@ export default function () {
                 case 'icon-button':
                     this.setIcon(data.value);
                     break;
+                case 'input':
+                    this.setText(data.title || data.value);
+                    break;
                 case 'button':
                 default:
                     this.setText(data.title || data.value);
@@ -195,10 +198,10 @@ export default function () {
         update: function (oldData) {
             let me = this;
             var data = this.data;
-            if (this.data.width !== oldData.width) {
+            if (this.guiItem.width !== oldData.width) {
                 this.background.setAttribute('width', this.guiItem.width)
             }
-            if (this.data.height !== oldData.height) {
+            if (this.guiItem.height !== oldData.height) {
                 this.background.setAttribute('height', this.guiItem.height)
             }
             this.renderCheck(data)
@@ -215,9 +218,7 @@ export default function () {
                     me.el.emit('text-size-change', { value: boundingBox })
                 }
                 oldEntity.parentNode.removeChild(oldEntity);
-
                 this.setText(this.data.value);
-
             }
             me.updateElementSize(me, me.el);
         },
@@ -228,6 +229,9 @@ export default function () {
             switch (data.interactiveType) {
                 case 'button':
                     textEntityX = -this.guiItem.width * 0.5 + this.data.paddingLeft;
+                    break;
+                case 'text':
+                    textEntityX = this.data.paddingLeft;
                     break;
                 default:
                     textEntityX = this.guiItem.height - this.guiItem.width * 0.5;

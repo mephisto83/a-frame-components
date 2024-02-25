@@ -26,6 +26,7 @@ export default function () {
             let minimumHeight = this.data.height;
             let baseInteractive = document.createElement('a-base-interactive');
             me.baseInteractive = baseInteractive;
+            me.baseInteractive.setAttribute('interactive-type', 'text');
             me.el.appendChild(baseInteractive);
             me.input = document.createElement('input');
             me.input.setAttribute('type', 'text');
