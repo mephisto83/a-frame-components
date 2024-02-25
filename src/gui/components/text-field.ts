@@ -11,10 +11,10 @@ export default function () {
         },
         ...mixin,
         getWidth: function () {
-            return parseFloat(`${this.data.width}`);
+            return parseFloat(`${this.width}`);
         },
         getHeight: function () {
-            return parseFloat(`${this.data.height}`);
+            return parseFloat(`${this.height}`);
         },
         update: function (oldData: any) {
             let me = this;
@@ -29,9 +29,6 @@ export default function () {
             if (oldData?.height !== this.data.height) {
                 me.baseInteractive.setAttribute('height', this.data.height);
                 update = true;
-            }
-            if (update) {
-                me.updateElementSize(me, me.el);
             }
         },
         init: function () {
@@ -48,6 +45,8 @@ export default function () {
             me.input.setAttribute('type', 'text');
             me.input.style.position = 'fixed ';
             me.input.style.left = '-9999px'; // Place it outside of the viewport
+            me.width = me.data.width;
+            me.height = me.data.height;
             baseInteractive.addEventListener('text-size-change', (evt: any) => {
                 console.log(evt);
                 let { detail } = evt;
@@ -56,10 +55,12 @@ export default function () {
                     if (value) {
                         let { max, min } = value;
                         if (max && min) {
+                            me.updateElementSize(me, me.el);
                             if (false) {
                                 me.el.setAttribute('width', Math.abs(max.x - min.x));
                             }
-                            me.el.setAttribute('height', Math.max(Math.abs(max.y - min.y), minimumHeight));
+                            me.height = Math.max(Math.abs(max.y - min.y), minimumHeight);
+                            me.updateElementSize(me, me.el);
                         }
                     }
                 }
