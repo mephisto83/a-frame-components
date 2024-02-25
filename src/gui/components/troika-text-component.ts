@@ -110,6 +110,7 @@ export default function () {
             group.add(textMesh);
             // textEntity.setObject3D('mesh', textMesh)
 
+            textMesh._needsSync = true;
             textMesh.sync(() => {
                 if (textMesh?.textRenderInfo) {
                     this.setRenderInfo(textMesh.textRenderInfo);
@@ -205,6 +206,7 @@ export default function () {
             mesh.textIndent = data.textIndent
             mesh.whiteSpace = data.whiteSpace
             mesh.maxWidth = data.maxWidth
+            mesh._needsSync = true;
             mesh.sync()
 
             this.positionCaret();
