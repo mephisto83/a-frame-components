@@ -228,7 +228,7 @@ export default function () {
             this.troikaTextMesh.dispose()
 
             // If using sub-entity, remove it
-            if (this.troikaTextEntity !== this.el) {
+            if (this?.troikaTextEntity?.parentNode) {
                 this.troikaTextEntity.parentNode.removeChild(this.troikaTextEntity)
             }
         }
