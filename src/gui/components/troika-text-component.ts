@@ -1,5 +1,6 @@
 import { Text } from 'troika-three-text'
 import { AFRAME } from "../../react/root";
+import { getCaretAtPoint } from "troika-three-text";
 import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
 const THREE: any = (window as any).THREE;
 
@@ -107,9 +108,27 @@ export default function () {
             group.add(textMesh);
             // textEntity.setObject3D('mesh', textMesh)
             // Wait for the text mesh to be ready and then add its underlying Three.js object
-            textMesh.sync(() => {
+
+            textMesh.sync((text: { textRenderInfo: object }) => {
+                if (text) this.setRenderInfo(text.textRenderInfo);
                 this.troikaTextEntity.setObject3D('mesh', group);
+
             });
+        },
+        setRenderInfo: function (renderInfo) {
+            this.renderInfo = renderInfo;
+        },
+        getFontSize: function () {
+            if (this.renderInfo) {
+                this.renderInfo?.parameters?.fontSize;
+            }
+            return null;
+        },
+        getCaretPositions: function () {
+            if (this.renderInfo) {
+                this.renderInfo?.caretPositions || null;
+            }
+            return null;
         },
 
         /**
