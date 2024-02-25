@@ -662,6 +662,7 @@ declare namespace JSX {
         };
         'a-text-input': {
             value?: string;
+            'font-size'?: string | number;
         };
         'a-slider': {
             // Mappings for gui-slider specific properties

@@ -3,15 +3,27 @@ import { AFRAME } from "../../react/root";
 export default function () {
     AFRAME.registerComponent('text-field', {
         schema: {
-            value: { type: 'string', default: '' } // ID of the element to display the text
+            value: { type: 'string', default: '' }, // ID of the element to display the text
+            fontSize: { type: 'number', default: 0 },
+            width: { type: 'number', default: 1 },
+            height: { type: 'number', default: .2 },
         },
-
+        update: function (oldData: any) {
+            let me = this;
+            if (oldData?.fontSize || this.data.fontSize) {
+                me.baseInteractive.setAttribute('font-size', this.data.fontSize);
+            }
+            if (oldData?.width || this.data.width) {
+                me.baseInteractive.setAttribute('width', this.data.width);
+            }
+            if (oldData?.height || this.data.height) {
+                me.baseInteractive.setAttribute('height', this.data.height);
+            }
+        },
         init: function () {
             let me = this;
             // Create the hidden input field
             let baseInteractive = document.createElement('a-base-interactive');
-            baseInteractive.setAttribute('width', '1')
-            baseInteractive.setAttribute('height', '.2')
             me.baseInteractive = baseInteractive;
             me.el.appendChild(baseInteractive);
             me.input = document.createElement('input');
@@ -50,6 +62,9 @@ export default function () {
         },
         mappings: {
             'value': 'text-field.value',
+            'font-size': 'text-field.fontSize',
+            'width': 'text-field.width',
+            'height': 'text-field.height',
         }
     });
 }
