@@ -107,10 +107,9 @@ export default function () {
             var group = new THREE.Group();
             group.add(textMesh);
             // textEntity.setObject3D('mesh', textMesh)
-            // Wait for the text mesh to be ready and then add its underlying Three.js object
 
-            textMesh.sync((text: { textRenderInfo: object }) => {
-                if (text) this.setRenderInfo(text.textRenderInfo);
+            textMesh.sync(() => {
+                if (textMesh?.textRenderInfo) this.setRenderInfo(textMesh.textRenderInfo);
                 this.troikaTextEntity.setObject3D('mesh', group);
 
             });
