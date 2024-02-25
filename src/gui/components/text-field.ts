@@ -28,7 +28,7 @@ export default function () {
             me.input.addEventListener('change', (evt) => {
                 if (baseInteractive) {
                     // For text entity in A-Frame, use 'text' component's 'value' property
-                    baseInteractive.setAttribute('title', me.input.value);
+                    baseInteractive.setAttribute('value', me.input.value);
                     me.el.emit('change', { value: me.input.value });
                 }
             });
