@@ -10,6 +10,8 @@ export default function () {
             let me = this;
             // Create the hidden input field
             let baseInteractive = document.createElement('a-base-interactive');
+            baseInteractive.setAttribute('width', '1')
+            baseInteractive.setAttribute('height', '.2')
             me.baseInteractive = baseInteractive;
             me.el.appendChild(baseInteractive);
             me.input = document.createElement('input');
@@ -25,7 +27,7 @@ export default function () {
             });
 
             // Synchronize text input with the target entity
-            me.input.addEventListener('change', (evt) => {
+            me.input.addEventListener('input', (evt) => {
                 if (baseInteractive) {
                     // For text entity in A-Frame, use 'text' component's 'value' property
                     baseInteractive.setAttribute('value', me.input.value);
