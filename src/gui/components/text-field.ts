@@ -30,7 +30,9 @@ export default function () {
             me.input.setAttribute('type', 'text');
             me.input.style.position = 'fixed ';
             me.input.style.left = '-9999px'; // Place it outside of the viewport
-
+            baseInteractive.addEventListener('textsizeobtained', (evt) => { 
+                console.log(evt);
+            })
             document.body.appendChild(me.input);
 
             // Handle clicks on this entity to focus the hidden input

@@ -4,6 +4,7 @@ import { GetBackgroundColor } from "../../react/systems/ui";
 import { key_grey, key_grey_dark, key_grey_light, key_offwhite, key_orange, key_white } from "../vars";
 
 export default function () {
+    const THREE: any = (window as any).THREE;
     AFRAME.registerComponent('base-interactive', {
         schema: {
             on: { default: 'click' },
@@ -206,10 +207,11 @@ export default function () {
 
                 this.setText(this.data.value);
 
-            } 
+            }
             me.updateElementSize(me, me.el);
         },
         setText: function (newText) {
+            let me = this;
             let data = this.data;
             var textEntityX = 0;
             switch (data.interactiveType) {
@@ -235,9 +237,27 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
             textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
-
+            textEntity.addEventListener('textfontset', () => {
+                me.getSizeOfTroikaText();
+            });
             //        textEntity.setAttribute('troika-text-material', `shader: flat;`);
             this.el.appendChild(textEntity);
+        },
+        getSizeOfTroikaText: function () {
+            // Use the object3D to access the mesh and its geometry
+            const textMesh = this.el.getObject3D('mesh');
+
+            // Ensure the mesh and its geometry are available
+            if (textMesh && textMesh.geometry) {
+                textMesh.geometry.computeBoundingBox(); // Necessary to update the bounding box
+                const size = new THREE.Vector3();
+                textMesh.geometry.boundingBox.getSize(size);
+
+                console.log('Size of troika-text:', size);
+
+                // If you need to use the size outside of this function, you can emit an event with the size
+                this.el.emit('textsizeobtained', { size: size });
+            }
         }
     });
 
