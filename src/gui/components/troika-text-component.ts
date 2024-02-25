@@ -126,7 +126,7 @@ export default function () {
                 this.textCursor = document.createElement('a-plane');
                 this.textCursor.setAttribute('material', 'color', `#ffffff`);
                 this.textCursor.setAttribute('position', '0 0 0.02');
-                this.textCursor.setAttribute('scale', '.02 .15 1');
+                this.textCursor.setAttribute('scale', '.01 .1 1');
                 this.textCursor.setAttribute('rotation', '0 0 0');
                 this.el.appendChild(this.textCursor);
             }
@@ -142,9 +142,7 @@ export default function () {
                         caretPositions[(caretPositions.length - 3) + 2]
                     let y2 = caretPositions[(this.caretIndex * 4) + 3] ??
                         caretPositions[(caretPositions.length - 3) + 3]
-
                     this.textCursor.setAttribute('position', `${x || 0} ${y || 0} 0.02`);
-                    this.textCursor.setAttribute('scale', `${(y2 - y) * .1} .15 1`);
                 }
             }
         },
