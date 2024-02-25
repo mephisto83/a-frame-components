@@ -49,7 +49,6 @@ export default function () {
             me.width = me.data.width;
             me.height = me.data.height;
             baseInteractive.addEventListener('text-size-change', (evt: any) => {
-                console.log(evt);
                 let { detail } = evt;
                 if (detail) {
                     let { value } = detail;
@@ -84,7 +83,7 @@ export default function () {
             // Function to log the cursor position
             const logCursorPosition = () => {
                 // Assuming inputElement is an HTMLInputElement
-                console.log(me.input.selectionStart);
+                
                 me.baseInteractive.setAttribute('cursor-position', me.input.selectionStart);
             };
 
@@ -122,13 +121,4 @@ export default function () {
             'height': 'text-field.height',
         }
     });
-    function getCursorPosition(inputElement: HTMLInputElement): number | null {
-        // Check if the selectionStart property is supported
-        if (typeof inputElement.selectionStart === "number") {
-            return inputElement.selectionStart;
-        } else {
-            console.error("The browser does not support selectionStart");
-            return null; // Return null if selectionStart is not supported
-        }
-    }
 }

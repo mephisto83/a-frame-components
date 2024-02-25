@@ -215,8 +215,6 @@ export default function () {
             }
 
             if (this.textEntity) {
-                console.log("has textEntity: " + this.textEntity);
-
                 var oldEntity = this.textEntity;
                 let boundingBox = oldEntity?.components?.["troika-text"]?.troikaTextEntity?.object3D?.children[0]?.children[0]?.geometry?.boundingBox;
                 if (boundingBox) {
@@ -273,8 +271,6 @@ export default function () {
                 textMesh.geometry.computeBoundingBox(); // Necessary to update the bounding box
                 const size = new THREE.Vector3();
                 textMesh.geometry.boundingBox.getSize(size);
-
-                console.log('Size of troika-text:', size);
 
                 // If you need to use the size outside of this function, you can emit an event with the size
                 this.el.emit('textsizeobtained', { size: size });
