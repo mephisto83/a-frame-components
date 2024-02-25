@@ -58,6 +58,7 @@ export default function () {
           this.geometry = new THREE.ShapeGeometry(this.drawShape());
           this.material = new THREE.MeshStandardMaterial({ color: new THREE.Color(this.data.color) });
           this.rounded = new THREE.Mesh(this.geometry, this.material);
+          this.el.setObject3D('mesh', this.rounded);
           updatedop = true;
         }
       }
