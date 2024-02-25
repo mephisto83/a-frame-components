@@ -1,4 +1,5 @@
 import { AFRAME } from "../../react/root";
+import mixin from "./mixin";
 
 export default function () {
     AFRAME.registerComponent('text-field', {
@@ -7,6 +8,13 @@ export default function () {
             fontSize: { type: 'number', default: 0 },
             width: { type: 'number', default: 1 },
             height: { type: 'number', default: .2 },
+        },
+        ...mixin,
+        getWidth: function () {
+            return parseFloat(`${this.data.width}`);
+        },
+        getHeight: function () {
+            return parseFloat(`${this.data.height}`);
         },
         update: function (oldData: any) {
             let me = this;
