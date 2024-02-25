@@ -18,15 +18,19 @@ export default function () {
         },
         update: function (oldData: any) {
             let me = this;
+            let update = false;
             if (oldData?.fontSize !== this.data.fontSize) {
                 me.baseInteractive.setAttribute('font-size', this.data.fontSize);
             }
             if (oldData?.width !== this.data.width) {
                 me.baseInteractive.setAttribute('width', this.data.width);
+                update = true;
             }
             if (oldData?.height !== this.data.height) {
                 me.baseInteractive.setAttribute('height', this.data.height);
+                update = true;
             }
+            me.updateElementSize(me, me.el);
         },
         init: function () {
             let me = this;
