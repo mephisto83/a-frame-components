@@ -26,10 +26,11 @@ import container from "./container";
 import radioComponent from "./radio";
 import dualArcs from "./dual-arcs";
 import skeletonBody from "./skeleton-body";
-
+import textField from './text-field'
 export default function () {
     dualArcs();
     container();
+    textField();
     skeletonBody();
     transformer();
     radioComponent();
