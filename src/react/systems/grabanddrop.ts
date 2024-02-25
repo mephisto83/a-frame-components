@@ -1,8 +1,7 @@
 /* globals AFRAME */
 import ghost_component from "../../gui/components/ghost";
-import { PAINTER_CONSTANTS } from "../constants";
 import { AFRAME } from "../root";
-import { hexToHsv, hsb2rgb, raiseCustomEvent, setConsoleText, uvToColorHex } from "../util";
+import { raiseCustomEvent } from "../util";
 const THREE: any = (window as any).THREE;
 export const GrabAndDropEvents = {
     GRAB_START: "grab-start",
