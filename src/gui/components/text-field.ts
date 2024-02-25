@@ -1,7 +1,7 @@
 import { AFRAME } from "../../react/root";
 
 export default function () {
-    AFRAME.registerComponent('a-text-field', {
+    AFRAME.registerComponent('text-field', {
         schema: {
             value: { type: 'string', default: '' } // ID of the element to display the text
         },
@@ -42,4 +42,12 @@ export default function () {
         }
     });
 
+    AFRAME.registerPrimitive('a-text-input', {
+        defaultComponents: {
+            'text-field': {},
+        },
+        mappings: {
+            'value': 'text-field.value',
+        }
+    });
 }
