@@ -255,6 +255,7 @@ export default function () {
                                                 `);
             textEntity.setAttribute('troika-text', `value`, `${newText}`);
             textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
+            textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', 'cursor-position', this.data.cursorPosition);
             textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
 

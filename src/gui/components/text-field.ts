@@ -36,11 +36,11 @@ export default function () {
             // Create the hidden input field
             let minimumHeight = this.data.height;
             this.paddingLeft = .01;
-            let baseInteractive = document.createElement('a-base-interactive');
+            let baseInteractive: any = document.createElement('a-base-interactive');
             me.baseInteractive = baseInteractive;
             me.baseInteractive.setAttribute('padding-left', this.paddingLeft)
             me.baseInteractive.setAttribute('interactive-type', 'text');
-            me.baseInteractive.setAttribute('beingEdited', 'true');
+            me.baseInteractive.setAttribute('being-edited', true);
             me.el.appendChild(baseInteractive);
             me.input = document.createElement('input');
             me.input.setAttribute('type', 'text');
