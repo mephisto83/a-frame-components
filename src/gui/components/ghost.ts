@@ -46,9 +46,9 @@ export default function () {
                 // let skin = 'assets/images/selection.png';
                 // imageCube.setAttribute('src', `url(${skin})`)
                 // imageCube.setAttribute('size', Math.min(size.x, size.y, size.z));
-                imageCube.setAttribute('width', size.x)
-                imageCube.setAttribute('height', size.y)
-                imageCube.setAttribute('depth', size.z)
+                imageCube.setAttribute('width', 1)
+                imageCube.setAttribute('height', 1)
+                imageCube.setAttribute('depth', 1)
                 imageCube.setAttribute('color', 'blue');
                 let entity: any = document.createElement('a-entity');
                 entity.appendChild(imageCube);
