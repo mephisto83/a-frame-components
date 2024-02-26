@@ -49,7 +49,11 @@ export default function () {
             buttonContainer.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${GetColor(1)}`);
             buttonContainer.setAttribute('rotation', '0 0 0');
             buttonContainer.setAttribute('panel-color', GetColor(4))
-            buttonContainer.setAttribute('grabbanddroppable', JSON.stringify({ ghost: 'a-catalog-ghost', category: 'image-catalog', data: { value, id, text, url } }));
+            buttonContainer.setAttribute('grabbanddroppable', JSON.stringify({
+                ghost: 'a-catalog-ghost',
+                category: 'image-catalog',
+                data: { value, id, text, url }
+            }));
             buttonContainer.setAttribute('panel-rounded', "0.1");
             buttonContainer.setAttribute('gap', '0.01')
             buttonContainer.setAttribute('base-depth', '0.01')

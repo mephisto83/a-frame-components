@@ -18,7 +18,7 @@ export default function () {
                 if (me?.imageCube?.parentNode) {
                     me.imageCube.parentNode.removeChild(me.imageCube)
                 }
-                let imageCube: any = document.createElement('a-image-cube');
+                let imageCube: any = document.createElement('a-box');
                 imageCube.setAttribute('gui-interactable', {})
                 imageCube.addEventListener('raycaster-intersected', function (event) {
                     let device = setInputDevice(event)
@@ -43,9 +43,13 @@ export default function () {
                     }
                 });
 
-                let skin = 'assets/images/selection.png';
-                imageCube.setAttribute('src', `url(${skin})`)
-                imageCube.setAttribute('size', Math.min(size.x, size.y, size.z));
+                // let skin = 'assets/images/selection.png';
+                // imageCube.setAttribute('src', `url(${skin})`)
+                // imageCube.setAttribute('size', Math.min(size.x, size.y, size.z));
+                imageCube.setAttribute('width', size.x)
+                imageCube.setAttribute('height', size.y)
+                imageCube.setAttribute('depth', size.z)
+                imageCube.setAttribute('color', 'blue');
                 let entity: any = document.createElement('a-entity');
                 entity.appendChild(imageCube);
                 me.el.appendChild(entity);
