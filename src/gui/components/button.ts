@@ -163,7 +163,6 @@ export default function () {
                     console.log(event);
                     if (!me.canRaise) {
                         me.canRaise = device.id;
-                        console.log(`grabbanddroppable element mouse enter ${device.id}`);
                     }
                     event.preventDefault();
                 });
@@ -171,7 +170,6 @@ export default function () {
                     let device = setInputDevice(event);
                     if (me.canRaise === device.id) {
                         me.canRaise = false;
-                        console.log(`grabbanddroppable element mouse leave ${device.id}`);
                     }
                     event.preventDefault();
                 });
@@ -337,15 +335,12 @@ export default function () {
                                                     `);
 
             if (this.textEntity) {
-                console.log("has textEntity: " + this.textEntity);
-
                 var oldEntity = this.textEntity;
                 oldEntity.parentNode.removeChild(oldEntity);
 
                 this.setText(this.data.value);
 
             } else {
-                console.log("no textEntity!");
             }
             this.updateElementSize(this, this.el);
         },
@@ -353,10 +348,8 @@ export default function () {
             // console.log("in setActiveState function, new state: " + activeState);
             this.data.toggleState = activeState;
             if (!activeState) {
-                console.log('not active, about to set background color');
                 this.buttonEntity.setAttribute('material', 'color', this.data.backgroundColor);
             } else {
-                console.log('active, about to set active color');
                 this.buttonEntity.setAttribute('material', 'color', this.data.activeColor);
             }
         },
