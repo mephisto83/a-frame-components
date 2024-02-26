@@ -160,6 +160,9 @@ export default function () {
     });
 }
 function distanceBetweenPointsFast(pointA: Vector, pointB: Vector): number {
+    if (!pointB || !pointA) {
+        return 100000000;
+    }
     const dx = pointA.x - pointB.x;
     const dy = pointA.y - pointB.y;
     const dz = pointA.z - pointB.z;
