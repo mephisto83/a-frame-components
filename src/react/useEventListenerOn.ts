@@ -1,5 +1,6 @@
 import { useEffect, useState, useRef } from 'react';
 import { generateUniqueId } from '../util';
+import { raiseCustomEvent } from './util';
 
 export default function useEventListenerOn(
     evtName: string,
@@ -84,6 +85,11 @@ export default function useEventListenerOn(
     }, [initSelector])
 
     return { [`frame-id`]: selectedId }
+}
+
+
+export function raiseOn(props: { [`frame-id`]: string }, eventName: string, details: any) {
+    raiseCustomEvent(eventName, details, document.querySelector(`[frame-id="${props['frame-id']}"]`));
 }
 
 export function useBindEventOn(

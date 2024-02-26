@@ -14,6 +14,7 @@ declare module 'a-frame-components' {
         getFunction: (event: Event) => any,
         initSelector?: string
     ): { [`frame-id`]: string }
+    export function raiseOn(props: { [`frame-id`]: string }, eventName: string, details: any): void;
 }
 declare namespace JSX {
     interface IntrinsicElements {

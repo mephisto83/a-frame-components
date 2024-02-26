@@ -1,8 +1,8 @@
 import painter from "./react";
 import useEventListenerOn from "./react/useEventListenerOn";
-import { useBindEventOn } from './react/useEventListenerOn';
+import { raiseOn, useBindEventOn } from './react/useEventListenerOn';
 
-export { useBindEventOn, useEventListenerOn };
+export { raiseOn, useBindEventOn, useEventListenerOn };
 export async function load() {
     return painter();
 }
