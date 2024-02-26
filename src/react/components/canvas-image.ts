@@ -1,3 +1,4 @@
+import mixin from '../../gui/components/mixin';
 import { PAINTER_CONSTANTS } from '../constants';
 import { AFRAME } from '../systems/brush';
 import { GrabAndDropEvents } from '../systems/grabanddrop';
@@ -11,6 +12,7 @@ export default function () {
             url: { type: 'string' },
             height: { type: 'number', default: 1 } // Provide a default value for height
         },
+        ...mixin,
         init: function () {
             let me = this;
             let plane: any = document.createElement('a-plane');
@@ -18,7 +20,9 @@ export default function () {
             plane.setAttribute('width', "1")
             plane.setAttribute('position', "0 0 -1")
             plane.setAttribute('grabanddropzone', {});
+            me.plane = plane;
             me.el.appendChild(plane);
+            this.updateElementSize(this, this.el)
             this.loadImage();
         },
         update: function (oldData) {
@@ -26,6 +30,12 @@ export default function () {
             if (oldData?.url && oldData.url !== this.data.url) {
                 this.loadImage();
             }
+        },
+        getWidth: function () {
+            return parseFloat(`${this.data.height || 0}`);
+        },
+        getHeight: function () {
+            return parseFloat(`${this.data.height || 0}`);
         },
         loadImage: function () {
             let me = this;
@@ -43,6 +53,7 @@ export default function () {
                 let material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
                 let height = this.data.height;
                 let width = this.data.height * aspectRatio;
+                this.width = width;
                 let mesh = new THREE.Mesh(
                     new THREE.PlaneGeometry(width, height),
                     material
@@ -62,6 +73,7 @@ export default function () {
                 await drawTextureOnCanvas(canvas, canvas.getContext('2d'), me.data?.url);
                 texture.needsUpdate = true;
                 raiseCustomEvent(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url });
+                me.updateElementSize(this, this.el)
             };
             image.src = this.data.url;
         }
