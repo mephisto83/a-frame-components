@@ -8,16 +8,11 @@ export default function () {
             options: { type: 'string' }
         },
         init: function () {
-            let skins = [
-                'assets/images/black_white_ghost.png',
-                'assets/images/green_white_ghost.png',
-                'assets/images/purple_ghost.png',
-            ];
-            let skin = skins[Math.floor(Math.random() * skins.length)];
-
-            let imageCube: any = document.createElement('a-image-cube');
-            imageCube.setAttribute('src', `url(${skin})`)
-            imageCube.setAttribute('size', .2)
+            let imageCube: any = document.createElement('a-box');
+            imageCube.setAttribute('width', .2)
+            imageCube.setAttribute('height', .2)
+            imageCube.setAttribute('depth', .2)
+            imageCube.setAttribute('color', 'blue');
             this.el.appendChild(imageCube);
         }
     });
