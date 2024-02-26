@@ -169,13 +169,6 @@ function distanceBetweenPointsFast(pointA: Vector, pointB: Vector): number {
 
     return (dx * dx + dy * dy + dz * dz);
 }
-function distanceBetweenPoints(pointA: Vector, pointB: Vector): number {
-    const dx = pointA.x - pointB.x;
-    const dy = pointA.y - pointB.y;
-    const dz = pointA.z - pointB.z;
-
-    return Math.sqrt(dx * dx + dy * dy + dz * dz);
-}
 
 export function lerp3(v1: Vector, v2: Vector, t: number): Vector {
     return {
