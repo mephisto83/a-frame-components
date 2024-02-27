@@ -127,6 +127,13 @@ export default function () {
                     me.textEntity.setAttribute('color', `${data.hoverTextColor}`);
             });
         },
+        positionRadioButton: function ({ guiItem }) {
+            if (this.radioBox) {
+                var radioBoxX = -guiItem.width * 0.5 + guiItem.height * 0.5;
+                let radioBox = this.radioBox;
+                radioBox.setAttribute('position', `${radioBoxX} 0 0`);
+            }
+        },
         setRadioButton: function ({ el, data, guiItem }) {
             var radioBoxX = -guiItem.width * 0.5 + guiItem.height * 0.5;
             var radioBox: any = document.createElement("a-cylinder");
@@ -152,7 +159,7 @@ export default function () {
             radioCenter.setAttribute('material', `color:${data.handleColor}; shader: flat;`);
             radioBox.appendChild(radioCenter);
 
-
+            this.radioBox = radioBox;
             el.addEventListener('mouseenter', function (evt) {
                 radioborder.removeAttribute('animation__leave');
                 radioborder.setAttribute('animation__enter', `property: material.color; to:${data.hoverColor}; dur:200;`);
@@ -224,6 +231,7 @@ export default function () {
                 // oldEntity.parentNode.removeChild(oldEntity);
                 this.setText(this.data.value);
             }
+            this.positionRadioButton();
             me.updateElementSize(me, me.el);
         },
         setText: function (newText) {
@@ -254,7 +262,6 @@ export default function () {
                                                 depthOffset:1;
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
-                textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
                 if (me.data.resizeOnText) {
                     textEntity.addEventListener('bounding-box-update', (evt: any) => {
                         let { detail } = evt;
@@ -270,6 +277,7 @@ export default function () {
                 }
                 this.el.appendChild(textEntity);
             }
+            textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
             textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', 'cursorPosition', this.data.cursorPosition);
