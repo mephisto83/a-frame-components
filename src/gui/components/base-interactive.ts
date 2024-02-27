@@ -215,12 +215,8 @@ export default function () {
             let me = this;
             var data = this.data;
             this.guiItem = this.el.getAttribute('gui-item');
-            if (this.guiItem.width !== oldData.width) {
-                this.background.setAttribute('width', this.guiItem.width)
-            }
-            if (this.guiItem.height !== oldData.height) {
-                this.background.setAttribute('height', this.guiItem.height)
-            }
+            this.background.setAttribute('width', this.guiItem.width)
+            this.background.setAttribute('height', this.guiItem.height)
             this.renderCheck(data)
             if (this.data.show !== oldData.show) {
                 this.el.setAttribute('visible', this.data.show)
@@ -276,7 +272,7 @@ export default function () {
                                     });
                                 }
                                 me.el.emit('text-size-change', { value: box })
-                               
+
                             }
                         }
                         evt.preventDefault();
