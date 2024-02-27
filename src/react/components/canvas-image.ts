@@ -27,7 +27,8 @@ export default function () {
         },
         update: function (oldData) {
             // Only update if url has changed
-            if (oldData?.url && oldData.url !== this.data.url) {
+            if ((oldData?.url && oldData.url !== this.data.url) ||
+                this.data.height !== oldData.height) {
                 this.loadImage();
             }
         },
