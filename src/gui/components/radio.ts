@@ -57,6 +57,7 @@ export default function () {
                             }
                             //`width="1" interactive-type="button" height="0.2" value="${text}" margin="0 0 0.05 0" font-size=".07"`
                         )();
+                        button.setAttribute('resize-on-text', true);
                         button.addEventListener('click', (evt) => {
                             if (me.data.value !== option.value) {
                                 me?.el?.setAttribute('value', option.value)
