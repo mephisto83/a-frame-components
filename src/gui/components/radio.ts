@@ -80,7 +80,7 @@ export default function () {
                                     let { max, min } = value;
                                     if (max && min) {
                                         let width = (optionHeight) + Math.max(Math.abs(max.x - min.x), (option as any).width || .3);
-                                        me.el.setAttribute('width', width);
+                                        button.setAttribute('width', width);
                                     }
                                 }
                             }
