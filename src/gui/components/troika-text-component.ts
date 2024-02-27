@@ -102,7 +102,7 @@ export default function () {
                 this.el.appendChild(textEntity)
             }
             this.troikaTextEntity = textEntity
-
+            let me = this;
             // Create Text mesh and add it to the entity as the 'mesh' object
             var textMesh = this.troikaTextMesh = new Text()
             // Create a THREE.Group and add the Text mesh to it
@@ -117,6 +117,9 @@ export default function () {
                     if (this.data.beingEdited) {
                         this.placeCursor()
                     }
+                }
+                if (textMesh?.geometry?.boundingBox) {
+                    me.el.emit('bounding-box-update', { box: textMesh?.geometry?.boundingBox })
                 }
                 this.troikaTextEntity.setObject3D('mesh', group);
             });
@@ -167,6 +170,7 @@ export default function () {
          * Generally modifies the entity based on the data.
          */
         update: function () {
+            let me = this;
             var data = this.data
             var mesh = this.troikaTextMesh
             var entity = this.troikaTextEntity
@@ -211,7 +215,11 @@ export default function () {
             mesh.whiteSpace = data.whiteSpace
             mesh.maxWidth = data.maxWidth
             mesh._needsSync = true;
-            mesh.sync()
+            mesh.sync(() => {
+                if (mesh?.geometry?.boundingBox) {
+                    me.el.emit('bounding-box-update', { box: mesh?.geometry?.boundingBox })
+                }
+            });
 
             this.positionCaret();
             // Pass material config down to child entity

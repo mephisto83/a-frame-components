@@ -19,6 +19,7 @@ export default function () {
             checked: { type: 'boolean', default: false },
             cursorPosition: { type: 'number', default: 0 },
             title: { type: 'string', default: '' },
+            resizeOnText: { type: 'boolean', default: false },
             radiosizecoef: { type: 'number', default: 1 },
             fontSize: { type: 'number', default: 0.2 },
             fontFamily: { type: 'string', default: '' },
@@ -254,27 +255,25 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
                 textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
-
+                if (me.data.resizeOnText) {
+                    textEntity.addEventListener('bounding-box-update', (evt: any) => {
+                        let { detail } = evt;
+                        if (detail) {
+                            let { box } = detail;
+                            if (box) {
+                                me.el.emit('text-size-change', { value: box })
+                            }
+                        }
+                        evt.preventDefault();
+                        evt.stopPropagation();
+                    })
+                }
                 this.el.appendChild(textEntity);
             }
             textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', 'cursorPosition', this.data.cursorPosition);
             textEntity.setAttribute('troika-text', `value`, `${newText}`);
-        },
-        getSizeOfTroikaText: function () {
-            // Use the object3D to access the mesh and its geometry
-            const textMesh = this.textEntity.getObject3D('mesh');
-
-            // Ensure the mesh and its geometry are available
-            if (textMesh && textMesh.geometry) {
-                textMesh.geometry.computeBoundingBox(); // Necessary to update the bounding box
-                const size = new THREE.Vector3();
-                textMesh.geometry.boundingBox.getSize(size);
-
-                // If you need to use the size outside of this function, you can emit an event with the size
-                this.el.emit('textsizeobtained', { size: size });
-            }
         }
     });
 
@@ -300,6 +299,7 @@ export default function () {
             'title': 'base-interactive.title',
             'active': 'base-interactive.active',
             'being-edited': 'base-interactive.beingEdited',
+            'resize-on-text': 'base-interactive.resizeOnText',
             'checked': 'base-interactive.checked',
             'cursor-position': 'base-interactive.cursorPosition',
             'font-color': 'base-interactive.fontColor',

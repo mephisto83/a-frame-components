@@ -71,6 +71,20 @@ export default function () {
                             });
                             evt.preventDefault();
                         });
+                        button.addEventListener('text-size-change', (evt: any) => {
+                            let optionHeight = me.data.optionHeight || .2;
+                            let { detail } = evt;
+                            if (detail) {
+                                let { value } = detail;
+                                if (value) {
+                                    let { max, min } = value;
+                                    if (max && min) {
+                                        let width = (optionHeight) + Math.max(Math.abs(max.x - min.x), (option as any).width || .3);
+                                        me.el.setAttribute('width', width);
+                                    }
+                                }
+                            }
+                        })
                         me.optionValues = {
                             ...me.optionValues,
                             [option.value]: button
