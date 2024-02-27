@@ -266,12 +266,12 @@ export default function () {
                         if (detail) {
                             let { box } = detail;
                             if (box) {
-                                me.el.emit('text-size-change', { value: box })
                                 let { max, min } = box;
                                 if (max && min) {
                                     let width = (this.defaultSize.height) + Math.max(Math.abs(max.x - min.x), (this.defaultSize).width || 0);
                                     me.el.setAttribute('width', width);
                                 }
+                                me.el.emit('text-size-change', { value: box })
                             }
                         }
                         evt.preventDefault();
