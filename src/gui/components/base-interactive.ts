@@ -44,6 +44,10 @@ export default function () {
             this.guiItem = guiItem;
             var guiInteractable = el.getAttribute("gui-interactable");
             this.guiInteractable = guiInteractable;
+            this.defaultSize = {
+                height: this.data.height,
+                width: this.data.width
+            }
             this.renderCheck = this.renderCheck.bind(this);
             //fallback for old font-sizing
             if (data.fontSize > 20) { // 150/750
@@ -263,6 +267,11 @@ export default function () {
                             let { box } = detail;
                             if (box) {
                                 me.el.emit('text-size-change', { value: box })
+                                let { max, min } = box;
+                                if (max && min) {
+                                    let width = (this.defaultSize.height) + Math.max(Math.abs(max.x - min.x), (this.defaultSize).width || 0);
+                                    me.el.setAttribute('width', width);
+                                }
                             }
                         }
                         evt.preventDefault();
