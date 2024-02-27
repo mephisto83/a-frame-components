@@ -228,6 +228,10 @@ export default function () {
             this.positionRadioButton({ guiItem: this.guiItem });
             me.updateElementSize(me, me.el);
         },
+        updateSize: function (guiItem) {
+            this.background.setAttribute('width', guiItem.width)
+            this.positionRadioButton({ guiItem: guiItem });
+        },
         setText: function (newText) {
             let me = this;
             let data = this.data;
@@ -270,6 +274,7 @@ export default function () {
                                         width: width,
                                         height: me.guiItem.height,
                                     });
+                                    me.updateSize({ width, height: me.guiItem.height });
                                 }
                                 me.el.emit('text-size-change', { value: box })
 
