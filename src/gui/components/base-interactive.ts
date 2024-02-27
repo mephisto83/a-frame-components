@@ -231,7 +231,7 @@ export default function () {
                 // oldEntity.parentNode.removeChild(oldEntity);
                 this.setText(this.data.value);
             }
-            this.positionRadioButton(({ guiItem: this.guiItem });
+            this.positionRadioButton({ guiItem: this.guiItem });
             me.updateElementSize(me, me.el);
         },
         setText: function (newText) {
