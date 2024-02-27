@@ -45,8 +45,8 @@ export default function () {
             var guiInteractable = el.getAttribute("gui-interactable");
             this.guiInteractable = guiInteractable;
             this.defaultSize = {
-                height: this.data.height,
-                width: this.data.width
+                height: this.guiItem.height,
+                width: this.guiItem.width
             }
             this.renderCheck = this.renderCheck.bind(this);
             //fallback for old font-sizing
