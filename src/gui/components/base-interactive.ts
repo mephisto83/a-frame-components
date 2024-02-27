@@ -230,6 +230,7 @@ export default function () {
         },
         updateSize: function (guiItem) {
             this.background.setAttribute('width', guiItem.width)
+            this.background.setAttribute('height', guiItem.height)
             this.positionRadioButton({ guiItem: guiItem });
             this.setText(this.data.value);
         },
