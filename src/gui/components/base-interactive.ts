@@ -270,8 +270,13 @@ export default function () {
                                 if (max && min) {
                                     let width = (this.defaultSize.height) + Math.max(Math.abs(max.x - min.x), (this.defaultSize).width || 0);
                                     me.el.setAttribute('width', width);
+                                    me.el.emit('size-update', {
+                                        width: width,
+                                        height: me.guiItem.height,
+                                    });
                                 }
                                 me.el.emit('text-size-change', { value: box })
+                               
                             }
                         }
                         evt.preventDefault();
