@@ -223,12 +223,6 @@ export default function () {
             }
 
             if (this.textEntity) {
-                var oldEntity = this.textEntity;
-                let boundingBox = oldEntity?.components?.["troika-text"]?.troikaTextEntity?.object3D?.children[0]?.children[0]?.geometry?.boundingBox;
-                if (boundingBox) {
-                    me.el.emit('text-size-change', { value: boundingBox })
-                }
-                // oldEntity.parentNode.removeChild(oldEntity);
                 this.setText(this.data.value);
             }
             this.positionRadioButton({ guiItem: this.guiItem });

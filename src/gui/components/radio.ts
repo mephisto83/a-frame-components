@@ -84,7 +84,7 @@ export default function () {
                                     if (max && min) {
                                         let width = (me.data.paddingRight || 0) + (optionHeight) + Math.max(Math.abs(max.x - min.x), (option as any).width || .3);
                                         button.setAttribute('width', width);
-                                        raiseCustomEvent('size-update', {}, button)
+                                        raiseCustomEvent('size-update', {}, buttonContainer)
                                     }
                                 }
                             }
