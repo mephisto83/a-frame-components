@@ -1,11 +1,13 @@
 import { AFRAME } from "../../react/root";
+import { raiseCustomEvent } from "../../react/util";
 import { createContainer, createElement, createInteractiveButton } from "../../util";
 import mixin from "./mixin";
 export default function () {
     AFRAME.registerComponent('radio-component', {
         schema: {
             options: { type: 'string', default: '' },
-            value: { type: 'string', default: '' }
+            value: { type: 'string', default: '' },
+            paddingRight: { type: 'number', default: .05 }
         },
         init: function () {
             let me = this;
@@ -80,8 +82,9 @@ export default function () {
                                 if (value) {
                                     let { max, min } = value;
                                     if (max && min) {
-                                        let width = (optionHeight) + Math.max(Math.abs(max.x - min.x), (option as any).width || .3);
+                                        let width = (me.data.paddingRight || 0) + (optionHeight) + Math.max(Math.abs(max.x - min.x), (option as any).width || .3);
                                         button.setAttribute('width', width);
+                                        raiseCustomEvent('size-update', {}, button)
                                     }
                                 }
                             }
