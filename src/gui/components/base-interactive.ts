@@ -231,6 +231,7 @@ export default function () {
         updateSize: function (guiItem) {
             this.background.setAttribute('width', guiItem.width)
             this.positionRadioButton({ guiItem: guiItem });
+            this.setText(this.data.value);
         },
         setText: function (newText) {
             let me = this;
