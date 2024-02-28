@@ -51,7 +51,7 @@ export default function () {
         },
         getHeight: function () {
             let me = this;
-            return parseFloat(`${me.button.getAttribute('width')}`);
+            return parseFloat(`${me.button.getAttribute('height')}`);
         },
     });
 
