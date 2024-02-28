@@ -47,11 +47,11 @@ export default function () {
         ...mixin,
         getWidth: function () {
             let me = this;
-            return parseFloat(`${me.button.getWidth()}`);
+            return parseFloat(`${me.button.getAttribute('width')}`);
         },
         getHeight: function () {
             let me = this;
-            return parseFloat(`${me.button.getHeight()}`);
+            return parseFloat(`${me.button.getAttribute('width')}`);
         },
     });
 
