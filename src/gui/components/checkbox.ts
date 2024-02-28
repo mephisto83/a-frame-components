@@ -40,6 +40,9 @@ export default function () {
                 });
                 evt.preventDefault();
             });
+            button.addEventListener('size-update', (evt) => {
+                me.updateElementSize(me, me.el);
+            })
             me.button = button;
             me.el.appendChild(me.button);
             me.updateElementSize(me, me.el);
