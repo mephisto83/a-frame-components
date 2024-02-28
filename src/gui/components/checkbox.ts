@@ -42,6 +42,7 @@ export default function () {
             });
             me.button = button;
             me.el.appendChild(me.button);
+            me.updateElementSize(me, me.el);
         },
         ...mixin,
         getWidth: function () {
