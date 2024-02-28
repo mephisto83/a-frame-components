@@ -21,7 +21,6 @@ export default function () {
             let me = this;
             let button = createElement("a-base-interactive",
                 {
-                    width: .3,
                     height: .2,
                     margin: '0 0 0 0',
                     value: this.data.label,
