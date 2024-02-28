@@ -441,6 +441,11 @@ declare namespace JSX {
             value?: string;
             [propName: string]: any;
         };
+        'a-checkbox': {
+            label?: string;
+            value?: string;
+            [propName: string]: any;
+        };
         'a-gui-cursor': {
             // React-specific props (e.g., key, ref) and common HTML attributes can be included if necessary
             key?: string | number;
