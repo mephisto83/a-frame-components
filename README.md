@@ -153,7 +153,7 @@ export default function SpaceShipScene() {
 ## Components 
 
 - [Gui Menu Container](docs/menu-container.md)
-- [Radio Buttons](docs/radio-component.md)
+- [Radio Buttons](docs/radio.md)
 - [Container](docs/container.md)
 - [Button](docs/gui-button.md)
 - [Base Interactive](docs/base-interactive.md)
