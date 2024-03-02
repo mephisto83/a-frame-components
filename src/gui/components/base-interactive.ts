@@ -240,6 +240,7 @@ export default function () {
             var textEntityX = 0;
             switch (data.interactiveType) {
                 case 'button':
+                    break;
                 case 'text':
                     textEntityX = -this.guiItem.width * 0.5 + this.data.paddingLeft;
                     break;
@@ -247,6 +248,7 @@ export default function () {
                     textEntityX = this.guiItem.height - this.guiItem.width * 0.5;
                     break;
             }
+            let position = `${textEntityX} 0 0.02`;
 
             var textEntity: any = this.textEntity;
             if (!textEntity) {
@@ -297,7 +299,7 @@ export default function () {
                 }
                 this.el.appendChild(textEntity);
             }
-            textEntity.setAttribute('position', `${textEntityX} 0 0.02`);
+            textEntity.setAttribute('position', position);
             textEntity.setAttribute('troika-text', `being-edited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', `beingEdited`, `${this.data.beingEdited}`);
             textEntity.setAttribute('troika-text', 'cursorPosition', this.data.cursorPosition);
