@@ -178,14 +178,14 @@ export default function () {
             el.addEventListener('mouseenter', function (event) {
                 buttonEntity.removeAttribute('animation__leave');
                 if (!(data.toggle)) {
-                    buttonEntity.setAttribute('animation__enter', `property: material.color; from: ${data.backgroundColor}; to:${data.hoverColor}; dur:200;`);
+                    buttonEntity.setAttribute('animation__enter', `property: material.color;  to:${data.hoverColor}; dur:200;`);
                 }
             });
 
             el.addEventListener('mouseleave', function (event) {
                 if (!(data.toggle)) {
                     buttonEntity.removeAttribute('animation__click');
-                    buttonEntity.setAttribute('animation__leave', `property: material.color; from: ${data.hoverColor}; to:${data.backgroundColor}; dur:200; easing: easeOutQuad;`);
+                    buttonEntity.setAttribute('animation__leave', `property: material.color; to:${data.backgroundColor}; dur:200; easing: easeOutQuad;`);
                 }
                 buttonEntity.removeAttribute('animation__enter');
             });
@@ -202,7 +202,7 @@ export default function () {
                     buttonContainer.setAttribute('material', 'color', `${data.borderColor}`);
                     if (!(data.toggle)) {
                         buttonEntity.removeAttribute('animation__click');
-                        buttonEntity.setAttribute('animation__leave', `property: material.color; from: ${data.hoverColor}; to:${data.backgroundColor}; dur:200; easing: easeOutQuad;`);
+                        buttonEntity.setAttribute('animation__leave', `property: material.color; to:${data.backgroundColor}; dur:200; easing: easeOutQuad;`);
                     }
                     buttonEntity.removeAttribute('animation__enter');
                 }
@@ -213,7 +213,7 @@ export default function () {
 
             el.addEventListener(data.on, function (event) {
                 if (!(data.toggle)) { // if not toggling flashing active state
-                    buttonEntity.setAttribute('animation__click', `property: material.color; from: ${data.activeColor}; to:${data.backgroundColor}; dur:400; easing: easeOutQuad;`);
+                    buttonEntity.setAttribute('animation__click', `property: material.color; to:${data.backgroundColor}; dur:400; easing: easeOutQuad;`);
                 } else {
                     var guiButton = el.components['gui-button']
                     // console.log("about to toggle, current state: " + guiButton.data.toggleState);
