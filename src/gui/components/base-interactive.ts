@@ -252,9 +252,18 @@ export default function () {
             if (!textEntity) {
                 textEntity = document.createElement("a-entity");
                 this.textEntity = textEntity;
-                textEntity.setAttribute('troika-text', `align:left; 
-                                                anchor:left; 
-                                                baseline:center;
+                let align = 'left';
+                let anchor = 'left';
+                let baseline = 'center';
+                switch (data.interactiveType) {
+                    case 'button':
+                        align = 'center';
+                        anchor = 'center';
+                        break;
+                }
+                textEntity.setAttribute('troika-text', `align:${align}; 
+                                                anchor:${anchor}; 
+                                                baseline:${baseline};
                                                 letterSpacing:0;
                                                 color:${this.data.fontColor};
                                                 font:${this.data.fontFamily};
