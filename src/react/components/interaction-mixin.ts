@@ -23,6 +23,19 @@ export default {
             }
         }
     },
+    setupRayIntersectionListener: function (entity, intersectedHandler) {
+        let me = this;
+        me.raycasters = me.raycasters || {}
+        me.raycastersIntersecting = false;
+        entity.addEventListener('raycaster-intersected', evt => {
+            evt.detail.el.$id = evt.detail.el.$id || uuidv4();
+            intersectedHandler(true, evt)
+
+        });
+        entity.addEventListener('raycaster-intersected-cleared', evt => {
+            intersectedHandler(false, evt)
+        });
+    },
     setupRayListener: function (entity, raycastKey, handler) {
         let me = this;
         me.raycasters = me.raycasters || {}

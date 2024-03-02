@@ -162,7 +162,7 @@ export default function () {
                 me.mouseIntersecting = false;
             })
             canvas.addEventListener('wheel', (event) => {
-                if (me.raycastersIntersecting || me.mouseIntersecting) {
+                if (me.isHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                     const deltaY = event.deltaY / 400;
                     let maxHeight = (me.itemHeight * (me.options?.length || 0) / me.data.columns);
                     me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
@@ -174,7 +174,7 @@ export default function () {
             });
             canvas.addEventListener('axismove', (event) => {
                 if (event?.detail?.axis) {
-                    if (me.raycastersIntersecting || me.mouseIntersecting) {
+                    if (me.isHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                         const deltaY = event?.detail?.axis / 4;
                         let maxHeight = (me.itemHeight * (me.options?.length || 0) / me.data.columns);
                         me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
@@ -184,6 +184,9 @@ export default function () {
                     }
                 }
             });
+            this.setupRayIntersectionListener(this.el, (over) => {
+                me.isHovering = over;
+            })
             this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions);
             this.updateSubComponents();
             me.loadedFont = true;
