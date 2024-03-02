@@ -332,4 +332,43 @@ export default function () {
             'radiosizecoef': 'base-interactive.radiosizecoef'
         }
     });
+
+    AFRAME.registerPrimitive('a-button', {
+        defaultComponents: {
+            'gui-interactable': {},
+            'menuable': {},
+            'gui-item': { type: 'radio' },
+            'base-interactive': {
+                'interactiveType': 'button'
+            }
+        },
+        mappings: {
+            'onclick': 'gui-interactable.clickAction',
+            'onhover': 'gui-interactable.hoverAction',
+            'key-code': 'gui-interactable.keyCode',
+            'width': 'gui-item.width',
+            'height': 'gui-item.height',
+            'show': 'guid-radio.show',
+            'interactive-type': 'base-interactive.interactiveType',
+            'margin': 'gui-item.margin',
+            'on': 'base-interactive.on',
+            'padding-left': 'base-interactive.paddingLeft',
+            'value': 'base-interactive.value',
+            'title': 'base-interactive.title',
+            'active': 'base-interactive.active',
+            'being-edited': 'base-interactive.beingEdited',
+            'resize-on-text': 'base-interactive.resizeOnText',
+            'checked': 'base-interactive.checked',
+            'cursor-position': 'base-interactive.cursorPosition',
+            'font-color': 'base-interactive.fontColor',
+            'font-size': 'base-interactive.fontSize',
+            'font-family': 'base-interactive.fontFamily',
+            'border-color': 'base-interactive.borderColor',
+            'background-color': 'base-interactive.backgroundColor',
+            'hover-color': 'base-interactive.hoverColor',
+            'active-color': 'base-interactive.activeColor',
+            'handle-color': 'base-interactive.handleColor',
+            'radiosizecoef': 'base-interactive.radiosizecoef'
+        }
+    });
 }
