@@ -92,7 +92,7 @@ export default function () {
             this.slider.setAttribute('width', `${boxHeight}`);
             this.outerBox.setAttribute('width', `${outerBoxWidth - this.sliderWidth - this.sliderHorizontalMargin}`);
             this.outerBox.setAttribute('height', `${boxHeight}`);
-            this.outerBox.setAttribute('position', `${-this.sliderWidth - this.sliderHorizontalMargin} 0 0`);
+            this.outerBox.setAttribute('position', `${-this.sliderWidth + -this.sliderHorizontalMargin} 0 0`);
             this.sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - this.sliderWidth / 2} 0 .1`);
             this.closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`);
             this.updateElementSize(this, this.el);
@@ -125,7 +125,7 @@ export default function () {
             let slider = document.createElement('a-gui-slider');
             slider.setAttribute('percent', `${0}`);
             this.sliderWidth = 0.2;
-            this.sliderHorizontalMargin = .02
+            this.sliderHorizontalMargin = .1
             slider.setAttribute('targetbarsize', this.sliderWidth);
             slider.addEventListener('change', (evt: any) => {
                 let { value } = evt.detail;
