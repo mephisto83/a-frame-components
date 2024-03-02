@@ -90,8 +90,7 @@ export default function () {
             let boxHeight = this.boxHeight;
             let windowHeight = this.windowHeight;
             this.slider.setAttribute('width', `${boxHeight}`);
-            this.outerBox.setAttribute('width', `${outerBoxWidth - .1}`);
-            this.outerBox.setAttribute('position', `.05 0 0`);
+            this.outerBox.setAttribute('width', `${outerBoxWidth}`);
             this.outerBox.setAttribute('height', `${boxHeight}`);
             this.sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - .1} 0 .1`);
             this.closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`);
