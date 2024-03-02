@@ -90,8 +90,9 @@ export default function () {
             let boxHeight = this.boxHeight;
             let windowHeight = this.windowHeight;
             this.slider.setAttribute('width', `${boxHeight}`);
-            this.outerBox.setAttribute('width', `${outerBoxWidth}`);
+            this.outerBox.setAttribute('width', `${outerBoxWidth - this.sliderWidth}`);
             this.outerBox.setAttribute('height', `${boxHeight}`);
+            this.outerBox.setAttribute('position', `${this.sliderWidth} 0 0`);
             this.sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - .1} 0 .1`);
             this.closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`);
             this.updateElementSize(this, this.el);
@@ -123,7 +124,8 @@ export default function () {
 
             let slider = document.createElement('a-gui-slider');
             slider.setAttribute('percent', `${0}`);
-            slider.setAttribute('targetbarsize', `0.2`);
+            this.sliderWidth = 0.2;
+            slider.setAttribute('targetbarsize', this.sliderWidth);
             slider.addEventListener('change', (evt: any) => {
                 let { value } = evt.detail;
                 me.targetScroll = (me.itemHeight * (me.options?.length || 0) / me.data.columns) * value;
