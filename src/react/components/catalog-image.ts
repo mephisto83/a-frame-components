@@ -57,7 +57,7 @@ export default function () {
             buttonContainer.setAttribute('panel-rounded', "0.1");
             buttonContainer.setAttribute('gap', '0.01')
             buttonContainer.setAttribute('base-depth', '0.01')
-            buttonContainer.setAttribute('value', `${text}` || `${value}` || ``)
+            buttonContainer.setAttribute('value', `${text == undefined ? '' : text}` || `${value == undefined ? '' : value}` || ``)
             buttonContainer.setAttribute('font-color', '#ffffff')
             buttonContainer.setAttribute('font-size', '.05')
             buttonContainer.setAttribute('position', `0 0 0.01`);
