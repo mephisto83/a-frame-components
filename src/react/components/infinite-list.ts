@@ -102,10 +102,17 @@ export default function () {
             var system = this.el.sceneEl.systems.ui; // Access by system name
             this.setup();
             this.system = system;
-            let outerBox: any = document.createElement('a-gui-flex-container');
-            outerBox.setAttribute('flex-direction', "column")
-            outerBox.setAttribute('justify-content', "center")
-            outerBox.setAttribute('align-items', "normal")
+            // let outerBox: any = document.createElement('a-gui-flex-container');
+            let outerBox: any = document.createElement('a-rounded');
+            outerBox.setAttribute("gui-interactable", {})
+            // outerBox.setAttribute('width', guiItem.width)
+            // outerBox.setAttribute('height', guiItem.height)
+            // outerBox.setAttribute('radius', Math.min(parseFloat(`${guiItem.width}`), parseFloat(`${guiItem.height}`)) * .1)
+            outerBox.setAttribute('color', GetBackgroundColor());
+
+            // outerBox.setAttribute('flex-direction', "column")
+            // outerBox.setAttribute('justify-content', "center")
+            // outerBox.setAttribute('align-items', "normal")
             outerBox.setAttribute('gui-interactable', {})
             outerBox.setAttribute('component-padding', ".1")
             outerBox.setAttribute('opacity', ".25")
@@ -152,15 +159,6 @@ export default function () {
 
             outerBox.classList.add('raycastable');
             const canvas = this.el.sceneEl.canvas;
-            // outerBox.addEventListener('mouseover', () => {
-            //     me.mouseIntersecting = true;
-            // })
-            // outerBox.addEventListener('mouseout', () => {
-            //     me.mouseIntersecting = false;
-            // })
-            // outerBox.addEventListener('mouseleave', () => {
-            //     me.mouseIntersecting = false;
-            // })
             canvas.addEventListener('wheel', (event) => {
                 if (me.sprocketHovering || me.sliderHovering || me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                     const deltaY = event.deltaY / 400;
