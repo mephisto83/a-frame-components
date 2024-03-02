@@ -152,17 +152,17 @@ export default function () {
 
             outerBox.classList.add('raycastable');
             const canvas = this.el.sceneEl.canvas;
-            outerBox.addEventListener('mouseover', () => {
-                me.mouseIntersecting = true;
-            })
-            outerBox.addEventListener('mouseout', () => {
-                me.mouseIntersecting = false;
-            })
-            outerBox.addEventListener('mouseleave', () => {
-                me.mouseIntersecting = false;
-            })
+            // outerBox.addEventListener('mouseover', () => {
+            //     me.mouseIntersecting = true;
+            // })
+            // outerBox.addEventListener('mouseout', () => {
+            //     me.mouseIntersecting = false;
+            // })
+            // outerBox.addEventListener('mouseleave', () => {
+            //     me.mouseIntersecting = false;
+            // })
             canvas.addEventListener('wheel', (event) => {
-                if (me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
+                if (me.sprocketHovering || me.sliderHovering || me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                     const deltaY = event.deltaY / 400;
                     let maxHeight = (me.itemHeight * (me.options?.length || 0) / me.data.columns);
                     me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
@@ -173,7 +173,7 @@ export default function () {
             });
             canvas.addEventListener('axismove', (event) => {
                 if (event?.detail?.axis) {
-                    if (me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
+                    if (me.sprocketHovering || me.sliderHovering || me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                         const deltaY = event?.detail?.axis / 4;
                         let maxHeight = (me.itemHeight * (me.options?.length || 0) / me.data.columns);
                         me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
@@ -188,6 +188,13 @@ export default function () {
             })
             this.setupRayIntersectionListener(sliderContainer, (over) => {
                 me.sliderContainerHovering = over;
+            })
+            this.setupRayIntersectionListener(me.sprocket, (over) => {
+                me.sprocketHovering = over;
+            })
+
+            this.setupRayIntersectionListener(slider, (over) => {
+                me.sliderHovering = over;
             })
             this.setupRayIntersectionListener(this.el, (over) => {
                 me.elHovering = over;
