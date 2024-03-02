@@ -123,7 +123,7 @@ export default function () {
 
             let slider = document.createElement('a-gui-slider');
             slider.setAttribute('percent', `${0}`);
-            slider.setAttribute('targetbarsize', `0.5`);
+            slider.setAttribute('targetbarsize', `0.2`);
             slider.addEventListener('change', (evt: any) => {
                 let { value } = evt.detail;
                 me.targetScroll = (me.itemHeight * (me.options?.length || 0) / me.data.columns) * value;
