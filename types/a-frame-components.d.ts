@@ -18,6 +18,35 @@ declare module 'a-frame-components' {
 }
 declare namespace JSX {
     interface IntrinsicElements {
+        'a-button': {
+            on?: string;
+            title?: string;
+            value?: string;
+            active?: boolean;
+            width: string | number;
+            margin: string;
+            height: string | number;
+            interactiveType?: string;
+            paddingLeft?: number;
+            show?: boolean;
+            toggle?: boolean;
+            toggleState?: boolean;
+            checked?: boolean;
+            radiosizecoef?: number;
+            fontSize?: number;
+            fontFamily?: string;
+            fontColor?: string;
+            borderColor?: string;
+            backgroundColor?: string;
+            backgroundTextColor?: string;
+            hoverColor?: string;
+            hoverTextColor?: string;
+            activeColor?: string;
+            activeTextColor?: string;
+            disabledColor?: string;
+            disabledTextColor?: string;
+            handleColor?: string;
+        }
         'a-base-interactive': {
             on?: string;
             title?: string;
