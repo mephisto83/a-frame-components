@@ -125,7 +125,7 @@ export default function () {
             let slider = document.createElement('a-gui-slider');
             slider.setAttribute('percent', `${0}`);
             this.sliderWidth = 0.2;
-            this.sliderHorizontalMargin = .1
+            this.sliderHorizontalMargin = .2
             slider.setAttribute('targetbarsize', this.sliderWidth);
             slider.addEventListener('change', (evt: any) => {
                 let { value } = evt.detail;
