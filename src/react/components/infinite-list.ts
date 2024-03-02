@@ -162,19 +162,18 @@ export default function () {
                 me.mouseIntersecting = false;
             })
             canvas.addEventListener('wheel', (event) => {
-                if (me.isHovering || me.raycastersIntersecting || me.mouseIntersecting) {
+                if (me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                     const deltaY = event.deltaY / 400;
                     let maxHeight = (me.itemHeight * (me.options?.length || 0) / me.data.columns);
                     me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
                     if (maxHeight) {
                         slider.setAttribute('percent', `${Math.max(0, Math.min(me.targetScroll / maxHeight, 1))}`)
                     }
-                    //(me.itemHeight * (me.options?.length || 0) / me.data.columns) * value
                 }
             });
             canvas.addEventListener('axismove', (event) => {
                 if (event?.detail?.axis) {
-                    if (me.isHovering || me.raycastersIntersecting || me.mouseIntersecting) {
+                    if (me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                         const deltaY = event?.detail?.axis / 4;
                         let maxHeight = (me.itemHeight * (me.options?.length || 0) / me.data.columns);
                         me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
@@ -184,8 +183,14 @@ export default function () {
                     }
                 }
             });
+            this.setupRayIntersectionListener(outerBox, (over) => {
+                me.outerboxHovering = over;
+            })
+            this.setupRayIntersectionListener(sliderContainer, (over) => {
+                me.sliderContainerHovering = over;
+            })
             this.setupRayIntersectionListener(this.el, (over) => {
-                me.isHovering = over;
+                me.elHovering = over;
             })
             this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions);
             this.updateSubComponents();
