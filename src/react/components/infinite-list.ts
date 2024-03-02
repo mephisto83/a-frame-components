@@ -90,7 +90,8 @@ export default function () {
             let boxHeight = this.boxHeight;
             let windowHeight = this.windowHeight;
             this.slider.setAttribute('width', `${boxHeight}`);
-            this.outerBox.setAttribute('width', `${outerBoxWidth}`);
+            this.outerBox.setAttribute('width', `${outerBoxWidth - .1}`);
+            this.outerBox.setAttribute('position', `.05 0 0`);
             this.outerBox.setAttribute('height', `${boxHeight}`);
             this.sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - .1} 0 .1`);
             this.closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`);
@@ -114,10 +115,10 @@ export default function () {
             // outerBox.setAttribute('justify-content', "center")
             // outerBox.setAttribute('align-items', "normal")
             outerBox.setAttribute('gui-interactable', {})
-            outerBox.setAttribute('component-padding', ".1")
+            // outerBox.setAttribute('component-padding', ".1")
             outerBox.setAttribute('opacity', ".25")
-            outerBox.setAttribute('panel-color', GetBackgroundColor())
-            outerBox.setAttribute('panel-rounded', "0.1");
+            // outerBox.setAttribute('panel-color', GetBackgroundColor())
+            // outerBox.setAttribute('panel-rounded', "0.1");
             this.outerBox = outerBox;
             me.el.appendChild(outerBox);
 
