@@ -362,18 +362,20 @@ export default function () {
             // me.sprocket.setAttribute('rotation', `${currentRotation % 360} 0 0`)
             // this.currentRotation += .1
         },
-        createOptionEl: function ({ value, id, text, url }) {
+        createOptionEl: function (options) {
             let me = this;
+            let { value, id, text, url } = options;
             if (me?.data?.itemtemplate) {
                 let item = document.createElement(me.data.itemtemplate);
                 item.setAttribute('options', JSON.stringify({
+                    ...options,
                     imageMargin: me.imageMargin,
                     selectionevent: me.data.selectionevent,
                     guiItem: me.guiItem,
                     value,
                     id,
                     text,
-                    url
+                    url,
                 }));
                 item.setAttribute('selectionevent', this.data.selectionevent);
                 let entity: any = document.createElement('a-entity');
