@@ -103,22 +103,12 @@ export default function () {
             var system = this.el.sceneEl.systems.ui; // Access by system name
             this.setup();
             this.system = system;
-            // let outerBox: any = document.createElement('a-gui-flex-container');
             let outerBox: any = document.createElement('a-rounded');
             outerBox.setAttribute("gui-interactable", {})
-            // outerBox.setAttribute('width', guiItem.width)
-            // outerBox.setAttribute('height', guiItem.height)
-            // outerBox.setAttribute('radius', Math.min(parseFloat(`${guiItem.width}`), parseFloat(`${guiItem.height}`)) * .1)
             outerBox.setAttribute('color', GetBackgroundColor());
 
-            // outerBox.setAttribute('flex-direction', "column")
-            // outerBox.setAttribute('justify-content', "center")
-            // outerBox.setAttribute('align-items', "normal")
             outerBox.setAttribute('gui-interactable', {})
-            // outerBox.setAttribute('component-padding', ".1")
             outerBox.setAttribute('opacity', ".25")
-            // outerBox.setAttribute('panel-color', GetBackgroundColor())
-            // outerBox.setAttribute('panel-rounded', "0.1");
             this.outerBox = outerBox;
             me.el.appendChild(outerBox);
 
