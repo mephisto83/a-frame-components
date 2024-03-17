@@ -92,6 +92,13 @@ export function raiseOn(props: { [`frame-id`]: string }, eventName: string, deta
     raiseCustomEvent(eventName, details, document.querySelector(`[frame-id="${props['frame-id']}"]`));
 }
 
+export function setAttribute(props: { [`frame-id`]: string }, name: string, value: any) {
+    let el = document.querySelector(`[frame-id="${props['frame-id']}"]`)
+    if (el) {
+        el.setAttribute(name, value);
+    }
+}
+
 export function useBindEventOn(
     evtName: string,
     attributeName: string,
