@@ -158,6 +158,7 @@ export default function () {
             // 'callback': 'gui-interactable.clickAction',
         }
     });
+    //changed name to spirit from ghost.
     function getEntityBoundsAndSize(entity) {
         // Ensure the entity is a valid A-Frame element
         if (!entity.object3D) {
