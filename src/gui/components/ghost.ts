@@ -3,7 +3,7 @@ import { GrabAndDropEvents, GrabOutDetails, GrabOverDetails, calculateEndPoint, 
 import { raiseCustomEvent } from "../../react/util";
 export default function () {
     const THREE: any = (window as any).THREE;
-    AFRAME.registerComponent('grabanddropzone', {
+    AFRAME.registerComponent('draganddropzone', {
         schema: {
         },
         init: function () {

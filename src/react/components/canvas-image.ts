@@ -19,7 +19,7 @@ export default function () {
             plane.setAttribute('height', "1")
             plane.setAttribute('width', "1")
             plane.setAttribute('position', "0 0 -1")
-            plane.setAttribute('grabanddropzone', {});
+            plane.setAttribute('draganddropzone', {});
             me.plane = plane;
             me.el.appendChild(plane);
             this.updateElementSize(this, this.el)
