@@ -38,10 +38,10 @@ export default async function painter() {
         infinit_list.default();
     }
 
-    if (!registered['interaction_panel']) {
-        registered['interaction_panel'] = true;
-        interaction_panel.default();
-    }
+    // if (!registered['interaction_panel']) {
+    //     registered['interaction_panel'] = true;
+    //     interaction_panel.default();
+    // }
 
     if (!registered['frame_interactions']) {
         registered['frame_interactions'] = true;
