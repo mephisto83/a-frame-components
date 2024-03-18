@@ -16,7 +16,7 @@ export const GrabAndDropEvents = {
 
 export default function () {
     spirit_component()
-    AFRAME.registerSystem('grabanddrop', {
+    AFRAME.registerSystem('grabanddropsystem', {
         init: function () {
             this.spiritReferences = {};
             this.inputDeviceState = {};
