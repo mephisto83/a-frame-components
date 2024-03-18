@@ -154,7 +154,7 @@ export class Transformation {
 
 export default function () {
     const THREE: any = (window as any).THREE;
-    AFRAME.registerComponent('gui-transformer', {
+    AFRAME.registerComponent('ui-transformer', {
         schema: {
             src: { type: 'string', default: 'assets/images/green_white_ghost.png' },
             size: { type: 'number', default: 1 },
@@ -488,11 +488,11 @@ export default function () {
         },
     });
 
-    AFRAME.registerPrimitive('frame-gui-transformer', {
+    AFRAME.registerPrimitive('frame-ui-transformer', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'slider' },
-            'gui-transformer': {}
+            'ui-transformer': {}
         },
         mappings: {
         }

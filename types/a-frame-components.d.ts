@@ -524,7 +524,7 @@ declare namespace JSX {
             'handle-color'?: string;
             [propName: string]: any;
         };
-        'frame-gui-transformer': {
+        'frame-ui-transformer': {
             [propName: string]: any;
         };
         'frame-gui-flex-container': {
