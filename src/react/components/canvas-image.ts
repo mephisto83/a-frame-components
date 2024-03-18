@@ -7,7 +7,7 @@ import { drawTextureOnCanvas, raiseCustomEvent } from '../util';
 const THREE = (window as any).THREE;
 /* globals AFRAME THREE */
 export default function () {
-    AFRAME.registerComponent('canvas-image', {
+    AFRAME.registerComponent('canvasimage', {
         schema: {
             url: { type: 'string' },
             height: { type: 'number', default: 1 } // Provide a default value for height
@@ -82,11 +82,11 @@ export default function () {
 
     AFRAME.registerPrimitive('frame-canvas-image', {
         defaultComponents: {
-            'canvas-image': {}
+            'canvasimage': {}
         },
         mappings: {
-            url: 'canvas-image.url',
-            height: 'canvas-image.height'
+            url: 'canvasimage.url',
+            height: 'canvasimage.height'
         }
     });
 }

@@ -3,7 +3,7 @@ import { GetColor } from "../systems/ui";
 const THREE: any = (window as any).THREE;
 
 export default function () {
-    AFRAME.registerComponent('flash-red', {
+    AFRAME.registerComponent('flashing', {
         schema: {
             onColor: { default: 'red' },
             offColor: { default: '#FFF' }, // Default to white when not flashing
