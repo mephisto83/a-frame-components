@@ -151,7 +151,6 @@ export class Transformation {
         return { x: transformedX, y: transformedY };
     }
 }
-
 export default function () {
     const THREE: any = (window as any).THREE;
     AFRAME.registerComponent('ui-transformer', {
