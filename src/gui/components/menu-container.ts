@@ -20,7 +20,7 @@ export default function () {
         observer.observe(elem, { childList: true })
     }
 
-    AFRAME.registerComponent('gui-menu-container', {
+    AFRAME.registerComponent('ui-menu-container', {
         schema: {
             flexDirection: { type: 'string', default: 'row' },
             value: { type: 'string', default: '' },
@@ -108,13 +108,13 @@ export default function () {
             onAppendChildToContainer(this.el, function (containerElement, addedChildren) {
                 //console.log('****** containerElement: ' + containerElement);
                 //console.log('****** addedChildren: ' + addedChildren.length);
-                // containerElement.components['gui-menu-container'].init();
+                // containerElement.components['ui-menu-container'].init();
                 var addedChild = addedChildren[0];
                 addedChildren[0].addEventListener("loaded", (e) => {
                     //console.log('in appended element loaded handler: '+e);
                     //console.log('addedChild: '+addedChild);
                     //console.log('****** containerElement: ' + containerElement);
-                    containerElement.components['gui-menu-container'].init();
+                    containerElement.components['ui-menu-container'].init();
                 })
             })
             this.updateElementSize(me, me.el);
@@ -260,7 +260,7 @@ export default function () {
                     });
                     // childElement.setAttribute('geometry', `primitive: plane; height: ${childGuiItem.height}; width: ${childGuiItem.width};`)
 
-                    var childFlexContainer = childElement.components['gui-menu-container']
+                    var childFlexContainer = childElement.components['ui-menu-container']
                     if (childFlexContainer) {
                         childFlexContainer.setBackground();
                     }
@@ -319,7 +319,7 @@ export default function () {
                         easing: 'easeInOutQuad'
                     });
 
-                    var childFlexContainer = childElement.components['gui-menu-container']
+                    var childFlexContainer = childElement.components['ui-menu-container']
                     if (childFlexContainer) {
                         childFlexContainer.setBackground();
                     }
@@ -381,38 +381,38 @@ export default function () {
     AFRAME.registerPrimitive('frame-menu-container', {
         defaultComponents: {
             'gui-item': { type: 'menu-container' },
-            'gui-menu-container': {}
+            'ui-menu-container': {}
         },
         mappings: {
             'width': 'gui-item.width',
             'height': 'gui-item.height',
             'margin': 'gui-item.margin',
-            'value': 'gui-menu-container.value',
-            'text-value': 'gui-menu-container.text',
-            'selected': 'gui-menu-container.selected',
-            'open': 'gui-menu-container.open',
-            'flex-direction': 'gui-menu-container.flexDirection',
-            'justify-content': 'gui-menu-container.justifyContent',
-            'dur': 'gui-menu-container.dur',
-            'easing': 'gui-menu-container.easing',
-            'align-items': 'gui-menu-container.alignItems',
-            'item-padding': 'gui-menu-container.itemPadding',
-            'menu-item-width': 'gui-menu-container.menuItemWidth',
-            'menu-item-height': 'gui-menu-container.menuItemHeight',
-            'forward-step': 'gui-menu-container.forwardStep',
-            'menu-item-margin': 'gui-menu-container.menuItemMargin',
-            'menu-direction': 'gui-menu-container.menuDirection',
-            'opacity': 'gui-menu-container.opacity',
-            'is-top-container': 'gui-menu-container.isTopContainer',
-            'panel-color': 'gui-menu-container.panelColor',
-            'panel-rounded': 'gui-menu-container.panelRounded',
-            'font-family': 'gui-menu-container.styles.fontFamily',
-            'font-color': 'gui-menu-container.styles.fontColor',
-            'border-color': 'gui-menu-container.styles.borderColor',
-            'background-color': 'gui-menu-container.styles.backgroundColor',
-            'hover-color': 'gui-menu-container.styles.hoverColor',
-            'active-color': 'gui-menu-container.styles.activeColor',
-            'handle-color': 'gui-menu-container.styles.handleColor',
+            'value': 'ui-menu-container.value',
+            'text-value': 'ui-menu-container.text',
+            'selected': 'ui-menu-container.selected',
+            'open': 'ui-menu-container.open',
+            'flex-direction': 'ui-menu-container.flexDirection',
+            'justify-content': 'ui-menu-container.justifyContent',
+            'dur': 'ui-menu-container.dur',
+            'easing': 'ui-menu-container.easing',
+            'align-items': 'ui-menu-container.alignItems',
+            'item-padding': 'ui-menu-container.itemPadding',
+            'menu-item-width': 'ui-menu-container.menuItemWidth',
+            'menu-item-height': 'ui-menu-container.menuItemHeight',
+            'forward-step': 'ui-menu-container.forwardStep',
+            'menu-item-margin': 'ui-menu-container.menuItemMargin',
+            'menu-direction': 'ui-menu-container.menuDirection',
+            'opacity': 'ui-menu-container.opacity',
+            'is-top-container': 'ui-menu-container.isTopContainer',
+            'panel-color': 'ui-menu-container.panelColor',
+            'panel-rounded': 'ui-menu-container.panelRounded',
+            'font-family': 'ui-menu-container.styles.fontFamily',
+            'font-color': 'ui-menu-container.styles.fontColor',
+            'border-color': 'ui-menu-container.styles.borderColor',
+            'background-color': 'ui-menu-container.styles.backgroundColor',
+            'hover-color': 'ui-menu-container.styles.hoverColor',
+            'active-color': 'ui-menu-container.styles.activeColor',
+            'handle-color': 'ui-menu-container.styles.handleColor',
         }
     });
 
