@@ -2,7 +2,7 @@ import { AFRAME } from '../systems/brush';
 import { uuidv4 } from '../util';
 const THREE: any = (window as any).THREE;
 export default function () {
-    AFRAME.registerComponent('event-set', {
+    AFRAME.registerComponent('events-set', {
         multiple: true, // Enable multiple instances
 
         schema: {
@@ -39,7 +39,7 @@ export default function () {
                             // Handle function call within the attribute object
                             let componentObject = targetEl.components[(data.component)];
                             if (componentObject && typeof componentObject[data.function_name] === 'function') {
-                                if (data.component == 'interactions') {
+                                if (data.component == 'frame_interactions') {
                                     args.push({
                                         raycaster: this.el.components.raycaster
                                     })

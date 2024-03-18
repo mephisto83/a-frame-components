@@ -56,7 +56,7 @@ You can further customize the `frame-menu-container` by editing its source code.
 
 ## Advanced Usage
 
-For advanced scenarios, such as dynamically adding menu items or responding to user interactions with menu items, you can access and modify the menu container's children or use A-Frame's event system to add custom behavior.
+For advanced scenarios, such as dynamically adding menu items or responding to user frame_interactions with menu items, you can access and modify the menu container's children or use A-Frame's event system to add custom behavior.
 
 ## Conclusion
 

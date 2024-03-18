@@ -2,7 +2,7 @@ import { AFRAME } from '../systems/brush';
 import { uuidv4 } from '../util';
 const THREE: any = (window as any).THREE;
 export default function () {
-    AFRAME.registerComponent('interactions', {
+    AFRAME.registerComponent('frame_interactions', {
         schema: {
             value: { type: 'string' },
         },

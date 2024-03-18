@@ -8,7 +8,7 @@ The `frame-gui-button` is a customizable GUI button component for AFRAME, design
 
 ### Default Components:
 
-- `gui-interactable`: Handles click and hover interactions.
+- `gui-interactable`: Handles click and hover frame_interactions.
 - `gui-item`: Configures general item properties like size and color.
 - `gui-button`: Customizes button-specific features.
 

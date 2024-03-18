@@ -16,9 +16,8 @@ import * as ui from './components/ui';
 import * as cubes from './brushes/cubes';
 import * as custom_event_set from './components/event-sets';
 import * as paint_canvas_ray_listener from './components/paint-canvas-ray-listener'
-import * as interactions from './components/interactions'
+import * as frame_interactions from './components/frame_interactions'
 import * as infinit_list from './components/infinite-list'
-import * as interaction_panel from './components/interaction-panel';
 import atlas from './atlas';
 import gui from '../gui/index';
 
@@ -44,9 +43,9 @@ export default async function painter() {
         interaction_panel.default();
     }
 
-    if (!registered['interactions']) {
-        registered['interactions'] = true;
-        interactions.default();
+    if (!registered['frame_interactions']) {
+        registered['frame_interactions'] = true;
+        frame_interactions.default();
     }
     if (!registered['ui_']) {
         registered['ui_'] = true;

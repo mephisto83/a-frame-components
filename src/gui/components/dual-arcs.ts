@@ -2,7 +2,7 @@ import { AFRAME } from "../../react/root";
 
 export default function () {
     const THREE: any = (window as any).THREE;
-    AFRAME.registerComponent('dual-arcs', {
+    AFRAME.registerComponent('double-arcs', {
         schema: {
             radius: { type: 'number', default: 1 },
             tube: { type: 'number', default: 1 },
@@ -32,24 +32,24 @@ export default function () {
             group.add(arc2);
 
             // Add the combined object to the entity
-            this.el.setObject3D('dual-arcs', group);
+            this.el.setObject3D('double-arcs', group);
         }
     });
-    AFRAME.registerPrimitive('a-dual-arcs', {
+    AFRAME.registerPrimitive('frame-dual-arcs', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'slider' },
-            'dual-arcs': {}
+            'double-arcs': {}
         },
         mappings: {
-            'radius': 'dual-arcs.radius',
-            'tube': 'dual-arcs.tube',
-            'angle-start-1': 'dual-arcs.angleStart1',
-            'angle-length-1': 'dual-arcs.angleLength1',
-            'angle-start-2': 'dual-arcs.angleStart2',
-            'angle-length-2': 'dual-arcs.angleLength2',
-            'color1': 'dual-arcs.color1',
-            'color2': 'dual-arcs.color2',
+            'radius': 'double-arcs.radius',
+            'tube': 'double-arcs.tube',
+            'angle-start-1': 'double-arcs.angleStart1',
+            'angle-length-1': 'double-arcs.angleLength1',
+            'angle-start-2': 'double-arcs.angleStart2',
+            'angle-length-2': 'double-arcs.angleLength2',
+            'color1': 'double-arcs.color1',
+            'color2': 'double-arcs.color2',
         }
     });
 }
