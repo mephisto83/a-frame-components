@@ -3,7 +3,7 @@ import { raiseCustomEvent } from "../../react/util";
 import { createContainer, createElement, createInteractiveButton } from "../../util";
 import mixin from "./mixin";
 export default function () {
-    AFRAME.registerComponent('radio-component', {
+    AFRAME.registerComponent('radiocomponent', {
         schema: {
             options: { type: 'string', default: '' },
             value: { type: 'string', default: '' },
@@ -103,11 +103,11 @@ export default function () {
 
     AFRAME.registerPrimitive('frame-radio', {
         defaultComponents: {
-            'radio-component': {},
+            'radiocomponent': {},
         },
         mappings: {
-            'options': 'radio-component.options',
-            'value': 'radio-component.value',
+            'options': 'radiocomponent.options',
+            'value': 'radiocomponent.value',
         }
     });
 }

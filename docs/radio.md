@@ -1,10 +1,10 @@
 # `frame-radio` Primitive
 
-The `frame-radio` primitive is a custom element in A-Frame for creating radio button interfaces within a VR environment. This primitive leverages the `radio-component` to handle its functionality, providing a seamless integration with other A-Frame entities.
+The `frame-radio` primitive is a custom element in A-Frame for creating radio button interfaces within a VR environment. This primitive leverages the `radiocomponent` to handle its functionality, providing a seamless integration with other A-Frame entities.
 
 ## Usage
 
-To use the `frame-radio` primitive, include it within your A-Frame scene like any other A-Frame entity. The `frame-radio` is specifically designed to work with the `radio-component`, allowing for easy specification of options and values directly through HTML attributes.
+To use the `frame-radio` primitive, include it within your A-Frame scene like any other A-Frame entity. The `frame-radio` is specifically designed to work with the `radiocomponent`, allowing for easy specification of options and values directly through HTML attributes.
 
 ### Example
 
@@ -16,7 +16,7 @@ To use the `frame-radio` primitive, include it within your A-Frame scene like an
 
 ## Attributes
 
-The `frame-radio` primitive supports the following attributes, which map directly to the `radio-component` properties:
+The `frame-radio` primitive supports the following attributes, which map directly to the `radiocomponent` properties:
 
 - **options**: A JSON array of objects, each representing an option with text, value.
 - **value**: The currently selected value from the options list.
@@ -37,12 +37,12 @@ Determines the initially selected value when the scene loads. This should match 
 
 When registering the `frame-radio` primitive, the following components and mappings are established:
 
-- **defaultComponents**: This section defines the default components that are attached to the primitive. For `frame-radio`, the `radio-component` is attached by default.
+- **defaultComponents**: This section defines the default components that are attached to the primitive. For `frame-radio`, the `radiocomponent` is attached by default.
   
-- **mappings**: Mappings are used to connect primitive attributes to specific component properties. For `frame-radio`, the `options` and `value` attributes are mapped to `radio-component.options` and `radio-component.value` respectively.
+- **mappings**: Mappings are used to connect primitive attributes to specific component properties. For `frame-radio`, the `options` and `value` attributes are mapped to `radiocomponent.options` and `radiocomponent.value` respectively.
 
 This structure allows for easy customization and integration of the `frame-radio` primitive within A-Frame scenes, providing a user-friendly interface for VR radio button functionality.
 
 ## Conclusion
 
-The `frame-radio` primitive extends A-Frame's capabilities by introducing an easy-to-use interface for creating radio button groups within VR environments. By leveraging the `radio-component`, it offers developers a straightforward way to incorporate selection mechanics into their VR experiences.
+The `frame-radio` primitive extends A-Frame's capabilities by introducing an easy-to-use interface for creating radio button groups within VR environments. By leveraging the `radiocomponent`, it offers developers a straightforward way to incorporate selection mechanics into their VR experiences.
