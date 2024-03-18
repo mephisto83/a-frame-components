@@ -1,5 +1,5 @@
 /* globals AFRAME */
-import ghost_component from "../../gui/components/ghost";
+import spirit_component from "../../gui/components/spirit";
 import { AFRAME } from "../root";
 import { raiseCustomEvent } from "../util";
 const THREE: any = (window as any).THREE;
@@ -15,13 +15,13 @@ export const GrabAndDropEvents = {
 }
 
 export default function () {
-    ghost_component()
+    spirit_component()
     AFRAME.registerSystem('grabanddrop', {
         init: function () {
-            this.ghostReferences = {};
+            this.spiritReferences = {};
             this.inputDeviceState = {};
             this.inputDevices = {};
-            this.ghostTargets = {};
+            this.spiritTargets = {};
             this.closetsTargets = {}
             this.scene = this.sceneEl;
             customEventListener(GrabAndDropEvents.GRAB_START, this.onGrabStart.bind(this))
@@ -40,15 +40,15 @@ export default function () {
         },
         onGrabOut: function (evt: GrabOutDetails) {
             const { deviceId, component } = evt;
-            let ghostTargets: GhostTargets = this.ghostTargets;
-            let ghostReferences: GhostReferences = this.ghostReferences;
-            if (ghostReferences[deviceId]) {
-                let ghostReference = ghostReferences[deviceId];
-                if (ghostTargets[deviceId] && ghostTargets[deviceId].includes(component)) {
-                    ghostTargets[deviceId] = ghostTargets[deviceId].filter(x => x !== component);
+            let spiritTargets: GhostTargets = this.spiritTargets;
+            let spiritReferences: GhostReferences = this.spiritReferences;
+            if (spiritReferences[deviceId]) {
+                let spiritReference = spiritReferences[deviceId];
+                if (spiritTargets[deviceId] && spiritTargets[deviceId].includes(component)) {
+                    spiritTargets[deviceId] = spiritTargets[deviceId].filter(x => x !== component);
                     let closest = this.getClosest(deviceId)
                     if (component !== closest) {
-                        ghostReference.emit(GrabAndDropEvents.GRAB_TARGET_CHANGE, {
+                        spiritReference.emit(GrabAndDropEvents.GRAB_TARGET_CHANGE, {
                             component: closest,
                             deviceId
                         });
@@ -58,17 +58,17 @@ export default function () {
         },
         onGrabOver: function (evt: GrabOverDetails) {
             const { deviceId, component } = evt;
-            let ghostTargets: GhostTargets = this.ghostTargets;
-            let ghostReferences: GhostReferences = this.ghostReferences;
-            if (ghostReferences[deviceId]) {
-                let ghostReference = ghostReferences[deviceId];
-                ghostTargets[deviceId] = ghostTargets[deviceId] || [];
-                if (ghostTargets[deviceId] && !ghostTargets[deviceId].includes(component)) {
-                    ghostTargets[deviceId].push(component);
+            let spiritTargets: GhostTargets = this.spiritTargets;
+            let spiritReferences: GhostReferences = this.spiritReferences;
+            if (spiritReferences[deviceId]) {
+                let spiritReference = spiritReferences[deviceId];
+                spiritTargets[deviceId] = spiritTargets[deviceId] || [];
+                if (spiritTargets[deviceId] && !spiritTargets[deviceId].includes(component)) {
+                    spiritTargets[deviceId].push(component);
                     let closest = this.getClosest(deviceId)
 
                     if (component === closest) {
-                        ghostReference.emit(GrabAndDropEvents.GRAB_TARGET_CHANGE, { component, deviceId })
+                        spiritReference.emit(GrabAndDropEvents.GRAB_TARGET_CHANGE, { component, deviceId })
                     }
                 }
             }
@@ -88,20 +88,20 @@ export default function () {
         },
         clearInputDeviceData: function (inputDeviceId) {
             let inputDevices: InputDevices = this.inputDeviceState;
-            let ghostTargets: GhostTargets = this.ghostTargets;
+            let spiritTargets: GhostTargets = this.spiritTargets;
             if (inputDevices[inputDeviceId]) {
                 delete inputDevices[inputDeviceId]
-                ghostTargets[inputDeviceId] = []
+                spiritTargets[inputDeviceId] = []
             }
         },
         getClosest: function (inputDeviceId: string | number): GhostTarget | null {
-            let ghostTargets: GhostTargets = this.ghostTargets;
+            let spiritTargets: GhostTargets = this.spiritTargets;
             let inputDevices: { [str: string]: InputDeviceState } = this.inputDeviceState;
             if (inputDevices[inputDeviceId]?.inputDevice) {
-                if (ghostTargets[inputDeviceId]?.length) {
+                if (spiritTargets[inputDeviceId]?.length) {
                     let ray = inputDevices[inputDeviceId].inputDevice.getRay();
                     let position = getRayposition(ray);
-                    let sorted = ghostTargets[inputDeviceId].sort((a, b) => {
+                    let sorted = spiritTargets[inputDeviceId].sort((a, b) => {
                         return distanceBetweenPointsFast(position, a.position) - distanceBetweenPointsFast(position, b.position);
                     });
                     return sorted[0];
@@ -110,33 +110,33 @@ export default function () {
             return null;
         },
         killGhost: function (inputDeviceId: string | number) {
-            let ghostReferences: GhostReferences = this.ghostReferences;
-            if (ghostReferences[inputDeviceId]) {
-                ghostReferences[inputDeviceId].setAttribute(GhostAttributes.Die, true);
-                delete ghostReferences[inputDeviceId]
+            let spiritReferences: GhostReferences = this.spiritReferences;
+            if (spiritReferences[inputDeviceId]) {
+                spiritReferences[inputDeviceId].setAttribute(GhostAttributes.Die, true);
+                delete spiritReferences[inputDeviceId]
             }
         },
-        createGhost: function (ghostContent: Ghost) {
-            if (!ghostContent) {
-                throw 'no ghost';
+        createGhost: function (spiritContent: Ghost) {
+            if (!spiritContent) {
+                throw 'no spirit';
             };
-            const ghost = document.createElement('a-ghost');
-            ghost.appendChild(ghostContent);
+            const spirit = document.createElement('a-spirit');
+            spirit.appendChild(spiritContent);
 
-            return ghost;
+            return spirit;
         },
         onGrabStart: function (evt: GrabStartDetails) {
             this.setInputDeviceState(evt);
-            const { component, inputDevice, ghost, category } = evt;
+            const { component, inputDevice, spirit, category } = evt;
             if (inputDevice?.id) {
                 console.log(`grab start ${inputDevice.id}`)
-                let ghostReferences: GhostReferences = this.ghostReferences;
+                let spiritReferences: GhostReferences = this.spiritReferences;
                 this.killGhost(inputDevice.id);
                 var worldPosition = new THREE.Vector3();
                 component.el.object3D.getWorldPosition(worldPosition);
 
-                let newGhost = this.createGhost(ghost);
-                ghostReferences[inputDevice.id] = newGhost;
+                let newGhost = this.createGhost(spirit);
+                spiritReferences[inputDevice.id] = newGhost;
                 newGhost.setAttribute(GhostAttributes.Device, inputDevice.id);
                 newGhost.setAttribute(GhostAttributes.Position, toPosition(worldPosition))
                 newGhost.setAttribute(GhostAttributes.Alive, true);
@@ -145,13 +145,13 @@ export default function () {
             }
         },
         setInputDeviceState(evt: GrabDetails) {
-            const { inputDevice, data, category, ghost, cursorEl } = evt;
+            const { inputDevice, data, category, spirit, cursorEl } = evt;
             this.inputDeviceState = {
                 ...this.inputDeviceState,
                 [inputDevice.id]: {
                     inputDevice,
                     data,
-                    ghost,
+                    spirit,
                     cursorEl,
                     category
                 }
@@ -223,7 +223,7 @@ export enum GhostAttributes {
 export interface InputDeviceState {
     inputDevice: InputDevice,
     data: any,
-    ghost: Ghost,
+    spirit: Ghost,
     cursorEl: any,
     category: string
 }
@@ -234,7 +234,7 @@ export interface InputDevice {
     emit: (evtName: string, details: any) => void
 };
 export interface Ghost extends Node {
-    setAttribute: (ghostAttribute: GhostAttributes, value: any) => void
+    setAttribute: (spiritAttribute: GhostAttributes, value: any) => void
     emit: (evtName: string, details: { deviceId: string | number, component: GhostTarget }) => void
 };
 
@@ -256,7 +256,7 @@ export interface GrabDetails {
     data: any;
     cursorEl?: any;
     category: string;
-    ghost?: Ghost
+    spirit?: Ghost
 }
 // The hook can optionally accept a callback to be executed when the event is triggered
 export const customEventListener = <T extends any>(eventName: string, callback: (detail: T, evt?: any) => void) => {

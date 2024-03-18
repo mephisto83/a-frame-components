@@ -76,7 +76,7 @@ export default function () {
             });
         }
     })
-    AFRAME.registerComponent('ghost', {
+    AFRAME.registerComponent('spirit', {
         schema: {
             die: { type: 'boolean', default: false },
             alive: { type: 'boolean', default: false },
@@ -136,15 +136,15 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-ghost', {
+    AFRAME.registerPrimitive('a-spirit', {
         defaultComponents: {
-            'ghost': {}
+            'spirit': {}
         },
         mappings: {
             //gui item general
-            'die': 'ghost.die',
-            'alive': 'ghost.alive',
-            'device': 'ghost.device',
+            'die': 'spirit.die',
+            'alive': 'spirit.alive',
+            'device': 'spirit.device',
             // 'height': 'gui-item.height',
             // 'margin': 'gui-item.margin',
             // //gui timer specific

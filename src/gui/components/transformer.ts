@@ -155,7 +155,7 @@ export default function () {
     const THREE: any = (window as any).THREE;
     AFRAME.registerComponent('ui-transformer', {
         schema: {
-            src: { type: 'string', default: 'assets/images/green_white_ghost.png' },
+            src: { type: 'string', default: 'assets/images/green_white_spirit.png' },
             size: { type: 'number', default: 1 },
             handlesize: { type: 'number', default: .03 },
         },

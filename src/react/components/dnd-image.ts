@@ -3,7 +3,7 @@ import { GetColor } from "../systems/ui";
 const THREE: any = (window as any).THREE;
 
 export default function () {
-    AFRAME.registerComponent('dnd-ghost', {
+    AFRAME.registerComponent('dnd-spirit', {
         schema: {
             options: { type: 'string' }
         },
@@ -16,12 +16,12 @@ export default function () {
             this.el.appendChild(imageCube);
         }
     });
-    AFRAME.registerPrimitive('frame-dnd-ghost', {
+    AFRAME.registerPrimitive('frame-dnd-spirit', {
         defaultComponents: {
-            'dnd-ghost': {}
+            'dnd-spirit': {}
         },
         mappings: {
-            options: 'dnd-ghost.options'
+            options: 'dnd-spirit.options'
         }
     })
     AFRAME.registerComponent('dnd-image', {
@@ -50,7 +50,7 @@ export default function () {
             buttonContainer.setAttribute('rotation', '0 0 0');
             buttonContainer.setAttribute('panel-color', GetColor(4))
             buttonContainer.setAttribute('grabbanddroppable', JSON.stringify({
-                ghost: 'frame-dnd-ghost',
+                spirit: 'frame-dnd-spirit',
                 category: 'image-catalog',
                 data: { value, id, text, url }
             }));

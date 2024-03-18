@@ -139,7 +139,7 @@ export default function () {
 
             if (this.data.grabbanddroppable) {
                 el.addEventListener('mousedown', function (event) {
-                    let { category, ghost, data } = JSON.parse(me.data.grabbanddroppable);
+                    let { category, spirit, data } = JSON.parse(me.data.grabbanddroppable);
                     let device = setInputDevice(event);
                     if (device) {
                         let details: GrabStartDetails = {
@@ -148,7 +148,7 @@ export default function () {
                             cursorEl: event.detail.cursorEl,
                             data,
                             inputDevice: device,
-                            ghost: document.createElement(ghost)
+                            spirit: document.createElement(spirit)
                         }
                         if (me.canRaise === device.id) {
                             me.canRaise = false;
