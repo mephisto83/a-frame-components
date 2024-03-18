@@ -1,5 +1,5 @@
 /* globals AFRAME */
-import spirit_component from "../../gui/components/spirit";
+import spirit_component from "../../gui/components/ghost";
 import { AFRAME } from "../root";
 import { raiseCustomEvent } from "../util";
 const THREE: any = (window as any).THREE;
