@@ -4,7 +4,7 @@ import { Vector3 } from 'three';
 
 export default function () {
     const THREE: any = (window as any).THREE;
-    AFRAME.registerComponent('skeleton-body', {
+    AFRAME.registerComponent('bone-body', {
         schema: {
         },
         tick: function () {
@@ -106,7 +106,7 @@ export default function () {
             // the bones
 
             // Add the combined object to the entity
-            // this.el.setObject3D('skeleton-body', helper);
+            // this.el.setObject3D('bone-body', helper);
         },
         buildHuman: function () {
             // Create a root bone
@@ -142,7 +142,7 @@ export default function () {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': {},
-            'skeleton-body': {}
+            'bone-body': {}
         },
         mappings: {
         }

@@ -376,7 +376,7 @@ export default function () {
             let entity: any = document.createElement('a-entity');
             entity.setAttribute('rotation', `0 0 0`)
 
-            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-ar-image');
             imageEntity.setAttribute('maxwidth', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('maxheight', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('position', `${(-me.guiItem.width / 2) + (me.guiItem.height / 2)} 0 .03`)
@@ -457,7 +457,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerComponent('aspect-ratio-image', {
+    AFRAME.registerComponent('ar-image', {
         schema: {
             url: { type: 'string' },
             maxwidth: { type: 'number' },
@@ -527,14 +527,14 @@ export default function () {
             }
         }
     });
-    AFRAME.registerPrimitive('frame-aspect-ratio-image', {
+    AFRAME.registerPrimitive('frame-ar-image', {
         defaultComponents: {
-            'aspect-ratio-image': {}
+            'ar-image': {}
         },
         mappings: {
-            url: 'aspect-ratio-image.url',
-            maxwidth: 'aspect-ratio-image.maxwidth',
-            maxheight: 'aspect-ratio-image.maxheight'
+            url: 'ar-image.url',
+            maxwidth: 'ar-image.maxwidth',
+            maxheight: 'ar-image.maxheight'
         }
     });
 
@@ -563,13 +563,13 @@ export default function () {
     });
     // Example usage in an A-Frame scene
     // <a-scene>
-    //     <a-entity aspect-ratio-image="url: https://example.com/my-image.jpg; maxwidth: 3; maxheight: 2"></a-entity>
+    //     <a-entity ar-image="url: https://example.com/my-image.jpg; maxwidth: 3; maxheight: 2"></a-entity>
     // </a-scene>
 
 
     // Example usage in an A-Frame scene
     // <a-scene>
-    //     <a-entity aspect-ratio-image="url: https://example.com/my-image.jpg; width: 5"></a-entity>
+    //     <a-entity ar-image="url: https://example.com/my-image.jpg; width: 5"></a-entity>
     // </a-scene>    
 }
 
