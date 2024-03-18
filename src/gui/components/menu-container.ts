@@ -120,7 +120,7 @@ export default function () {
             this.updateElementSize(me, me.el);
         },
         createEntryPanel: function () {
-            let entryPanel: any = document.createElement('a-base-interactive');
+            let entryPanel: any = document.createElement('frame-base-interactive');
             entryPanel.setAttribute('height', this.data.menuItemHeight);
             entryPanel.setAttribute('width', this.data.menuItemWidth);
             entryPanel.setAttribute('enabled', true);
@@ -378,7 +378,7 @@ export default function () {
 
     });
 
-    AFRAME.registerPrimitive('a-menu-container', {
+    AFRAME.registerPrimitive('frame-menu-container', {
         defaultComponents: {
             'gui-item': { type: 'menu-container' },
             'gui-menu-container': {}

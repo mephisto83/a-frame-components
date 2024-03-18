@@ -77,7 +77,7 @@ export default function () {
     }
   });
 
-  AFRAME.registerPrimitive('a-gui-label', {
+  AFRAME.registerPrimitive('frame-gui-label', {
     defaultComponents: {
       'gui-item': { type: 'label' },
       'gui-label': {}

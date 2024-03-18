@@ -1,15 +1,15 @@
-# `a-container` A-Frame Component Documentation
+# `frame-container` A-Frame Component Documentation
 
-The `a-container` component is designed for A-Frame, a web framework for building virtual reality experiences. This component automatically arranges child entities based on specified layout properties such as alignment, direction, and margin, making it easier to create structured and responsive VR layouts.
+The `frame-container` component is designed for A-Frame, a web framework for building virtual reality experiences. This component automatically arranges child entities based on specified layout properties such as alignment, direction, and margin, making it easier to create structured and responsive VR layouts.
 
 ## Usage
 
-To use the `a-container` component, add it to an A-Frame entity in your scene. This entity will then act as a container for other child entities, arranging them based on the component's properties.
+To use the `frame-container` component, add it to an A-Frame entity in your scene. This entity will then act as a container for other child entities, arranging them based on the component's properties.
 
 ```html
-<a-container alignment="center" justifyContent="flexStart" direction="vertical" margin="1 1 1 1">
+<frame-container alignment="center" justifyContent="flexStart" direction="vertical" margin="1 1 1 1">
   <!-- Child entities here -->
-</a-container>
+</frame-container>
 ```
 
 ### Schema
@@ -38,11 +38,11 @@ To use the `a-container` component, add it to an A-Frame entity in your scene. T
 
 ```html
 <a-scene>
-  <a-container alignment="center" justifyContent="flexStart" direction="vertical" margin="0.5 0.5 0.5 0.5" position="0 1.5 -4">
+  <frame-container alignment="center" justifyContent="flexStart" direction="vertical" margin="0.5 0.5 0.5 0.5" position="0 1.5 -4">
     <a-box position="0 0 0" width="1" height="1" depth="1" color="#F00"></a-box>
     <a-sphere position="0 2 0" radius="0.5" color="#0F0"></a-sphere>
-  </a-container>
+  </frame-container>
 </a-scene>
 ```
 
-In this example, a `a-container` is used to vertically arrange a box and a sphere with a margin around each entity. The container adjusts its size and position based on its child entities, maintaining the layout structure within the VR scene.
+In this example, a `frame-container` is used to vertically arrange a box and a sphere with a margin around each entity. The container adjusts its size and position based on its child entities, maintaining the layout structure within the VR scene.

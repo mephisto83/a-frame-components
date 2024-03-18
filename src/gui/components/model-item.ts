@@ -15,13 +15,13 @@ export default function () {
             let entity: any = document.createElement('a-entity');
             entity.setAttribute('rotation', `0 0 0`)
 
-            let imageEntity: any = document.createElement('a-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
             imageEntity.setAttribute('maxwidth', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('maxheight', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('position', `${(-me.guiItem.width / 2) + (me.guiItem.height / 2)} 0 .03`)
             imageEntity.setAttribute('url', url);
 
-            var buttonContainer = document.createElement("a-gui-button");
+            var buttonContainer = document.createElement("frame-gui-button");
             buttonContainer.setAttribute('geometry', `primitive: plane; width: ${me.guiItem.width}; height: ${me.guiItem.height}; depth: 0.02;`);
             buttonContainer.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${GetColor(1)}`);
             buttonContainer.setAttribute('rotation', '0 0 0');
@@ -56,7 +56,7 @@ export default function () {
         createMenu: function ({ width, text, height, options }) {
             let me = this;
             let open = false;
-            let menuContainer = document.createElement('a-menu-container');
+            let menuContainer = document.createElement('frame-menu-container');
             menuContainer.setAttribute('menu-direction', 'up');
             menuContainer.setAttribute('flex-direction', 'column');
             menuContainer.setAttribute('justify-content', 'flexStart');
@@ -73,7 +73,7 @@ export default function () {
                 return false;
             });
 
-            let promptButton = document.createElement('a-base-interactive');
+            let promptButton = document.createElement('frame-base-interactive');
             promptButton.setAttribute('width', width)
             promptButton.setAttribute('height', '.2');
             promptButton.setAttribute('interactive-type', "button");
@@ -91,7 +91,7 @@ export default function () {
             entity.setAttribute('position', `0 ${(-height / 2)} .1`)
             entity.appendChild(menuContainer);
             return entity;
-            //     <a-menu-container
+            //     <frame-menu-container
             //     ref={menuContainerRef}
             //     menu-direction={'up'}
             //     flex-direction="column"
@@ -142,7 +142,7 @@ export default function () {
         },
         init: function () {
             let me = this;
-            let panel = document.createElement('a-rounded');
+            let panel = document.createElement('frame-rounded');
             panel.setAttribute('width', '2');
             panel.setAttribute('height', '2');
             panel.setAttribute('radius', '.1')

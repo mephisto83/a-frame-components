@@ -103,7 +103,7 @@ export default function () {
             var system = this.el.sceneEl.systems.ui; // Access by system name
             this.setup();
             this.system = system;
-            let outerBox: any = document.createElement('a-rounded');
+            let outerBox: any = document.createElement('frame-rounded');
             outerBox.setAttribute("gui-interactable", {})
             outerBox.setAttribute('color', GetBackgroundColor());
 
@@ -129,7 +129,7 @@ export default function () {
             outerBox.appendChild(sliderContainer);
 
 
-            let closeButton = document.createElement('a-gui-icon-label-button');
+            let closeButton = document.createElement('frame-gui-icon-label-button');
             closeButton.setAttribute('width', '0.25')
             closeButton.setAttribute('height', '0.25')
             closeButton.addEventListener('click', () => {
@@ -376,13 +376,13 @@ export default function () {
             let entity: any = document.createElement('a-entity');
             entity.setAttribute('rotation', `0 0 0`)
 
-            let imageEntity: any = document.createElement('a-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
             imageEntity.setAttribute('maxwidth', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('maxheight', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('position', `${(-me.guiItem.width / 2) + (me.guiItem.height / 2)} 0 .03`)
             imageEntity.setAttribute('url', url);
 
-            var buttonContainer = document.createElement("a-gui-button");
+            var buttonContainer = document.createElement("frame-gui-button");
             buttonContainer.setAttribute('geometry', `primitive: plane; width: ${me.guiItem.width}; height: ${me.guiItem.height}; depth: 0.02;`);
             buttonContainer.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${GetColor(1)}`);
             buttonContainer.setAttribute('rotation', '0 0 0');
@@ -527,7 +527,7 @@ export default function () {
             }
         }
     });
-    AFRAME.registerPrimitive('a-aspect-ratio-image', {
+    AFRAME.registerPrimitive('frame-aspect-ratio-image', {
         defaultComponents: {
             'aspect-ratio-image': {}
         },
@@ -538,7 +538,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-infinite-list', {
+    AFRAME.registerPrimitive('frame-infinite-list', {
         defaultComponents: {
             'infinite-list': {}
         },

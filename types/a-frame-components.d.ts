@@ -21,7 +21,7 @@ declare module 'a-frame-components' {
 }
 declare namespace JSX {
     interface IntrinsicElements {
-        'a-button': {
+        'frame-button': {
             on?: string;
             title?: string;
             value?: string;
@@ -50,7 +50,7 @@ declare namespace JSX {
             disabledTextColor?: string;
             handleColor?: string;
         }
-        'a-base-interactive': {
+        'frame-base-interactive': {
             on?: string;
             title?: string;
             value?: string;
@@ -251,7 +251,7 @@ declare namespace JSX {
             // Support for custom components or properties
             [propName: string]: any;
         };
-        'a-troika-text': {
+        'frame-troika-text': {
             // Text-specific properties
             align?: 'left' | 'right' | 'center' | 'justify';
             anchor?: 'left' | 'right' | 'center' | 'align';
@@ -367,7 +367,7 @@ declare namespace JSX {
             // Support for custom components or properties
             [propName: string]: any;
         };
-        'a-canvas-image': {
+        'frame-canvas-image': {
             // Add React-specific property 'key' for list rendering and TypeScript intrinsic properties
             key?: string | number;
 
@@ -439,13 +439,13 @@ declare namespace JSX {
             // Support for custom components or properties
             [propName: string]: any;
         };
-        'a-skeleton-body': {
+        'frame-skeleton-body': {
             position?: string;
             rotation?: string;
             scale?: string;
             [propName: string]: any;
         };
-        'a-rounded': {
+        'frame-rounded': {
             // Define the props matching the schema of your 'rounded' component
             enabled?: boolean;
             width?: number | string;
@@ -468,17 +468,17 @@ declare namespace JSX {
             // This is useful for custom data-attributes or any properties not explicitly defined in the typings
             [propName: string]: any;
         };
-        'a-radio': {
+        'frame-radio': {
             options?: string; // Since data is passed as a string (potentially a JSON-encoded string)
             value?: string;
             [propName: string]: any;
         };
-        'a-checkbox': {
+        'frame-checkbox': {
             label?: string;
             value?: string;
             [propName: string]: any;
         };
-        'a-gui-cursor': {
+        'frame-gui-cursor': {
             // React-specific props (e.g., key, ref) and common HTML attributes can be included if necessary
             key?: string | number;
             // Mapping the props to the primitive attributes
@@ -491,7 +491,7 @@ declare namespace JSX {
             design?: string;
             [propName: string]: any;
         };
-        'a-menu-container': {
+        'frame-menu-container': {
             // Direct mappings from A-Frame to JSX props
             width?: string;
             value?: string;
@@ -524,10 +524,10 @@ declare namespace JSX {
             'handle-color'?: string;
             [propName: string]: any;
         };
-        'a-gui-transformer': {
+        'frame-gui-transformer': {
             [propName: string]: any;
         };
-        'a-gui-flex-container': {
+        'frame-gui-flex-container': {
             // General HTML attributes like id, className, style, etc., can also be included here
             id?: string;
             className?: string;
@@ -553,7 +553,7 @@ declare namespace JSX {
             // Allow any other arbitrary properties
             [propName: string]: any;
         };
-        'a-gui-button': {
+        'frame-gui-button': {
             // Mappings for gui-interactable
             'onclick'?: string;
             'clickArgs'?: string;
@@ -597,8 +597,8 @@ declare namespace JSX {
             // Accept additional arbitrary properties to ensure flexibility
             [propName: string]: any;
         };
-        'a-infinite-list': {
-            // a-infinite-list specific properties as given in the mappings
+        'frame-infinite-list': {
+            // frame-infinite-list specific properties as given in the mappings
             itemtemplate?: string;
             selectionevent?: string;
             closeevent?: string;
@@ -618,7 +618,7 @@ declare namespace JSX {
             // Allow any other property
             [propName: string]: any;
         };
-        'a-aspect-ratio-image': {
+        'frame-aspect-ratio-image': {
             // Directly reflecting A-Frame attribute mapping for aspect-ratio-image
             url?: string;
             maxwidth?: string | number;
@@ -636,7 +636,7 @@ declare namespace JSX {
             // or any unspecified custom attributes.
             [propName: string]: any;
         };
-        'a-gui-icon-label-button': {
+        'frame-gui-icon-label-button': {
 
             // Mappings for gui-interactable
             'onclick'?: string;
@@ -669,7 +669,7 @@ declare namespace JSX {
             // or any unspecified custom attributes
             [propName: string]: any;
         };
-        'a-gui-toggle': {
+        'frame-gui-toggle': {
             // Mappings for gui-interactable
             'onclick'?: string;
             'onhover'?: string;
@@ -698,11 +698,11 @@ declare namespace JSX {
             // A catch-all for additional properties not explicitly defined above
             [propName: string]: any;
         };
-        'a-text-input': {
+        'frame-text-input': {
             value?: string;
             'font-size'?: string | number;
         };
-        'a-slider': {
+        'frame-slider': {
             // Mappings for gui-slider specific properties
             'active-color'?: string;
             'background-color'?: string;
@@ -731,7 +731,7 @@ declare namespace JSX {
             // Catch-all property for any additional unspecified custom attributes
             [propName: string]: any;
         };
-        'a-gui-input': {
+        'frame-gui-input': {
 
             // Mappings for gui-interactable
             'onclick'?: string;
@@ -755,7 +755,7 @@ declare namespace JSX {
             // A catch-all property for any additional, unspecified custom attributes
             [propName: string]: any;
         };
-        'a-gui-label': {
+        'frame-gui-label': {
             // Mappings for gui-item general properties
             'width'?: string | number;
             'height'?: string | number;
@@ -776,7 +776,7 @@ declare namespace JSX {
             // A catch-all for additional or future-proofing attributes
             [propName: string]: any;
         };
-        'a-gui-progressbar': {
+        'frame-gui-progressbar': {
             // Mappings for the default components' common options
             'width'?: string | number;
             'height'?: string | number;
@@ -789,7 +789,7 @@ declare namespace JSX {
             // Catch-all for additional data-* attributes or others not explicitly declared above
             [propertyName: string]: any;
         };
-        'a-container': {
+        'frame-container': {
             alignment?: 'flexStart' | 'flexEnd' | 'center', // flexStart, flexEnd, center
             direction?: 'horizontal' | 'vertical', // vertical, horizontal
             'justify-content'?: 'flexStart' | 'flexEnd' | 'center',

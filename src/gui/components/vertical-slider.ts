@@ -72,7 +72,7 @@ export default function () {
             handle.setAttribute('position', `0 ${data.handleInnerDepth} 0`);
             handleContainer.appendChild(handle);
 
-            var valueLabel = document.createElement('a-gui-label');
+            var valueLabel = document.createElement('frame-gui-label');
             valueLabel.setAttribute('width', `${guiItem.width * 1.4 * data.outputWidth}`);
             valueLabel.setAttribute('height', `${guiItem.width * 0.7}`);
             // TODO: use function to calculate display value
@@ -95,7 +95,7 @@ export default function () {
             this.hoverIndicator = hoverIndicator;
             el.appendChild(hoverIndicator);
 
-            var hoverLabel = document.createElement('a-gui-label');
+            var hoverLabel = document.createElement('frame-gui-label');
             hoverLabel.setAttribute('width', `${guiItem.width * data.hoverWidth}`);
             hoverLabel.setAttribute('height', `${guiItem.width * data.hoverHeight}`);
             hoverLabel.setAttribute('value', '');

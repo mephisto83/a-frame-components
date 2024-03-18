@@ -48,7 +48,7 @@ export default function () {
             targetBar.setAttribute('material', `shader: flat; opacity: 0;  color: ${data.backgroundColor}; side:double;`);
             targetBar.setAttribute('gui-interactable', {})
             if (this.data.title) {
-                let text = document.createElement('a-troika-text');
+                let text = document.createElement('frame-troika-text');
                 if (this.data.percentageTextFont) {
                     text.setAttribute('font', this.data.percentageTextFont);
                 }
@@ -274,7 +274,7 @@ export default function () {
             me.updateOrientation();
         }
     });
-    AFRAME.registerPrimitive('a-slider', {
+    AFRAME.registerPrimitive('frame-slider', {
         defaultComponents: {
             'gui-item': { type: 'slider' },
             'slider': {}

@@ -43,12 +43,12 @@ export default function () {
             if (this.data.options) {
 
                 if (this.data.options) {
-                    let buttonContainer = document.createElement('a-container');
+                    let buttonContainer = document.createElement('frame-container');
                     buttonContainer.setAttribute('direction', 'horizontal')
                     buttonContainer.setAttribute('alignment', 'flexStart')
                     buttonContainer.setAttribute('margin', '0 0 0 0')
                     me.options.map((option: RadioOption) => {
-                        let button = createElement("a-base-interactive",
+                        let button = createElement("frame-base-interactive",
                             {
                                 width: (option as any).width || .3,
                                 height: me.data.optionHeight || .2,
@@ -101,7 +101,7 @@ export default function () {
         },
     });
 
-    AFRAME.registerPrimitive('a-radio', {
+    AFRAME.registerPrimitive('frame-radio', {
         defaultComponents: {
             'radio-component': {},
         },

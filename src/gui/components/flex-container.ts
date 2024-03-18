@@ -199,7 +199,7 @@ export default function () {
 
     });
 
-    AFRAME.registerPrimitive('a-gui-flex-container', {
+    AFRAME.registerPrimitive('frame-gui-flex-container', {
         defaultComponents: {
             'gui-item': { type: 'flex-container' },
             'gui-flex-container': {}

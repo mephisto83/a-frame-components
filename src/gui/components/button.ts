@@ -385,7 +385,7 @@ export default function () {
     });
 
 
-    AFRAME.registerPrimitive('a-gui-button', {
+    AFRAME.registerPrimitive('frame-gui-button', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'button' },

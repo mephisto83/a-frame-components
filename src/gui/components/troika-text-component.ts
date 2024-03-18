@@ -94,7 +94,7 @@ export default function () {
             // anonymous sub-entity that we can use to isolate the text mesh and the material
             // component that should apply to it. If we're a primitive, no isolation is needed.
             var textEntity
-            var isPrimitive = this.el.tagName.toLowerCase() === 'a-troika-text'
+            var isPrimitive = this.el.tagName.toLowerCase() === 'frame-troika-text'
             if (isPrimitive) {
                 textEntity = this.el
             } else {
@@ -274,7 +274,7 @@ export default function () {
     });
 
 
-    AFRAME.registerPrimitive('a-troika-text', {
+    AFRAME.registerPrimitive('frame-troika-text', {
         defaultComponents: {
             'troika-text': {}
         },

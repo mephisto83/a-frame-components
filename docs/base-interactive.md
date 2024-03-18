@@ -1,10 +1,10 @@
-# `a-base-interactive` Element Documentation
+# `frame-base-interactive` Element Documentation
 
-The `a-base-interactive` element is a versatile component designed for A-Frame environments, allowing developers to easily implement interactive UI elements such as radio buttons, regulators, checkboxes, and icon buttons. This documentation outlines how to utilize `a-base-interactive` within your A-Frame projects, detailing its properties and usage.
+The `frame-base-interactive` element is a versatile component designed for A-Frame environments, allowing developers to easily implement interactive UI elements such as radio buttons, regulators, checkboxes, and icon buttons. This documentation outlines how to utilize `frame-base-interactive` within your A-Frame projects, detailing its properties and usage.
 
 ## Overview
 
-`a-base-interactive` integrates with A-Frame's entity-component system, offering a foundation for creating interactive UI elements that can respond to user inputs. By configuring its properties, you can tailor the behavior and appearance of `a-base-interactive` to match your specific needs.
+`frame-base-interactive` integrates with A-Frame's entity-component system, offering a foundation for creating interactive UI elements that can respond to user inputs. By configuring its properties, you can tailor the behavior and appearance of `frame-base-interactive` to match your specific needs.
 
 ## Properties
 
@@ -47,11 +47,11 @@ The `a-base-interactive` element is a versatile component designed for A-Frame e
 
 ## Usage
 
-To use `a-base-interactive` in your A-Frame scene, add it as a primitive element and configure its properties according to your requirements. Here's a basic example:
+To use `frame-base-interactive` in your A-Frame scene, add it as a primitive element and configure its properties according to your requirements. Here's a basic example:
 
 ```html
 <a-scene>
-  <a-base-interactive 
+  <frame-base-interactive 
     interactive-type="checkbox"
     onclick="onCheckboxClick"
     width="1"
@@ -63,7 +63,7 @@ To use `a-base-interactive` in your A-Frame scene, add it as a primitive element
     hover-color="#0056b3"
     active-color="#004c8c"
     position="0 1.6 -3">
-  </a-base-interactive>
+  </frame-base-interactive>
 </a-scene>
 ```
 
@@ -71,4 +71,4 @@ This example creates a checkbox interactive element with specified dimensions, c
 
 ## Conclusion
 
-The `a-base-interactive` element is a powerful tool for A-Frame developers looking to add interactive UI components to their VR experiences. By customizing its wide range of properties, you can create a variety of interactive elements suited to your project's needs.
+The `frame-base-interactive` element is a powerful tool for A-Frame developers looking to add interactive UI components to their VR experiences. By customizing its wide range of properties, you can create a variety of interactive elements suited to your project's needs.

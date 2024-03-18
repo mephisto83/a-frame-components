@@ -42,7 +42,7 @@ export default function () {
         },
     });
 
-    AFRAME.registerPrimitive('a-gui-progressbar', {
+    AFRAME.registerPrimitive('frame-gui-progressbar', {
         defaultComponents: {
             'gui-item': { type: 'progressbar' },
             'gui-progressbar': {}

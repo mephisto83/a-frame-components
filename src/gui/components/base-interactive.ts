@@ -54,7 +54,7 @@ export default function () {
                 var newSize = data.fontSize / 750;
                 data.fontSize = newSize;
             }
-            let background: any = document.createElement('a-rounded');
+            let background: any = document.createElement('frame-rounded');
             background.setAttribute("gui-interactable", guiInteractable)
             background.setAttribute('width', guiItem.width)
             background.setAttribute('height', guiItem.height)
@@ -307,7 +307,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-base-interactive', {
+    AFRAME.registerPrimitive('frame-base-interactive', {
         defaultComponents: {
             'gui-interactable': {},
             'menuable': {},
@@ -344,7 +344,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-button', {
+    AFRAME.registerPrimitive('frame-button', {
         defaultComponents: {
             'gui-interactable': {},
             'menuable': {},

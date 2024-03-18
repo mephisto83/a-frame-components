@@ -382,7 +382,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-gui-cursor', {
+    AFRAME.registerPrimitive('frame-gui-cursor', {
         defaultComponents: {
             'cursor': {},
             'gui-cursor': {}

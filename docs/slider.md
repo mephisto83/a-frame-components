@@ -1,6 +1,6 @@
-# `a-slider` Component Usage Documentation
+# `frame-slider` Component Usage Documentation
 
-The `a-slider` component is a customizable slider component designed for graphical user interfaces. It allows for extensive customization to fit the design requirements of various applications. Below is the documentation on how to use and customize the `a-slider` component.
+The `frame-slider` component is a customizable slider component designed for graphical user interfaces. It allows for extensive customization to fit the design requirements of various applications. Below is the documentation on how to use and customize the `frame-slider` component.
 
 ## Properties
 
@@ -25,10 +25,10 @@ The `a-slider` component is a customizable slider component designed for graphic
 
 ## Example Usage
 
-Below is an example of how to integrate the `a-slider` component into your project:
+Below is an example of how to integrate the `frame-slider` component into your project:
 
 ```html
-<a-slider
+<frame-slider
     title="Volume Control"
     orientation="horizontal"
     active-color="#FFD700"
@@ -42,13 +42,13 @@ Below is an example of how to integrate the `a-slider` component into your proje
     title-position="top"
     title-text-font="assets/fonts/Plaster-Regular.ttf"
     percentage-text-font="assets/fonts/Plaster-Regular.ttf"
-></a-slider>
+></frame-slider>
 ```
 
-## Customizing `a-slider`
+## Customizing `frame-slider`
 
-To customize the `a-slider` component, modify its properties as needed to fit the design and functional requirements of your application. The component's flexibility allows for a wide range of visual styles and behaviors.
+To customize the `frame-slider` component, modify its properties as needed to fit the design and functional requirements of your application. The component's flexibility allows for a wide range of visual styles and behaviors.
 
 Remember to include the necessary assets, such as font files, and ensure they are correctly pathed in your project's directory structure.
 
-For any additional or undocumented properties (`[propName: string]: any;`), you can pass custom attributes to further customize the slider's appearance or behavior. This catch-all property ensures that the `a-slider` component can adapt to future requirements or integrate with other systems seamlessly.
+For any additional or undocumented properties (`[propName: string]: any;`), you can pass custom attributes to further customize the slider's appearance or behavior. This catch-all property ensures that the `frame-slider` component can adapt to future requirements or integrate with other systems seamlessly.

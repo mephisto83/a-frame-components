@@ -169,7 +169,7 @@ export default function () {
     ctx.lineTo(x + bottomLeftRadius, y);
     ctx.quadraticCurveTo(x, y, x, y + bottomLeftRadius);
   }
-  AFRAME.registerPrimitive('a-rounded', {
+  AFRAME.registerPrimitive('frame-rounded', {
     defaultComponents: {
       rounded: {}
     },

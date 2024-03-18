@@ -36,7 +36,7 @@ export default function () {
             // Create the hidden input field
             let minimumHeight = this.data.height;
             this.paddingLeft = .01;
-            let baseInteractive: any = document.createElement('a-base-interactive');
+            let baseInteractive: any = document.createElement('frame-base-interactive');
             me.baseInteractive = baseInteractive;
             me.baseInteractive.setAttribute('padding-left', this.paddingLeft)
             me.baseInteractive.setAttribute('interactive-type', 'text');
@@ -110,7 +110,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-text-input', {
+    AFRAME.registerPrimitive('frame-text-input', {
         defaultComponents: {
             'text-field': {},
         },

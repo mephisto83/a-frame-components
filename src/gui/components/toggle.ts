@@ -163,7 +163,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-gui-toggle', {
+    AFRAME.registerPrimitive('frame-gui-toggle', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'toggle' },

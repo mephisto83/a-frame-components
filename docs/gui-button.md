@@ -1,10 +1,10 @@
-# `a-gui-button` Documentation
+# `frame-gui-button` Documentation
 
-The `a-gui-button` is a customizable GUI button component for AFRAME, designed to provide interactive button functionality within VR environments. This guide will help you understand how to implement and customize the `a-gui-button` in your AFRAME projects.
+The `frame-gui-button` is a customizable GUI button component for AFRAME, designed to provide interactive button functionality within VR environments. This guide will help you understand how to implement and customize the `frame-gui-button` in your AFRAME projects.
 
 ## Registering the Primitive
 
-`a-gui-button` is registered as a primitive in AFRAME using the `AFRAME.registerPrimitive` method. This registration includes the default components that make up the button and mappings for various configurable properties.
+`frame-gui-button` is registered as a primitive in AFRAME using the `AFRAME.registerPrimitive` method. This registration includes the default components that make up the button and mappings for various configurable properties.
 
 ### Default Components:
 
@@ -37,14 +37,14 @@ The `a-gui-button` is a customizable GUI button component for AFRAME, designed t
 
 ## Usage Example
 
-Here's a basic example of how to use the `a-gui-button` in your AFRAME scene:
+Here's a basic example of how to use the `frame-gui-button` in your AFRAME scene:
 
 ```html
-<a-gui-button position="0 1.6 -3" value="Click Me!" width="0.75" height="0.4" font-color="#FFF" background-color="#007BFF" hover-color="#0056b3"></a-gui-button>
+<frame-gui-button position="0 1.6 -3" value="Click Me!" width="0.75" height="0.4" font-color="#FFF" background-color="#007BFF" hover-color="#0056b3"></frame-gui-button>
 ```
 
 This example creates a button with the label "Click Me!" that changes color on hover and triggers `myClickFunction` when clicked.
 
 ## Customizing Your Button
 
-You can customize the `a-gui-button` by modifying its properties as per your requirements. Use the property mappings provided above to adjust the button's look, feel, and behavior in your AFRAME scene.
+You can customize the `frame-gui-button` by modifying its properties as per your requirements. Use the property mappings provided above to adjust the button's look, feel, and behavior in your AFRAME scene.

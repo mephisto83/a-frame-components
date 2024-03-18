@@ -19,7 +19,7 @@ export default function () {
         },
         render: function () {
             let me = this;
-            let button = createElement("a-base-interactive",
+            let button = createElement("frame-base-interactive",
                 {
                     height: .2,
                     margin: '0 0 0 0',
@@ -57,7 +57,7 @@ export default function () {
         },
     });
 
-    AFRAME.registerPrimitive('a-checkbox', {
+    AFRAME.registerPrimitive('frame-checkbox', {
         defaultComponents: {
             'checkbox-component': {},
         },

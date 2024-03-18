@@ -57,7 +57,7 @@ export default function () {
         createLoraContainer: function ({ id }) {
             let me = this;
             let loraContainer = document.createElement('a-entity');
-            let imageEntity: any = document.createElement('a-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
             // imageEntity.setAttribute('visible', `false`)
             let imageSize = (me.buttonSize - .02);
             imageEntity.setAttribute('maxwidth', imageSize || `.2`);
@@ -87,7 +87,7 @@ export default function () {
         },
         createButton: function ({ type, onclick, args, value, position, buttonSize }) {
             let me = this;
-            let button = document.createElement(type || 'a-gui-button');
+            let button = document.createElement(type || 'frame-gui-button');
 
             button.setAttribute('width', buttonSize || me.buttonSize || '0.15')
             button.setAttribute('height', buttonSize || me.buttonSize || '0.15')

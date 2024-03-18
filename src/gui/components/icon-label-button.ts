@@ -197,7 +197,7 @@ export default function () {
         },
     });
 
-    AFRAME.registerPrimitive('a-gui-icon-label-button', {
+    AFRAME.registerPrimitive('frame-gui-icon-label-button', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'icon-label-button' },

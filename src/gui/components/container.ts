@@ -117,7 +117,7 @@ export default function () {
             }
         }
     });
-    AFRAME.registerPrimitive('a-container', {
+    AFRAME.registerPrimitive('frame-container', {
         defaultComponents: {
             'dynamic-container': {}
         },

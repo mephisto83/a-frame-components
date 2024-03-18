@@ -80,7 +80,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-canvas-image', {
+    AFRAME.registerPrimitive('frame-canvas-image', {
         defaultComponents: {
             'canvas-image': {}
         },

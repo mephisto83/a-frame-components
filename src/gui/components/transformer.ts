@@ -488,7 +488,7 @@ export default function () {
         },
     });
 
-    AFRAME.registerPrimitive('a-gui-transformer', {
+    AFRAME.registerPrimitive('frame-gui-transformer', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'slider' },

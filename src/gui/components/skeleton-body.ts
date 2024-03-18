@@ -138,7 +138,7 @@ export default function () {
             // Similar setup for right leg and arms...
         }
     });
-    AFRAME.registerPrimitive('a-skeleton-body', {
+    AFRAME.registerPrimitive('frame-skeleton-body', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': {},

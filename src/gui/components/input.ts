@@ -134,7 +134,7 @@ export default function () {
         }
     });
 
-    AFRAME.registerPrimitive('a-gui-input', {
+    AFRAME.registerPrimitive('frame-gui-input', {
         defaultComponents: {
             'gui-interactable': {},
             'gui-item': { type: 'input' },

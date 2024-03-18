@@ -38,13 +38,13 @@ export default function () {
             let entity: any = document.createElement('a-entity');
             entity.setAttribute('rotation', `0 0 0`)
 
-            let imageEntity: any = document.createElement('a-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
             imageEntity.setAttribute('maxwidth', `${me.guiItem.height - imageMargin}`);
             imageEntity.setAttribute('maxheight', `${me.guiItem.height - imageMargin}`);
             imageEntity.setAttribute('position', `${(-me.guiItem.width / 2) + (me.guiItem.height / 2)} 0 .03`)
             imageEntity.setAttribute('url', url);
 
-            var buttonContainer = document.createElement("a-gui-button");
+            var buttonContainer = document.createElement("frame-gui-button");
             buttonContainer.setAttribute('geometry', `primitive: plane; width: ${me.guiItem.width}; height: ${me.guiItem.height}; depth: 0.02;`);
             buttonContainer.setAttribute('material', `shader: flat; opacity: 1; side:double; color: ${GetColor(1)}`);
             buttonContainer.setAttribute('rotation', '0 0 0');

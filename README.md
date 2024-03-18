@@ -55,9 +55,9 @@ export default function SpaceShipScene() {
     return (
         <a-scene>
             <a-entity position="0 2.5 -2">
-                <a-container direction="vertical" alignment="flexStart" margin={margin}>
-                    <a-container direction="horizontal" alignment="flexStart" margin={margin}>
-                        <a-menu-container
+                <frame-container direction="vertical" alignment="flexStart" margin={margin}>
+                    <frame-container direction="horizontal" alignment="flexStart" margin={margin}>
+                        <frame-menu-container
                             id="menu"
                             forward-step="0.05"
                             text-value="Menu 1 a"
@@ -68,7 +68,7 @@ export default function SpaceShipScene() {
                             component-padding="0.01"
                             menu-item-height={`.2`}
                             menu-item-width={`1.0`}>
-                            <a-base-interactive
+                            <frame-base-interactive
                                 font-size=".07"
                                 value={'word1'}
                                 title={'Title 1'}
@@ -77,7 +77,7 @@ export default function SpaceShipScene() {
                                 height={"0.2"}
                                 margin="0 0 0.05 0"
                             />
-                        </a-menu-container>
+                        </frame-menu-container>
                         ...
 ```
 
@@ -86,10 +86,10 @@ export default function SpaceShipScene() {
 For each component, you'll find detailed API documentation below:
 
 #### Example:
-To use the `a-container` component for creating a layout with vertically centered items, distributed evenly along the main axis, and with a specific margin around the container, you might define it like this:
+To use the `frame-container` component for creating a layout with vertically centered items, distributed evenly along the main axis, and with a specific margin around the container, you might define it like this:
 
 ```javascript
-'a-container': {
+'frame-container': {
   alignment: 'center', // Center items vertically (in a horizontal layout)
   direction: 'vertical', // Lay out children vertically
   'justify-content': 'center', // Evenly distribute children along the vertical axis
@@ -97,7 +97,7 @@ To use the `a-container` component for creating a layout with vertically centere
 };
 ```
 
-This setup ensures that the children of the `a-container` are vertically arranged, centered both along the main and cross axis, and the container itself has a specified margin from its surroundings.
+This setup ensures that the children of the `frame-container` are vertically arranged, centered both along the main and cross axis, and the container itself has a specified margin from its surroundings.
 
 ## Events
   
@@ -115,9 +115,9 @@ export default function SpaceShipScene() {
     return (
       <>
         <a-scene>
-           <a-gui-button value="a b asdfutton" {...guiProps} />
-          <a-menu-container id="menu">
-            <a-base-interactive
+           <frame-gui-button value="a b asdfutton" {...guiProps} />
+          <frame-menu-container id="menu">
+            <frame-base-interactive
                 font-size=".07"
                 value={'word1'}
                 title={'Title 1'}
@@ -126,7 +126,7 @@ export default function SpaceShipScene() {
                 height={"0.2"}
                 margin="0 0 0.05 0"
             />
-          </a-menu-container>
+          </frame-menu-container>
         </a-scene>
       </>
     )

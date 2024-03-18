@@ -239,7 +239,7 @@ export function createBaseInteractive({
     fontSize = .17
 }: any) {
 
-    let element = createElement('a-base-interactive', {
+    let element = createElement('frame-base-interactive', {
         width,
         height,
         value,
@@ -260,7 +260,7 @@ export function createBaseIconInteractive({
     fontSize = .17,
     type = 'icon-button',
 }) {
-    let element = createElement('a-base-interactive', {
+    let element = createElement('frame-base-interactive', {
         width,
         height,
         value: value || icon,
@@ -273,7 +273,7 @@ export function createBaseIconInteractive({
         height,
         width
     });
-    //  return createAndApplyAttributes('a-base-interactive', `width="${width || .4}" height="${height || 0.4}" interactive-type="icon-button" value="${icon}" margin="0 0 0.05 0" font-size=".17"`)
+    //  return createAndApplyAttributes('frame-base-interactive', `width="${width || .4}" height="${height || 0.4}" interactive-type="icon-button" value="${icon}" margin="0 0 0.05 0" font-size=".17"`)
 }
 
 export function onClick(el: any, func: any) {
@@ -291,7 +291,7 @@ export function createMenuItem({ type, width = 1, text, onRender }: {
     type?: string,
     onRender?: (el: any) => void
 }) {
-    let button = createElement("a-base-interactive",
+    let button = createElement("frame-base-interactive",
         {
             width: width,
             ['interactive-type']: type || 'button',
@@ -314,7 +314,7 @@ export function createInteractiveButton({
     text,
     onRender
 }: { interactiveType?: string, width?: any, text: string, onRender?: (el: any) => void }) {
-    let button = createElement("a-base-interactive",
+    let button = createElement("frame-base-interactive",
         {
             width: width || '1',
             ['interactive-type']: interactiveType || 'button',
@@ -339,7 +339,7 @@ export function createMenu({
     forwardStep = .01,
     children = []
 }) {
-    let menu = createElement('a-menu-container',
+    let menu = createElement('frame-menu-container',
         {
             [`menu-direction`]: "up",
             [`flex-direction`]: "column",
