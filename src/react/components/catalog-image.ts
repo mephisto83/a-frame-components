@@ -3,7 +3,7 @@ import { GetColor } from "../systems/ui";
 const THREE: any = (window as any).THREE;
 
 export default function () {
-    AFRAME.registerComponent('catalog-ghost', {
+    AFRAME.registerComponent('dnd-ghost', {
         schema: {
             options: { type: 'string' }
         },
@@ -16,15 +16,15 @@ export default function () {
             this.el.appendChild(imageCube);
         }
     });
-    AFRAME.registerPrimitive('a-catalog-ghost', {
+    AFRAME.registerPrimitive('frame-dnd-ghost', {
         defaultComponents: {
-            'catalog-ghost': {}
+            'dnd-ghost': {}
         },
         mappings: {
-            options: 'catalog-ghost.options'
+            options: 'dnd-ghost.options'
         }
     })
-    AFRAME.registerComponent('catalog-image', {
+    AFRAME.registerComponent('dnd-image', {
         schema: {
             options: { type: 'string' }
         },
@@ -50,7 +50,7 @@ export default function () {
             buttonContainer.setAttribute('rotation', '0 0 0');
             buttonContainer.setAttribute('panel-color', GetColor(4))
             buttonContainer.setAttribute('grabbanddroppable', JSON.stringify({
-                ghost: 'a-catalog-ghost',
+                ghost: 'frame-dnd-ghost',
                 category: 'image-catalog',
                 data: { value, id, text, url }
             }));
@@ -74,12 +74,12 @@ export default function () {
             this.el.appendChild(entity);
         }
     });
-    AFRAME.registerPrimitive('a-catalog-image', {
+    AFRAME.registerPrimitive('a-dnd-image', {
         defaultComponents: {
-            'catalog-image': {}
+            'dnd-image': {}
         },
         mappings: {
-            options: 'catalog-image.options'
+            options: 'dnd-image.options'
         }
     });
 }

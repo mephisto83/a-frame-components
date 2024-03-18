@@ -15,7 +15,7 @@ import rounded from './rounded';
 import slider from "./slider";
 import troikaTextComponent from "./troika-text-component";
 import imageCube from "./image-cube";
-import catalogImage from "../../react/components/catalog-image";
+import catalogImage from "../../react/components/dnd-image";
 import baseInteractive from "./base-interactive";
 import menuContainer from "./menu-container";
 import transformer from "./transformer";
