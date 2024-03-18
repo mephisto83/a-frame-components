@@ -211,7 +211,9 @@ export default function () {
                 for (let k = 0; k < keys.length; k++) {
                     let key = parseInt(keys[k]);
                     let vo = me.visibleObjects[key];
-                    vo.parentNode.removeChild(vo);
+                    try {
+                        vo.parentNode.removeChild(vo);
+                    } catch (e) { console.log(e) }
                     delete me.visibleObjects[key]
                 }
             }
