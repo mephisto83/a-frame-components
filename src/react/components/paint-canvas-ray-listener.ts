@@ -4,7 +4,7 @@ import { uuidv4 } from '../util';
 const THREE: any = (window as any).THREE;
 
 export default function () {
-    AFRAME.registerComponent('raycaster-listen', {
+    AFRAME.registerComponent('raycaster-listener', {
         schema: {
             pressed: { type: 'boolean' }
         },

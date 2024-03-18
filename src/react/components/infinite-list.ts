@@ -26,7 +26,7 @@ function loadFont(path) {
     return promise;
 }
 export default function () {
-    AFRAME.registerComponent('infinite-list', {
+    AFRAME.registerComponent('infinity-list', {
         schema: {
             selectionevent: { type: 'string' },
             closeevent: { type: 'string' },
@@ -540,25 +540,25 @@ export default function () {
 
     AFRAME.registerPrimitive('frame-infinite-list', {
         defaultComponents: {
-            'infinite-list': {}
+            'infinity-list': {}
         },
         mappings: {
-            itemtemplate: 'infinite-list.itemtemplate',
-            selectionevent: 'infinite-list.selectionevent',
-            closeevent: 'infinite-list.closeevent',
-            'icon-font': 'infinite-list.iconFont',
-            'icon-font-size': 'infinite-list.iconFontSize',
-            'icon': 'infinite-list.icon',
-            speed: 'infinite-list.speed',
-            sourceId: 'infinite-list.sourceId',
-            options: 'infinite-list.options',
-            width: 'infinite-list.width',
-            height: 'infinite-list.height',
-            margin: 'infinite-list.boxMargin',
-            columns: 'infinite-list.columns',
-            itemsize: 'infinite-list.itemSize',
-            selected: 'infinite-list.selected',
-            hideclose: 'infinite-list.hideClose',
+            itemtemplate: 'infinity-list.itemtemplate',
+            selectionevent: 'infinity-list.selectionevent',
+            closeevent: 'infinity-list.closeevent',
+            'icon-font': 'infinity-list.iconFont',
+            'icon-font-size': 'infinity-list.iconFontSize',
+            'icon': 'infinity-list.icon',
+            speed: 'infinity-list.speed',
+            sourceId: 'infinity-list.sourceId',
+            options: 'infinity-list.options',
+            width: 'infinity-list.width',
+            height: 'infinity-list.height',
+            margin: 'infinity-list.boxMargin',
+            columns: 'infinity-list.columns',
+            itemsize: 'infinity-list.itemSize',
+            selected: 'infinity-list.selected',
+            hideclose: 'infinity-list.hideClose',
         }
     });
     // Example usage in an A-Frame scene
