@@ -78,6 +78,8 @@ declare namespace JSX {
             disabledColor?: string;
             disabledTextColor?: string;
             handleColor?: string;
+            // Add any custom properties or events specific to your project
+            [propName: string]: any;
         }
         'a-scene': {
             antialias?: "true" | "false";
