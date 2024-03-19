@@ -11,6 +11,7 @@ export default function () {
         schema: {
             width: { type: 'number' },
             height: { type: 'number' },
+            depth: { type: 'number' },
         },
         init: function () {
             let me = this;
@@ -54,7 +55,7 @@ export default function () {
                 // imageCube.setAttribute('size', Math.min(size.x, size.y, size.z));
                 imageCube.setAttribute('width', me.data.width || 1)
                 imageCube.setAttribute('height', me.data.height || 1)
-                imageCube.setAttribute('depth', 1)
+                imageCube.setAttribute('depth', me.data.depth || me.data.height || 1)
                 imageCube.setAttribute('color', 'blue');
                 let entity: any = document.createElement('a-entity');
                 entity.appendChild(imageCube);
