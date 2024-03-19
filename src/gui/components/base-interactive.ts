@@ -223,7 +223,7 @@ export default function () {
             }
 
             if (this.textEntity) {
-                this.setText(this.data.value);
+                this.setText(this.data.title || this.data.value);
             }
             this.positionRadioButton({ guiItem: this.guiItem });
             me.updateElementSize(me, me.el);
