@@ -2,7 +2,7 @@
 import { PAINTER_CONSTANTS } from "../constants";
 import { AFRAME } from "../root";
 import { hexToHsv, hsb2rgb, raiseCustomEvent, setConsoleText, uvToColorHex } from "../util";
-import grabanddrop from "./grabanddrop";
+import grabanddrop, { customEventListener } from "./grabanddrop";
 const THREE: any = (window as any).THREE;
 export const INTERACTABLES = {
   PAINTUI: 'paint-ui',
@@ -70,6 +70,10 @@ export default function () {
       this.states[UIStates.DrawMode] = DrawMode.Draw;
       this.raycasters = {};
       setUISystems(this);
+      raiseCustomEvent('ui-init', { ui: this })
+      customEventListener('check-for-ui', () => {
+        raiseCustomEvent('ui-init', { ui: this })
+      })
     },
     getColorHistory: function () {
       return this.states[UIStates.ColorHistory]
