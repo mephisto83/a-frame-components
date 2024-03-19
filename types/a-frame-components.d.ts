@@ -620,7 +620,7 @@ declare namespace JSX {
             // Allow any other property
             [propName: string]: any;
         };
-        'frame-aspect-ratio-image': {
+        'frame-ar-image': {
             // Directly reflecting A-Frame attribute mapping for aspect-ratio-image
             url?: string;
             maxwidth?: string | number;

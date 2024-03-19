@@ -57,7 +57,7 @@ export default function () {
         createLoraContainer: function ({ id }) {
             let me = this;
             let loraContainer = document.createElement('a-entity');
-            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-ar-image');
             // imageEntity.setAttribute('visible', `false`)
             let imageSize = (me.buttonSize - .02);
             imageEntity.setAttribute('maxwidth', imageSize || `.2`);

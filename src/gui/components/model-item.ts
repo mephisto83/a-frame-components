@@ -15,7 +15,7 @@ export default function () {
             let entity: any = document.createElement('a-entity');
             entity.setAttribute('rotation', `0 0 0`)
 
-            let imageEntity: any = document.createElement('frame-aspect-ratio-image');
+            let imageEntity: any = document.createElement('frame-ar-image');
             imageEntity.setAttribute('maxwidth', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('maxheight', `${me.guiItem.height - me.imageMargin}`);
             imageEntity.setAttribute('position', `${(-me.guiItem.width / 2) + (me.guiItem.height / 2)} 0 .03`)
