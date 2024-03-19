@@ -1,10 +1,16 @@
 import { AFRAME } from "../../react/root";
-import { GrabAndDropEvents, GrabOutDetails, GrabOverDetails, calculateEndPoint, customEventListener, getInputDevice, lerp3, setInputDevice, } from "../../react/systems/grabanddrop";
+import {
+    GrabAndDropEvents, GrabOutDetails, GrabOverDetails,
+    calculateEndPoint, customEventListener,
+    getInputDevice, lerp3, setInputDevice,
+} from "../../react/systems/grabanddrop";
 import { raiseCustomEvent } from "../../react/util";
 export default function () {
     const THREE: any = (window as any).THREE;
     AFRAME.registerComponent('draganddropzone', {
         schema: {
+            width: { type: 'number' },
+            height: { type: 'number' },
         },
         init: function () {
             let me = this;
@@ -46,8 +52,8 @@ export default function () {
                 // let skin = 'assets/images/selection.png';
                 // imageCube.setAttribute('src', `url(${skin})`)
                 // imageCube.setAttribute('size', Math.min(size.x, size.y, size.z));
-                imageCube.setAttribute('width', 1)
-                imageCube.setAttribute('height', 1)
+                imageCube.setAttribute('width', me.data.width || 1)
+                imageCube.setAttribute('height', me.data.height || 1)
                 imageCube.setAttribute('depth', 1)
                 imageCube.setAttribute('color', 'blue');
                 let entity: any = document.createElement('a-entity');
