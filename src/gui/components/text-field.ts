@@ -30,6 +30,11 @@ export default function () {
                 me.baseInteractive.setAttribute('height', this.data.height);
                 update = true;
             }
+            if (oldData?.value !== this.data.value) {
+                // For text entity in A-Frame, use 'text' component's 'value' property
+                me.baseInteractive.setAttribute('value', this.data.value);
+                me.input.setAttribute('value', this.data.value);
+            }
         },
         init: function () {
             let me = this;
@@ -83,7 +88,7 @@ export default function () {
             // Function to log the cursor position
             const logCursorPosition = () => {
                 // Assuming inputElement is an HTMLInputElement
-                
+
                 me.baseInteractive.setAttribute('cursor-position', me.input.selectionStart);
             };
 
