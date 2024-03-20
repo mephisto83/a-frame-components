@@ -34,6 +34,7 @@ export default function () {
                 // For text entity in A-Frame, use 'text' component's 'value' property
                 me.baseInteractive.setAttribute('value', this.data.value);
                 me.input.setAttribute('value', this.data.value);
+                me.input.value = this.data.value;
             }
         },
         init: function () {
