@@ -27,7 +27,7 @@ export default function () {
         titleTextFont: { type: 'string', default: '' },
         percentageTextFont: { type: 'string', default: '' },
         min: { type: 'number', default: 0 },
-        max: { type: 'number', default: 0 }
+        max: { type: 'number', default: 100 }
     };
 
     AFRAME.registerComponent('gui-slider', {
