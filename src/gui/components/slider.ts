@@ -27,7 +27,8 @@ export default function () {
         titleTextFont: { type: 'string', default: '' },
         percentageTextFont: { type: 'string', default: '' },
         min: { type: 'number', default: 0 },
-        max: { type: 'number', default: 100 }
+        max: { type: 'number', default: 100 },
+        nearest: { type: 'number', default: 1 }
     };
 
     AFRAME.registerComponent('gui-slider', {
@@ -148,7 +149,7 @@ export default function () {
         },
         getText: function () {
             let num = mapRange(this.data.percent, this.data.min, this.data.max)
-            return `${Math.round(num * 100) / 100}`;
+            return `${Math.round(num * this.data.nearest) / this.data.nearest}`;
         },
         positionElements: function () {
             let el = this.el;
