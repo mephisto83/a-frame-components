@@ -174,15 +174,10 @@ export function useEventsListenerOn(
     }, [selector, args]);
 
     useEffect(() => {
-        if (!initSelector) {
-            let id = generateUniqueId();
-            setSelectId(id);
-            setSelector(`[frame-id="${id}"]`);
-        }
-        else {
-            setSelector(initSelector);
-        }
-    }, [initSelector])
+        let id = generateUniqueId();
+        setSelectId(id);
+        setSelector(`[frame-id="${id}"]`);
+    }, [])
 
     return { [`frame-id`]: selectedId }
 }
