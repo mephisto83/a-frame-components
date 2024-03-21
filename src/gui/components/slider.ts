@@ -147,7 +147,7 @@ export default function () {
         play: function () {
         },
         getText: function () {
-            let num = mapRange(this.data.percent * 100, this.data.min, this.data.max)
+            let num = mapRange(this.data.percent, this.data.min, this.data.max)
             return `${Math.round(num * 100) / 100}`;
         },
         positionElements: function () {
