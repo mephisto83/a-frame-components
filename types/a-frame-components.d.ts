@@ -55,6 +55,8 @@ declare namespace JSX {
             disabledColor?: string;
             disabledTextColor?: string;
             handleColor?: string;
+            // Add any custom properties or events specific to your project
+            [propName: string]: any;
         }
         'frame-base-interactive': {
             on?: string;
