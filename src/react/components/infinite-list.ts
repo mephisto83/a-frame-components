@@ -120,6 +120,7 @@ export default function () {
             slider.addEventListener('change', (evt: any) => {
                 let { value } = evt.detail;
                 me.targetScroll = (me.itemHeight * (me.options?.length || 0) / me.data.columns) * value;
+                handleCheckForMore(value);
             });
             let sliderContainer = document.createElement('a-entity');
             sliderContainer.setAttribute('rotation', `0 0 90`);
@@ -152,6 +153,15 @@ export default function () {
 
             outerBox.classList.add('raycastable');
             const canvas = this.el.sceneEl.canvas;
+            function handleCheckForMore(value: number) {
+                if (value > .99) {
+                    me.el.emit('request-more-data', {});
+                }
+                else if (value < .01) {
+
+                    me.el.emit('request-more-data', { atStart: true });
+                }
+            }
             canvas.addEventListener('wheel', (event) => {
                 if (me.sprocketHovering || me.sliderHovering || me.elHovering || me.outerboxHovering || me.sliderContainerHovering || me.raycastersIntersecting || me.mouseIntersecting) {
                     const deltaY = event.deltaY / 400;
@@ -159,6 +169,7 @@ export default function () {
                     me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
                     if (maxHeight) {
                         slider.setAttribute('percent', `${Math.max(0, Math.min(me.targetScroll / maxHeight, 1))}`)
+                        handleCheckForMore(Math.max(0, Math.min(me.targetScroll / maxHeight, 1)));
                     }
                 }
             });
@@ -170,6 +181,7 @@ export default function () {
                         me.targetScroll = Math.min(Math.max(me.targetScroll + deltaY, 0), (me.itemHeight * me.options.length / me.data.columns));
                         if (maxHeight) {
                             slider.setAttribute('percent', `${Math.max(0, Math.min(me.targetScroll / maxHeight, 1))}`)
+                            handleCheckForMore(Math.max(0, Math.min(me.targetScroll / maxHeight, 1)));
                         }
                     }
                 }
