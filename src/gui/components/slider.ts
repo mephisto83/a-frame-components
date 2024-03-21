@@ -26,6 +26,8 @@ export default function () {
         topBottomPadding: { type: 'number', default: 0.125 },
         titleTextFont: { type: 'string', default: '' },
         percentageTextFont: { type: 'string', default: '' },
+        min: { type: 'number', default: 0 },
+        max: { type: 'number', default: 0 }
     };
 
     AFRAME.registerComponent('gui-slider', {
@@ -145,7 +147,8 @@ export default function () {
         play: function () {
         },
         getText: function () {
-            return `${Math.round(this.data.percent * 100)}`;
+            let num = mapRange(this.data.percent * 100, this.data.min, this.data.max)
+            return `${Math.round(num * 100) / 100}`;
         },
         positionElements: function () {
             let el = this.el;
@@ -435,5 +438,28 @@ export default function () {
 
         // Linearly map the range [0.2, 0.9] to [0, 1]
         return (input - lowerBound) / (upperBound - lowerBound);
+    }
+    /**
+     * Maps a number from one range to another.
+     * 
+     * @param value The number to map.
+     * @param fromLow The lower bound of the value's current range.
+     * @param fromHigh The upper bound of the value's current range.
+     * @param toLow The lower bound of the value's target range.
+     * @param toHigh The upper bound of the value's target range.
+     * @returns The number mapped to the new range.
+     */
+    function mapRange(
+        value: number,
+        toLow: number,
+        toHigh: number,
+        fromLow: number = 0,
+        fromHigh: number = 1,
+    ): number {
+        // First, find the ratio of the position of 'value' relative to its current range
+        const ratio = (value - fromLow) / (fromHigh - fromLow);
+        // Then, scale this ratio to the target range
+        const mappedValue = ratio * (toHigh - toLow) + toLow;
+        return mappedValue;
     }
 }
