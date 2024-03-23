@@ -21,7 +21,7 @@ export default function () {
             title: { type: 'string', default: '' },
             resizeOnText: { type: 'boolean', default: false },
             radiosizecoef: { type: 'number', default: 1 },
-            fontSize: { type: 'number', default: 0.2 },
+            fontSize: { type: 'number', default: 0.07 },
             fontFamily: { type: 'string', default: '' },
             fontColor: { type: 'string', default: "#ffffff" },
             borderColor: { type: 'string', default: '#000000' },
@@ -312,7 +312,13 @@ export default function () {
             'gui-interactable': {},
             'menuable': {},
             'gui-item': { type: 'radio' },
-            'base-interactive': {}
+            'base-interactive': {
+                type: 'radio',
+                height: '.2',
+                'interactiveType': 'button',
+                margin: '0 0 0.05 0',
+                width: '1'
+            }
         },
         mappings: {
             'onclick': 'gui-interactable.clickAction',
@@ -348,7 +354,12 @@ export default function () {
         defaultComponents: {
             'gui-interactable': {},
             'menuable': {},
-            'gui-item': { type: 'radio' },
+            'gui-item': {
+                type: 'radio',
+                height: '.2',
+                margin: '0 0 0.05 0',
+                width: '1'
+            },
             'base-interactive': {
                 'interactiveType': 'button'
             }
