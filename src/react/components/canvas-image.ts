@@ -43,10 +43,10 @@ export default function () {
             }
         },
         getWidth: function () {
-            return parseFloat(`${this.data.width || 0}`);
+            return parseFloat(`${this?.size?.width || this.data.width || 0}`);
         },
         getHeight: function () {
-            return parseFloat(`${this.data.height || 0}`);
+            return parseFloat(`${this?.size?.height ||this.data.height || 0}`);
         },
         loadImage: function () {
             let me = this;
@@ -69,8 +69,10 @@ export default function () {
                     new THREE.PlaneGeometry(width, height),
                     material
                 );
-                me.el.setAttribute('width', width);
-                me.el.setAttribute('height', height);
+                me.size = {
+                    height,
+                    width
+                }
                 // Create an A-Frame entity to wrap the Three.js mesh
                 let layerDisplayEntity: any = document.createElement('a-entity');
                 // layerDisplayEntity.setAttribute('layer', 'display')
