@@ -85,7 +85,7 @@ export default function () {
                 await drawTextureOnCanvas(canvas, canvas.getContext('2d'), me.data?.url);
                 texture.needsUpdate = true;
                 raiseCustomEvent(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url, canvas });
-                me.el.emit(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url, canvas });
+                me.el.emit(PAINTER_CONSTANTS.CANVAS_IMAGE_UPDATED, { url: me.data.url, canvas });
                 me.updateElementSize(this, this.el);
 
             };
