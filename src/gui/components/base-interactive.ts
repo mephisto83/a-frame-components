@@ -311,13 +311,14 @@ export default function () {
         defaultComponents: {
             'gui-interactable': {},
             'menuable': {},
-            'gui-item': { type: 'radio' },
-            'base-interactive': {
+            'gui-item': {
                 type: 'radio',
-                height: '.2',
-                'interactiveType': 'button',
+                height: .2,
+                width: '1',
                 margin: '0 0 0.05 0',
-                width: '1'
+            },
+            'base-interactive': {
+                'interactiveType': 'button'
             }
         },
         mappings: {
