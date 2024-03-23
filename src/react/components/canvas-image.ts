@@ -87,8 +87,9 @@ export default function () {
                 me.el.appendChild(layerDisplayEntity);
                 await drawTextureOnCanvas(canvas, canvas.getContext('2d'), me.data?.url);
                 texture.needsUpdate = true;
-                raiseCustomEvent(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url });
-                me.updateElementSize(this, this.el)
+                raiseCustomEvent(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url, canvas });
+                me.updateElementSize(this, this.el);
+                
             };
             image.src = this.data.url;
         }
