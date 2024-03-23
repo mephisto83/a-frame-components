@@ -25,7 +25,7 @@ export default function () {
             me.el.appendChild(plane);
             this.updateElementSize(this, this.el)
             this.loadImage();
-            plane.addEventListener(GrabAndDropEvents.DROPPED_GRABBED_DATA, async (evt) => {
+            me.el.addEventListener(GrabAndDropEvents.DROPPED_GRABBED_DATA, async (evt) => {
                 const { data, category } = evt.detail;
                 if (me.data.category === category) {
                     if (data?.url) {
