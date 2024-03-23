@@ -9,6 +9,7 @@ const THREE = (window as any).THREE;
 export default function () {
     AFRAME.registerComponent('canvasimage', {
         schema: {
+            category: { type: 'string' },
             url: { type: 'string' },
             height: { type: 'number', default: 1 } // Provide a default value for height
         },
@@ -24,6 +25,15 @@ export default function () {
             me.el.appendChild(plane);
             this.updateElementSize(this, this.el)
             this.loadImage();
+            plane.addEventListener(GrabAndDropEvents.DROPPED_GRABBED_DATA, async (evt) => {
+                const { data, category } = evt.detail;
+                if (me.data.category === category) {
+                    if (data?.url) {
+                        me.el.setAttribute('url', data?.url);
+                    }
+                }
+
+            })
         },
         update: function (oldData) {
             // Only update if url has changed
@@ -86,7 +96,8 @@ export default function () {
         },
         mappings: {
             url: 'canvasimage.url',
-            height: 'canvasimage.height'
+            height: 'canvasimage.height',
+            category: 'canvasimage.category'
         }
     });
 }
