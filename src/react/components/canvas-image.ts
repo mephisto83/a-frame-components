@@ -46,7 +46,7 @@ export default function () {
             return parseFloat(`${this?.size?.width || this.data.width || 0}`);
         },
         getHeight: function () {
-            return parseFloat(`${this?.size?.height ||this.data.height || 0}`);
+            return parseFloat(`${this?.size?.height || this.data.height || 0}`);
         },
         loadImage: function () {
             let me = this;
@@ -75,10 +75,7 @@ export default function () {
                 }
                 // Create an A-Frame entity to wrap the Three.js mesh
                 let layerDisplayEntity: any = document.createElement('a-entity');
-                // layerDisplayEntity.setAttribute('layer', 'display')
-                // // Add the Three.js mesh to the A-Frame entity
                 layerDisplayEntity.setObject3D('mesh', mesh);
-
 
                 if (me.plane) {
                     me.plane.parentNode.removeChild(me.plane);
@@ -88,8 +85,9 @@ export default function () {
                 await drawTextureOnCanvas(canvas, canvas.getContext('2d'), me.data?.url);
                 texture.needsUpdate = true;
                 raiseCustomEvent(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url, canvas });
+                me.el.emit(PAINTER_CONSTANTS.CANVAS_IMAGE_CHANGED, { url: me.data.url, canvas });
                 me.updateElementSize(this, this.el);
-                
+
             };
             image.src = this.data.url;
         }
