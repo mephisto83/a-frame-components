@@ -22,6 +22,7 @@ export const PAINTER_CONSTANTS = {
     PAINTER_CANVAS_UPDATED: 'painter-canvas-updated',
     DRAWING: "DRAWING",
     LAYER_READY: 'LAYER_READY',
+    CANVAS_IMAGE_UPDATED: 'CANVAS_IMAGE_UPDATED',
     TRANSFORMER_SCALE: 'tranformer-scale',
     TRANSFORMER_CHANGE: 'tranformer-change',
     TRANSFORMER_TRANSLATION: 'transformer-translation',
