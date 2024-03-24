@@ -227,8 +227,12 @@ export default function () {
             mesh.whiteSpace = data.whiteSpace
             mesh.maxWidth = data.maxWidth
             mesh._needsSync = true;
-            mesh.sync(() => { });
 
+            mesh.sync(() => {
+                if (me?.troikaTextMesh?.geometry?.boundingBox) {
+                    me.el.emit('bounding-box-update', { box: me.troikaTextMesh.geometry.boundingBox })
+                }
+            });
             this.positionCaret();
             // Pass material config down to child entity
             if (entity !== this.el) {
