@@ -119,6 +119,11 @@ export default function () {
                     }
                 }
                 this.troikaTextEntity.setObject3D('mesh', group);
+                if (me?.troikaTextMesh?.geometry?.boundingBox) {
+                    me.el.emit('bounding-box-update', {
+                        box: me.troikaTextMesh.geometry.boundingBox
+                    })
+                }
             });
         },
         placeCursor: function () {
