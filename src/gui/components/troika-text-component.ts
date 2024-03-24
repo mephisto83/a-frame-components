@@ -141,11 +141,14 @@ export default function () {
                 let caretPositions = this.getCaretPositions();
                 if (caretPositions) {
                     let scaleX = .025
-                    let x = caretPositions[((this.caretIndex - 1) * 4) + 1] ??
-                        caretPositions[caretPositions.length - 3]
-                    let y = caretPositions[(this.caretIndex * 4) + 2] ??
-                        caretPositions[(caretPositions.length - 3) + 2]
-                    this.textCursor.setAttribute('position', `${(x || 0) + scaleX} ${y || 0} 0.02`);
+                    let x_ = this.caretIndex * 4 - 1;
+                    let y_ = this.caretIndex * 4 + 2;
+                    if (x_ < caretPositions.length && x_ >= 0 && 
+                        y_ < caretPositions.length && y_ >= 0) {
+                        let x = caretPositions[x_];
+                        let y = caretPositions[y_];
+                        this.textCursor.setAttribute('position', `${(x || 0) + scaleX} ${y || 0} 0.02`);
+                    }
                 }
             }
         },
