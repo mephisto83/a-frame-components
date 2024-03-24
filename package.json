@@ -1,6 +1,6 @@
 {
   "name": "a-frame-components",
-  "version": "1.0.270",
+  "version": "1.0.271",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/a-frame-components.d.ts",
@@ -25,6 +25,5 @@
     "rimraf": "^5.0.5",
     "typescript": "^5.3.3"
   },
-  "dependencies": {
-  }
+  "dependencies": {}
 }
