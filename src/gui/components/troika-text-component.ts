@@ -132,6 +132,7 @@ export default function () {
                 this.textCursor.setAttribute('position', '0 0 0.02');
                 this.textCursor.setAttribute('scale', scaleX + ' .1 1');
                 this.textCursor.setAttribute('rotation', '0 0 0');
+                this.textCursor.setAttribute('flashing', {});
                 this.el.appendChild(this.textCursor);
             }
             this.positionCaret();
