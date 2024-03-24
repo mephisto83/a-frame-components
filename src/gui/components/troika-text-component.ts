@@ -142,7 +142,7 @@ export default function () {
                 if (caretPositions) {
                     let scaleX = .025
                     let x_ = this.caretIndex * 4;
-                    let y_ = this.caretIndex * 4 + 2;
+                    let y_ = this.caretIndex * 4 + 3;
                     if (caretPositions.length === x_) {
                         x_ = (this.caretIndex - 1) * 4 + 1;
                         y_ = (this.caretIndex - 1) * 4 + 3;
