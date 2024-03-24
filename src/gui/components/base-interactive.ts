@@ -275,7 +275,7 @@ export default function () {
                                                 `);
                 if (me.data.resizeOnText) {
                     // updates
-                    me.el.addEventListener('bounding-box-update', (evt: any) => {
+                    textEntity.addEventListener('bounding-box-update', (evt: any) => {
                         let { detail } = evt;
                         if (detail) {
                             let { box } = detail;
