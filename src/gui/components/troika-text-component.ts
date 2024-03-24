@@ -90,6 +90,7 @@ export default function () {
          * Called once when component is attached. Generally for initial setup.
          */
         init: function () {
+            let me = this;
             // If we're being applied as a component attached to a generic a-entity, create an
             // anonymous sub-entity that we can use to isolate the text mesh and the material
             // component that should apply to it. If we're a primitive, no isolation is needed.
@@ -102,7 +103,6 @@ export default function () {
                 this.el.appendChild(textEntity)
             }
             this.troikaTextEntity = textEntity
-            let me = this;
             // Create Text mesh and add it to the entity as the 'mesh' object
             var textMesh = this.troikaTextMesh = new Text()
             // Create a THREE.Group and add the Text mesh to it
@@ -115,7 +115,7 @@ export default function () {
                 if (textMesh?.textRenderInfo) {
                     this.setRenderInfo(textMesh.textRenderInfo);
                     if (this.data.beingEdited) {
-                        this.placeCursor()
+                        me.placeCursor()
                     }
                 }
                 this.troikaTextEntity.setObject3D('mesh', group);
