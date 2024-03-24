@@ -1,6 +1,6 @@
 {
   "name": "a-frame-components",
-  "version": "1.0.262",
+  "version": "1.0.263",
   "description": "",
   "main": "dist/index.js",
   "types": "dist/a-frame-components.d.ts",
