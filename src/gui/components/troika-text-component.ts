@@ -141,8 +141,8 @@ export default function () {
                 let caretPositions = this.getCaretPositions();
                 if (caretPositions) {
                     let scaleX = .025
-                    let x_ = this.caretIndex * 4;
-                    let y_ = this.caretIndex * 4 + 2;
+                    let x_ = this.caretIndex * 4 + 1;
+                    let y_ = this.caretIndex * 4 + 3;
                     if (x_ < caretPositions.length && x_ >= 0 &&
                         y_ < caretPositions.length && y_ >= 0) {
                         let x = caretPositions[x_];
