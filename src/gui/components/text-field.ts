@@ -46,6 +46,7 @@ export default function () {
             me.baseInteractive = baseInteractive;
             me.baseInteractive.setAttribute('padding-left', this.paddingLeft)
             me.baseInteractive.setAttribute('interactive-type', 'text');
+            me.baseInteractive.setAttribute('resize-on-text', 'true');
             me.baseInteractive.setAttribute('being-edited', true);
             me.el.appendChild(baseInteractive);
             me.input = document.createElement('input');

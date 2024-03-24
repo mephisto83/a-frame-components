@@ -298,7 +298,6 @@ export default function () {
                         evt.stopPropagation();
                     };
                     textEntity.addEventListener('bounding-box-update', handler)
-                    this.el.addEventListener('bounding-box-update', handler)
                 }
                 this.el.appendChild(textEntity);
             }
