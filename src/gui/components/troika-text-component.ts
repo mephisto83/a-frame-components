@@ -90,7 +90,6 @@ export default function () {
          * Called once when component is attached. Generally for initial setup.
          */
         init: function () {
-            let me = this;
             // If we're being applied as a component attached to a generic a-entity, create an
             // anonymous sub-entity that we can use to isolate the text mesh and the material
             // component that should apply to it. If we're a primitive, no isolation is needed.
@@ -103,6 +102,7 @@ export default function () {
                 this.el.appendChild(textEntity)
             }
             this.troikaTextEntity = textEntity
+            let me = this;
             // Create Text mesh and add it to the entity as the 'mesh' object
             var textMesh = this.troikaTextMesh = new Text()
             // Create a THREE.Group and add the Text mesh to it
@@ -115,15 +115,13 @@ export default function () {
                 if (textMesh?.textRenderInfo) {
                     this.setRenderInfo(textMesh.textRenderInfo);
                     if (this.data.beingEdited) {
-                        me.placeCursor()
+                        this.placeCursor()
                     }
                 }
-                this.troikaTextEntity.setObject3D('mesh', group);
-                if (me?.troikaTextMesh?.geometry?.boundingBox) {
-                    me.el.emit('bounding-box-update', {
-                        box: me.troikaTextMesh.geometry.boundingBox
-                    })
+                if (textMesh?.geometry?.boundingBox) {
+                    me.el.emit('bounding-box-update', { box: textMesh?.geometry?.boundingBox })
                 }
+                this.troikaTextEntity.setObject3D('mesh', group);
             });
         },
         placeCursor: function () {
@@ -232,12 +230,12 @@ export default function () {
             mesh.whiteSpace = data.whiteSpace
             mesh.maxWidth = data.maxWidth
             mesh._needsSync = true;
-
             mesh.sync(() => {
-                if (me?.troikaTextMesh?.geometry?.boundingBox) {
-                    me.el.emit('bounding-box-update', { box: me.troikaTextMesh.geometry.boundingBox })
+                if (mesh?.geometry?.boundingBox) {
+                    me.el.emit('bounding-box-update', { box: mesh?.geometry?.boundingBox })
                 }
             });
+
             this.positionCaret();
             // Pass material config down to child entity
             if (entity !== this.el) {
