@@ -142,36 +142,10 @@ export default function () {
                     let scaleX = .025
                     let x_ = this.caretIndex * 4;
                     let y_ = this.caretIndex * 4 + 3;
-                    let minx = 0;
-                    let maxx = 0;
-                    let miny = 0;
-                    let maxy = 0;
-                    for (let i = 0; i < caretPositions.length; i = i + 4) {
-                        minx = Math.min(minx, caretPositions[i])
-                        miny = Math.min(miny, caretPositions[i + 1])
-                        maxx = Math.max(maxx, caretPositions[i + 2])
-                        maxy = Math.max(maxy, caretPositions[i + 3])
-                    }
-                    if (this.textbounds) {
-                        if (this.textbounds.minx !== minx || this.textbounds.miny !== miny ||
-                            this.textbounds.maxx !== maxx || this.textbounds.maxy !== maxy) {
-                            this.textbounds = { minx, miny, maxx, maxy };
-                            me.el.emit('bounding-box-update', {
-                                box: {
-                                    ...this.textbounds,
-                                    height: this.textbounds.maxy - this.textbounds.miny,
-                                    width: this.textbounds.maxx - this.textbounds.minx
-                                }
-                            })
-                        }
-                    }
-                    else {
-                        this.textbounds = {
-                            minx,
-                            miny,
-                            maxx,
-                            maxy
-                        }
+                    if (me?.troikaTextMesh?.geometry?.boundingBox) {
+                        me.el.emit('bounding-box-update', {
+                            box: me.troikaTextMesh.geometry.boundingBox
+                        })
                     }
                     if (caretPositions.length === x_) {
                         x_ = (this.caretIndex - 1) * 4 + 1;
