@@ -274,6 +274,7 @@ export default function () {
                                                 maxWidth:${this.guiItem.width / 1.05};
                                                 `);
                 if (me.data.resizeOnText) {
+                    // updates
                     me.el.addEventListener('bounding-box-update', (evt: any) => {
                         let { detail } = evt;
                         if (detail) {
