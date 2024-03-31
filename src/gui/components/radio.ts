@@ -54,7 +54,7 @@ export default function () {
                                 height: me.data.optionHeight || .2,
                                 margin: '0 0 0 0',
                                 value: option.text || option.value,
-                                interactiveType: 'radio',
+                                interactiveType: option.type || 'radio',
                                 ['font-size']: .07
                             }
                             //`width="1" interactive-type="button" height="0.2" value="${text}" margin="0 0 0.05 0" font-size=".07"`
@@ -116,4 +116,5 @@ export interface RadioOption {
     text: string;
     value: string;
     id: string;
+    type?: string;
 }
