@@ -26,6 +26,7 @@ export default function () {
         topBottomPadding: { type: 'number', default: 0.125 },
         titleTextFont: { type: 'string', default: '' },
         percentageTextFont: { type: 'string', default: '' },
+        textValueMap: { type: 'string', default: '' },
         min: { type: 'number', default: 0 },
         max: { type: 'number', default: 100 },
         nearest: { type: 'number', default: 1 }
@@ -137,6 +138,9 @@ export default function () {
                     this.titleText.setAttribute('value', this.data.title);
                 }
             }
+            if (oldData?.textValueMap) {
+                this.textValueMap = JSON.parse(oldData.textValueMap);
+            }
         },
         tick: function () {
             this.onTick();
@@ -148,7 +152,14 @@ export default function () {
         play: function () {
         },
         getText: function () {
-            let num = mapRange(this.data.percent, this.data.min, this.data.max)
+            let num = mapRange(this.data.percent, this.data.min, this.data.max);
+            if (this.textValueMap) {
+                let textValueMap: { text: string, value: string }[] = this.textValueMap;
+                let item = findClosestValue(textValueMap, num);
+                if (item) {
+                    return item.text;
+                }
+            }
             return `${Math.round(num * this.data.nearest) / this.data.nearest}`;
         },
         positionElements: function () {
@@ -192,6 +203,7 @@ export default function () {
         'width': 'gui-item.width',
         'title-text-font': 'gui-slider.titleTextFont',
         'percentage-text-font': 'gui-slider.percentageTextFont',
+        'text-value-map': 'gui-slider.textValueMap',
 
     }
     const guiSliderComponents = {
@@ -463,4 +475,32 @@ export default function () {
         const mappedValue = ratio * (toHigh - toLow) + toLow;
         return mappedValue;
     }
+
+    function findClosestValue(textValueMap: { text: string; value: string }[], val: number): { text: string; value: string } {
+        // Initialize a variable to keep track of the closest item. Start with null and will replace it with an item from textValueMap.
+        let closestItem: { text: string; value: string } | null = null;
+
+        // Initialize a variable to keep track of the smallest difference found. Start with Infinity as we haven't checked any items yet.
+        let smallestDifference = Infinity;
+
+        // Iterate over each item in textValueMap
+        textValueMap.forEach(item => {
+            // Convert the item's value to a number for comparison
+            const itemValue = Number(item.value);
+
+            // Calculate the absolute difference between the item's value and the provided val
+            const difference = Math.abs(val - itemValue);
+
+            // Check if this difference is smaller than the smallest difference we've found so far
+            if (difference < smallestDifference) {
+                // If so, update the smallestDifference and the closestItem
+                smallestDifference = difference;
+                closestItem = item;
+            }
+        });
+
+        // After checking all items, return the closestItem found
+        return closestItem;
+    }
+
 }
