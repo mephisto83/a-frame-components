@@ -154,7 +154,7 @@ export default function () {
         getText: function () {
             let num = mapRange(this.data.percent, this.data.min, this.data.max);
             if (this.textValueMap) {
-                let textValueMap: { text: string, value: string }[] = this.textValueMap;
+                let textValueMap: { text: string, value: number }[] = this.textValueMap;
                 let item = findClosestValue(textValueMap, num);
                 if (item) {
                     return item.text;
@@ -476,9 +476,9 @@ export default function () {
         return mappedValue;
     }
 
-    function findClosestValue(textValueMap: { text: string; value: string }[], val: number): { text: string; value: string } {
+    function findClosestValue(textValueMap: { text: string; value: number }[], val: number): { text: string; value: number } {
         // Initialize a variable to keep track of the closest item. Start with null and will replace it with an item from textValueMap.
-        let closestItem: { text: string; value: string } | null = null;
+        let closestItem: { text: string; value: number } | null = null;
 
         // Initialize a variable to keep track of the smallest difference found. Start with Infinity as we haven't checked any items yet.
         let smallestDifference = Infinity;
@@ -486,7 +486,7 @@ export default function () {
         // Iterate over each item in textValueMap
         textValueMap.forEach(item => {
             // Convert the item's value to a number for comparison
-            const itemValue = Number(item.value);
+            const itemValue = (item.value);
 
             // Calculate the absolute difference between the item's value and the provided val
             const difference = Math.abs(val - itemValue);
