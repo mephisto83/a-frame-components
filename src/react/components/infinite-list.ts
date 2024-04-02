@@ -51,6 +51,7 @@ export default function () {
                 }, default: []
             },
             selected: { type: 'string' },
+            textValueMap: { type: 'string' }
         },
         setup: function () {
             let me = this;
@@ -114,6 +115,7 @@ export default function () {
 
             let slider = document.createElement('a-gui-slider');
             slider.setAttribute('percent', `${0}`);
+            slider.setAttribute('text-value-map', this.data.textValueMap);
             this.sliderWidth = 0.2;
             this.sliderHorizontalMargin = .2
             slider.setAttribute('targetbarsize', this.sliderWidth);
@@ -232,6 +234,9 @@ export default function () {
             if (this.data.width !== oldData?.width || this.data.height !== oldData?.height) {
                 this.setup();
                 this.updateSubComponents();
+            }
+            if (this.slider && this.data.textValueMap !== oldData.textValueMap) {
+                this.slider.setAttribute('text-value-map', this.data.textValueMap);
             }
         },
         handleInifniteListInteractions: function (args) {
@@ -573,6 +578,7 @@ export default function () {
             itemsize: 'infinity-list.itemSize',
             selected: 'infinity-list.selected',
             hideclose: 'infinity-list.hideClose',
+            'slider-value-map': 'infinite-list.textValueMap'
         }
     });
     // Example usage in an A-Frame scene
