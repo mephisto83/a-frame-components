@@ -138,8 +138,8 @@ export default function () {
                     this.titleText.setAttribute('value', this.data.title);
                 }
             }
-            if (oldData?.textValueMap) {
-                this.textValueMap = JSON.parse(oldData.textValueMap);
+            if (this.data.textValueMap !== oldData?.textValueMap) {
+                this.textValueMap = JSON.parse(this.data.textValueMap);
             }
         },
         tick: function () {
@@ -204,7 +204,6 @@ export default function () {
         'title-text-font': 'gui-slider.titleTextFont',
         'percentage-text-font': 'gui-slider.percentageTextFont',
         'text-value-map': 'gui-slider.textValueMap',
-
     }
     const guiSliderComponents = {
         'gui-item': { type: 'slider' },
