@@ -115,7 +115,9 @@ export default function () {
 
             let slider = document.createElement('a-gui-slider');
             slider.setAttribute('percent', `${0}`);
-            slider.setAttribute('text-value-map', this.data.textValueMap);
+            if (this.data.textValueMap) {
+                slider.setAttribute('text-value-map', this.data.textValueMap);
+            }
             this.sliderWidth = 0.2;
             this.sliderHorizontalMargin = .2
             slider.setAttribute('targetbarsize', this.sliderWidth);
