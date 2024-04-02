@@ -242,6 +242,7 @@ export default function () {
                 this.setup();
                 this.updateSubComponents();
             }
+            
             if (this.slider && this.data.textValueMap !== oldData.textValueMap) {
                 this.slider.setAttribute('text-value-map', this.data.textValueMap);
             }
