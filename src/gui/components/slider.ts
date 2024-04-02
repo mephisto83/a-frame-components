@@ -139,7 +139,7 @@ export default function () {
                 }
             }
             if (this.data.textValueMap !== oldData?.textValueMap) {
-                this.textValueMap = JSON.parse(this.data.textValueMap);
+                this.textValueMap = this.data.textValueMap ? JSON.parse(this.data.textValueMap) : null;
             }
         },
         tick: function () {
