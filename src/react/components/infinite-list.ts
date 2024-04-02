@@ -225,7 +225,7 @@ export default function () {
         ...InteractionMixin,
         update: function (oldData) {
             let me = this;
-            if (this.data.options !== oldData.options) {
+            if (JSON.stringify(this.data.options) !== JSON.stringify(oldData.options || '')) {
                 let options = me.getOptions();
                 me.options = options;
                 let keys = Object.keys(me.visibleObjects);
@@ -242,8 +242,8 @@ export default function () {
                 this.setup();
                 this.updateSubComponents();
             }
-            
-            if (this.slider && this.data.textValueMap !== oldData.textValueMap) {
+
+            if (this.slider && this.data.textValueMap && this.data.textValueMap !== oldData.textValueMap) {
                 this.slider.setAttribute('text-value-map', this.data.textValueMap);
             }
         },
