@@ -225,7 +225,7 @@ export default function () {
         ...InteractionMixin,
         update: function (oldData) {
             let me = this;
-            if (this.data.options !== oldData) {
+            if (this.data.options !== oldData.options) {
                 let options = me.getOptions();
                 me.options = options;
                 let keys = Object.keys(me.visibleObjects);
