@@ -51,7 +51,7 @@ export default function () {
                 }, default: []
             },
             selected: { type: 'string' },
-            textValueMap: { type: 'string' }
+            textValueMap: { type: 'string', default: '' }
         },
         setup: function () {
             let me = this;
@@ -568,6 +568,7 @@ export default function () {
             'icon-font': 'infinity-list.iconFont',
             'icon-font-size': 'infinity-list.iconFontSize',
             'icon': 'infinity-list.icon',
+            'text-value-map': 'infinite-list.textValueMap',
             speed: 'infinity-list.speed',
             sourceId: 'infinity-list.sourceId',
             options: 'infinity-list.options',
@@ -577,8 +578,7 @@ export default function () {
             columns: 'infinity-list.columns',
             itemsize: 'infinity-list.itemSize',
             selected: 'infinity-list.selected',
-            hideclose: 'infinity-list.hideClose',
-            'slider-value-map': 'infinite-list.textValueMap'
+            hideclose: 'infinity-list.hideClose'
         }
     });
     // Example usage in an A-Frame scene
