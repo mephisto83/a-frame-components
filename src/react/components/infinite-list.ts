@@ -120,6 +120,11 @@ export default function () {
             }
             this.sliderWidth = 0.2;
             this.sliderHorizontalMargin = .2
+            this.el.addEventListener('update-attribute', (evt: any) => {
+                let { detail } = evt;
+                let { attribute, value } = detail;
+                me.el.setAttribute(attribute, value)
+            })
             slider.setAttribute('targetbarsize', this.sliderWidth);
             slider.addEventListener('change', (evt: any) => {
                 let { value } = evt.detail;
