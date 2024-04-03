@@ -584,3 +584,31 @@ export const btnstyle: any = {
     cursor: 'pointer',
     transition: 'background-color 0.2s',
 };
+
+
+export function findClosestValue(textValueMap: { text: string; value: number }[], val: number): { text: string; value: number } {
+    // Initialize a variable to keep track of the closest item. Start with null and will replace it with an item from textValueMap.
+    let closestItem: { text: string; value: number } | null = null;
+
+    // Initialize a variable to keep track of the smallest difference found. Start with Infinity as we haven't checked any items yet.
+    let smallestDifference = Infinity;
+
+    // Iterate over each item in textValueMap
+    textValueMap.forEach(item => {
+        // Convert the item's value to a number for comparison
+        const itemValue = (item.value);
+
+        // Calculate the absolute difference between the item's value and the provided val
+        const difference = Math.abs(val - itemValue);
+
+        // Check if this difference is smaller than the smallest difference we've found so far
+        if (difference < smallestDifference) {
+            // If so, update the smallestDifference and the closestItem
+            smallestDifference = difference;
+            closestItem = item;
+        }
+    });
+
+    // After checking all items, return the closestItem found
+    return closestItem;
+}

@@ -1,5 +1,5 @@
 import { AFRAME } from "../../react/root";
-import { createText } from "../../util";
+import { createText, findClosestValue } from "../../util";
 import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
 import interactionMixin from "../../react/components/interaction-mixin";
 import mixin from "./mixin";
@@ -476,33 +476,6 @@ export default function () {
         // Then, scale this ratio to the target range
         const mappedValue = ratio * (toHigh - toLow) + toLow;
         return mappedValue;
-    }
-
-    function findClosestValue(textValueMap: { text: string; value: number }[], val: number): { text: string; value: number } {
-        // Initialize a variable to keep track of the closest item. Start with null and will replace it with an item from textValueMap.
-        let closestItem: { text: string; value: number } | null = null;
-
-        // Initialize a variable to keep track of the smallest difference found. Start with Infinity as we haven't checked any items yet.
-        let smallestDifference = Infinity;
-
-        // Iterate over each item in textValueMap
-        textValueMap.forEach(item => {
-            // Convert the item's value to a number for comparison
-            const itemValue = (item.value);
-
-            // Calculate the absolute difference between the item's value and the provided val
-            const difference = Math.abs(val - itemValue);
-
-            // Check if this difference is smaller than the smallest difference we've found so far
-            if (difference < smallestDifference) {
-                // If so, update the smallestDifference and the closestItem
-                smallestDifference = difference;
-                closestItem = item;
-            }
-        });
-
-        // After checking all items, return the closestItem found
-        return closestItem;
     }
 
 }
