@@ -73,7 +73,16 @@ export default function () {
                     if (data.percent !== x) {
                         data.percent = x;
                         me.positionElements();
-                        targetBar.emit('change', { value: x })
+                        let num = mapRange(data.percent, me.data.min, me.data.max);
+                        let text = null;
+                        if (me.textValueMap) {
+                            let textValueMap: { text: string, value: number }[] = me.textValueMap;
+                            let item = findClosestValue(textValueMap, num);
+                            if (item) {
+                                text = item.text;
+                            }
+                        }
+                        targetBar.emit('change', { value: x, text })
                     }
                 }
             });
