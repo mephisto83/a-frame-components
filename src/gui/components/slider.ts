@@ -70,9 +70,11 @@ export default function () {
             this.setupRayListener(targetBar, 'interaction', (evt) => {
                 if (me.mousedown) {
                     let x = mapPercentage(evt.uv.x, lowerBound, upperBound)
-                    data.percent = x;
-                    me.positionElements();
-                    targetBar.emit('change', { value: x })
+                    if (data.percent !== x) {
+                        data.percent = x;
+                        me.positionElements();
+                        targetBar.emit('change', { value: x })
+                    }
                 }
             });
             targetBar.addEventListener('mousedown', function (evt) {
