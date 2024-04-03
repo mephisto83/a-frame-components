@@ -140,6 +140,9 @@ export default function () {
             }
             if (this.data.textValueMap !== oldData?.textValueMap) {
                 this.textValueMap = this.data.textValueMap ? JSON.parse(this.data.textValueMap) : null;
+                if (this.text) {
+                    this.text.setAttribute('troika-text', 'value', this.getText());
+                }
             }
         },
         tick: function () {
