@@ -11,7 +11,8 @@ export default function () {
         schema: {
             category: { type: 'string' },
             url: { type: 'string' },
-            height: { type: 'number', default: 1 } // Provide a default value for height
+            height: { type: 'number', default: 1 }, // Provide a default value for height
+            width: { type: 'number', default: 1 } // Provide a default value for width
         },
         ...mixin,
         init: function () {
@@ -64,7 +65,9 @@ export default function () {
                 let material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
                 let height = this.data.height;
                 let width = this.data.height * aspectRatio;
+                
                 this.width = width;
+
                 let mesh = new THREE.Mesh(
                     new THREE.PlaneGeometry(width, height),
                     material
@@ -100,6 +103,7 @@ export default function () {
         mappings: {
             url: 'canvasimage.url',
             height: 'canvasimage.height',
+            width: 'canvasimage.width',
             category: 'canvasimage.category'
         }
     });
