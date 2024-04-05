@@ -23,7 +23,7 @@ declare module 'a-frame-components' {
         },
         initSelector?: string,
     ): { [`frame-id`]: string }
-    export const framemixin = {
+    export const framemixin: {
         getWidth: () => number,
         getHeight: () => number,
         updateElementSize: (container: any, el: any) => void
