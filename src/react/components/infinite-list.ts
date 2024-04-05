@@ -342,8 +342,9 @@ export default function () {
                 to_remove.forEach((key) => {
                     let vo = me.visibleObjects[key];
                     try {
-                        if (vo?.parentNode)
+                        if (vo?.parentNode) {
                             vo.parentNode.removeChild(vo);
+                        }
                     } catch (e) { console.log(e) }
                     delete me.visibleObjects[key]
                 });
