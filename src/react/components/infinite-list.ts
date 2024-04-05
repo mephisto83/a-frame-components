@@ -340,7 +340,9 @@ export default function () {
                 }
                 to_remove.forEach((key) => {
                     let vo = me.visibleObjects[key];
-                    vo.parentNode.removeChild(vo);
+                    try {
+                        vo.parentNode.removeChild(vo);
+                    } catch (e) { console.log(e) }
                     delete me.visibleObjects[key]
                 });
                 to_add.forEach((option: { id: number, value: number, text: string }) => {
