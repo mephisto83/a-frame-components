@@ -500,6 +500,13 @@ export default function () {
         init: function () {
             this.initImage();
         },
+        ...mixin,
+        getWidth: function () {
+            return parseFloat(`${this?.size?.width || 0}`);
+        },
+        getHeight: function () {
+            return parseFloat(`${this?.size?.height || 0}`);
+        },
         update: function (oldData) {
             if (oldData.url && oldData.url !== this.data.url) {
                 // this.el.setAttribute('material', { src: this.data.url });
@@ -536,7 +543,10 @@ export default function () {
                             finalHeight = finalWidth / naturalAspectRatio;
                         }
                     }
-
+                    this.size = {
+                        width: finalWidth,
+                        height: finalHeight
+                    }
                     // Set the geometry and material of the entity
                     this.el.setAttribute('geometry', {
                         primitive: 'plane',
