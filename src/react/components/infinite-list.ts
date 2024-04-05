@@ -547,7 +547,9 @@ export default function () {
                         width: finalWidth,
                         height: finalHeight
                     }
+
                     this.updateElementSize(this, this.el);
+
                     // Set the geometry and material of the entity
                     this.el.setAttribute('geometry', {
                         primitive: 'plane',
