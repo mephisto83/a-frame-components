@@ -37,6 +37,8 @@ export default function () {
             boxMargin: { type: 'number', default: .2 },
             itemtemplate: { type: 'string' },
             itemSize: { type: 'number', default: .5 },
+            itemHeight: { type: 'number', default: .5 },
+            itemWidth: { type: 'number', default: .5 },
             iconFont: { type: 'string', default: '' },
             icon: { type: 'string', default: '' },
             speed: { type: 'string', default: 0 },
@@ -55,8 +57,8 @@ export default function () {
         },
         setup: function () {
             let me = this;
-            let itemHeight = this.data.itemSize || .5;
-            let itemWidth = this.data.itemSize || .5;
+            let itemHeight = this.data.itemHeight || this.data.itemSize || .5;
+            let itemWidth = this.data.itemWidth || this.data.itemSize || .5;
             let outerBoxWidth = this.data.width || 3;
             let boxHeight = this.data.height || 2.2;
             let boxMargin = this.data.boxMargin || .2
@@ -585,6 +587,8 @@ export default function () {
             margin: 'infinity-list.boxMargin',
             columns: 'infinity-list.columns',
             itemsize: 'infinity-list.itemSize',
+            itemheight: 'infinity-list.itemHeight',
+            itemwidth: 'infinity-list.itemWidth',
             selected: 'infinity-list.selected',
             hideclose: 'infinity-list.hideClose'
         }
