@@ -23,8 +23,15 @@ declare module 'a-frame-components' {
         },
         initSelector?: string,
     ): { [`frame-id`]: string }
+    export const framemixin = {
+        getWidth: () => number,
+        getHeight: () => number,
+        updateElementSize: (container: any, el: any) => void
+    }
     export function raiseOn(props: { [`frame-id`]: string }, eventName: string, details: any): void;
-    export function findClosestValue(textValueMap: { text: string; value: number }[], val: number): { text: string; value: number };
+    export function findClosestValue(textValueMap: { text: string; value: number }[], val: number): {
+        text: string; value: number
+    };
 }
 declare namespace JSX {
     interface IntrinsicElements {
