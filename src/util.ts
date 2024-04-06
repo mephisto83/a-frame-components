@@ -462,7 +462,10 @@ export function calculatePositionsAndContainerSize(
             currentPosition += item.width + margin.right;
         }
 
-        positions.push({ x: x - (maxContainerWidth / 2), y: -y + (maxContainerHeight / 2) }); // Adjust y to invert direction
+        positions.push({
+            x: x - (maxContainerWidth / 2),
+            y: -y + (maxContainerHeight / 2)
+        }); // Adjust y to invert direction
     });
 
     return {
