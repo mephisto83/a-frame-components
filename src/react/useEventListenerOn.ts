@@ -193,6 +193,11 @@ export function setAttribute(props: { [`frame-id`]: string }, name: string, valu
     }
 }
 
+export function findFrameElement(props: { [`frame-id`]: string }) {
+    let el = document.querySelector(`[frame-id="${props['frame-id']}"]`)
+    return el;
+}
+
 export function useBindEventOn(
     evtName: string,
     attributeName: string,

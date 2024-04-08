@@ -3,7 +3,7 @@
 declare module 'a-frame-components' {
     // Export all of your package's public methods, elements, and other members like it:
     export async function load(): Promise<void>;
-
+    export function findFrameElement(props: { [`frame-id`]: string }): any;
     export function setAttribute(props: { [`frame-id`]: string }, name: string, value: any);
     export function createElement(elementType: any, attributesDic: { [str: string]: any }): (moreAttr: { [str: string]: any }) => Element;
     export function useEventListenerOn(
