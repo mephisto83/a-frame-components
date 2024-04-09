@@ -218,6 +218,8 @@ export default function () {
         'title-text-font': 'gui-slider.titleTextFont',
         'percentage-text-font': 'gui-slider.percentageTextFont',
         'text-value-map': 'gui-slider.textValueMap',
+        min: 'gui-slider.min',
+        max: 'gui-slider.max',
     }
     const guiSliderComponents = {
         'gui-item': { type: 'slider' },
