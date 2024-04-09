@@ -7,7 +7,8 @@ export default function () {
         schema: {
             options: { type: 'string', default: '' },
             value: { type: 'string', default: '' },
-            paddingRight: { type: 'number', default: .05 }
+            paddingRight: { type: 'number', default: .05 },
+            direction: { type: 'string', default: '' }
         },
         init: function () {
             let me = this;
@@ -44,7 +45,7 @@ export default function () {
 
                 if (this.data.options) {
                     let buttonContainer = document.createElement('frame-container');
-                    buttonContainer.setAttribute('direction', 'horizontal')
+                    buttonContainer.setAttribute('direction', this.data.direction || 'horizontal')
                     buttonContainer.setAttribute('alignment', 'flexStart')
                     buttonContainer.setAttribute('margin', '0 0 0 0')
                     me.options.map((option: RadioOption) => {
@@ -108,6 +109,7 @@ export default function () {
         mappings: {
             'options': 'radiocomponent.options',
             'value': 'radiocomponent.value',
+            direction: 'radiocomponent.direction',
         }
     });
 }
