@@ -493,7 +493,7 @@ declare namespace JSX {
         };
         'frame-checkbox': {
             label?: string;
-            value?: string;
+            value?: string | boolean;
             [propName: string]: any;
         };
         'frame-gui-cursor': {
