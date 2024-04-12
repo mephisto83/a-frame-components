@@ -31,7 +31,7 @@ export default function () {
                 if (me.data.category === category) {
                     if (data?.url) {
                         me.el.setAttribute('url', data?.url);
-                        me.emit('change', { url: data?.url })
+                        me.el.emit('change', { url: data?.url })
                     }
                 }
 
