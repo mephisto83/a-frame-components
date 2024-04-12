@@ -31,6 +31,7 @@ export default function () {
                 if (me.data.category === category) {
                     if (data?.url) {
                         me.el.setAttribute('url', data?.url);
+                        me.emit('change', { url: data?.url })
                     }
                 }
 
@@ -65,7 +66,7 @@ export default function () {
                 let material = new THREE.MeshBasicMaterial({ map: texture, side: THREE.DoubleSide });
                 let height = this.data.height;
                 let width = this.data.height * aspectRatio;
-                
+
                 this.width = width;
 
                 let mesh = new THREE.Mesh(
