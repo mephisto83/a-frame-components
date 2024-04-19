@@ -96,7 +96,7 @@ export default function () {
             this.slider.setAttribute('width', `${boxHeight}`);
             this.outerBox.setAttribute('width', `${outerBoxWidth - this.sliderWidth - this.sliderHorizontalMargin}`);
             this.outerBox.setAttribute('height', `${boxHeight}`);
-            this.outerBox.setAttribute('position', `${-this.sliderWidth + -this.sliderHorizontalMargin} 0 .01`);
+            this.outerBox.setAttribute('position', `${-this.sliderWidth + -this.sliderHorizontalMargin} 0 -.02`);
             this.sliderContainer.setAttribute('position', `${outerBoxWidth / 2 - this.sliderWidth / 2} 0 .0`);
             this.closeButton.setAttribute('position', `${-outerBoxWidth / 2 - .1} ${windowHeight / 2 - .1} 0`);
             this.updateElementSize(this, this.el);
