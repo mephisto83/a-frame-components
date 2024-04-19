@@ -35,7 +35,6 @@ export default function () {
                     if (me.container) {
                         me.container.parentNode.removeChild(me.container);
                     }
-
                     const container = document.createElement('frame-menu-container');
                     container.setAttribute('forward-step', '0.05');
                     container.setAttribute('text-value', this.data.value || '-- - Select-- - ');
