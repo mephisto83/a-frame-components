@@ -21,10 +21,10 @@ export default function () {
         },
         ...mixin,
         getWidth: function () {
-            return parseFloat(`${this?.container?.getAttribute('menu-item-width')}`);
+            return parseFloat(`${this?.container?.getAttribute('menu-item-width') || 0}`);
         },
         getHeight: function () {
-            return parseFloat(`${this?.container?.getAttribute('menu-item-height')}`);
+            return parseFloat(`${this?.container?.getAttribute('menu-item-height') || 0}`);
         },
         render: function () {
             let el = this.el;
@@ -51,7 +51,7 @@ export default function () {
                     options.forEach((font) => {
                         const menuItem = document.createElement('frame-base-interactive'); // Assuming 'frame-base-interactive' is a custom component or styled div
                         menuItem.setAttribute('font-size', '.07');
-                        menuItem.setAttribute('value', font.name);
+                        menuItem.setAttribute('value', font.value);
                         menuItem.setAttribute('title', font.name);
                         menuItem.setAttribute('interactive-type', 'button');
                         menuItem.setAttribute('width', '1');
