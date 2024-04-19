@@ -719,6 +719,8 @@ declare namespace JSX {
         'frame-text-input': {
             value?: string;
             'font-size'?: string | number;
+            width:  string | number;
+            height:  string | number;
         };
         'frame-slider': {
             // Mappings for gui-slider specific properties

@@ -25,6 +25,7 @@ function loadFont(path) {
 
     return promise;
 }
+
 export default function () {
     AFRAME.registerComponent('infinity-list', {
         schema: {
