@@ -39,7 +39,7 @@ export default function () {
             buttonContainer.setAttribute('width', me.guiItem.width);
             buttonContainer.classList.add('raycastable')
             buttonContainer.addEventListener('click', function () {
-                me.el.emit(me.data.selectionevent, { value, id, text, url });
+                me.el.emit(me.data.selectionevent, { value, id, text, url, options: JSON.parse(me.data.options) });
             })
 
             let menu = me.createMenu({
