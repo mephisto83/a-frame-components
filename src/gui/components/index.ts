@@ -29,8 +29,10 @@ import skeletonBody from "./skeleton-body";
 
 import checkbox from "./checkbox";
 import textField from './text-field'
+import dropDown from "./drop-down";
 export default function () {
     dualArcs();
+    dropDown();
     checkbox();
     container();
     textField();
