@@ -46,7 +46,7 @@ export default function () {
                 width: me.guiItem.width,
                 text: text || value || ``,
                 height: me.guiItem.height,
-                options: { value, id, text, url }
+                options: JSON.parse(me.data.options)
             });
             buttonContainer.appendChild(imageEntity);
             entity.appendChild(menu);
