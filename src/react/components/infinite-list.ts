@@ -112,6 +112,7 @@ export default function () {
             outerBox.setAttribute('color', GetBackgroundColor());
 
             outerBox.setAttribute('gui-interactable', {})
+            outerBox.setAttribute('position', '0 0 .01')
             outerBox.setAttribute('opacity', ".25")
             this.outerBox = outerBox;
             me.el.appendChild(outerBox);
