@@ -47,7 +47,6 @@ export default function () {
                     container.setAttribute('menu-item-height', `.2`)
                     container.setAttribute('menu-item-width', `1.0`);
                     this.container = container;
-
                     options.forEach((font) => {
                         const menuItem = document.createElement('frame-base-interactive'); // Assuming 'frame-base-interactive' is a custom component or styled div
                         menuItem.setAttribute('font-size', '.07');
