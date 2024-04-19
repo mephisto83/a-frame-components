@@ -654,6 +654,13 @@ declare namespace JSX {
             // or any unspecified custom attributes.
             [propName: string]: any;
         };
+        'frame-drop-down': {
+            // Catch-all type definition for additional A-Frame components' attributes
+            // or any unspecified custom attributes.
+            options: string;
+            value?: any;
+            [propName: string]: any;
+        };
         'frame-gui-icon-label-button': {
 
             // Mappings for gui-interactable
@@ -719,8 +726,8 @@ declare namespace JSX {
         'frame-text-input': {
             value?: string;
             'font-size'?: string | number;
-            width?:  string | number;
-            height?:  string | number;
+            width?: string | number;
+            height?: string | number;
         };
         'frame-slider': {
             // Mappings for gui-slider specific properties
