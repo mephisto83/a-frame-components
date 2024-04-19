@@ -37,7 +37,8 @@ export default function () {
                     }
                     const container = document.createElement('frame-menu-container');
                     container.setAttribute('forward-step', '0.05');
-                    container.setAttribute('text-value', this.data.value || '-- - Select-- - ');
+                    let option = options.find((font) => font.value === this.data.value)
+                    container.setAttribute('text-value', option?.name || this.data.value || '-- - Select-- - ');
                     container.setAttribute('menu-direction', 'down');
                     container.setAttribute('flex-direction', 'column');
                     container.setAttribute('justify-content', 'flex-start');
