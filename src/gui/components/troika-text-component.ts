@@ -2,6 +2,7 @@ import { Text } from 'troika-three-text'
 import { AFRAME } from "../../react/root";
 import { getCaretAtPoint } from "troika-three-text";
 import { key_orange, key_offwhite, key_grey, key_white, key_grey_light } from "../vars";
+import mixin from './mixin';
 const THREE: any = (window as any).THREE;
 
 export var COMPONENT_NAME = 'troika-text'
@@ -120,9 +121,20 @@ export default function () {
                 }
                 if (textMesh?.geometry?.boundingBox) {
                     me.el.emit('bounding-box-update', { box: textMesh?.geometry?.boundingBox })
+                    me.updateElementSize(me.el, me);
                 }
                 this.troikaTextEntity.setObject3D('mesh', group);
+
             });
+        },
+        ...mixin,
+        getWidth: function () {
+            let width = (this?.troikaTextMesh?.geometry?.boundingBox?.max?.x || 0) - (this.troikaTextMesh?.geometry?.boundingBox?.min.x || 0);
+            return parseFloat(`${width}`);
+        },
+        getHeight: function () {
+            let height = (this?.troikaTextMesh?.geometry?.boundingBox?.max?.y || 0) - (this.troikaTextMesh?.geometry?.boundingBox?.min.y || 0);
+            return parseFloat(`${height}`);
         },
         placeCursor: function () {
             if (!this.textCursor) {
@@ -233,6 +245,7 @@ export default function () {
             mesh.sync(() => {
                 if (mesh?.geometry?.boundingBox) {
                     me.el.emit('bounding-box-update', { box: mesh?.geometry?.boundingBox })
+                    me.updateElementSize(me.el, me);
                 }
             });
 
