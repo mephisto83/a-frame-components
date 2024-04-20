@@ -121,7 +121,7 @@ export default function () {
                 }
                 if (textMesh?.geometry?.boundingBox) {
                     me.el.emit('bounding-box-update', { box: textMesh?.geometry?.boundingBox })
-                    me.updateElementSize(me.el, me);
+                    me.updateElementSize(me, me.el);
                 }
                 this.troikaTextEntity.setObject3D('mesh', group);
 
@@ -245,7 +245,7 @@ export default function () {
             mesh.sync(() => {
                 if (mesh?.geometry?.boundingBox) {
                     me.el.emit('bounding-box-update', { box: mesh?.geometry?.boundingBox })
-                    me.updateElementSize(me.el, me);
+                    me.updateElementSize(me, me.el);
                 }
             });
 
