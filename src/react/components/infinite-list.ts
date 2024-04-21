@@ -78,6 +78,7 @@ export default function () {
             me.currentIndexScroll = 0;
             me.targetScroll = 0
             me.visibleObjects = {};
+            me.visibleItemObjects = {};
             let options = me.getOptions();
             me.options = options;
             let sprocket = me.sprocket || document.createElement('a-entity');
@@ -235,12 +236,26 @@ export default function () {
                 let keys = Object.keys(me.visibleObjects);
                 for (let k = 0; k < keys.length; k++) {
                     let key = parseInt(keys[k]);
-                    let vo = me.visibleObjects[key];
-                    try {
-                        if (vo?.parentNode)
-                            vo.parentNode.removeChild(vo);
-                    } catch (e) { console.log(e) }
-                    delete me.visibleObjects[key]
+                    if (!me?.data?.itemtemplate) {
+                        let vo = me.visibleObjects[key];
+                        try {
+                            if (vo?.parentNode)
+                                vo.parentNode.removeChild(vo);
+                        } catch (e) { console.log(e) }
+                        delete me.visibleObjects[key]
+                        delete me.visibleItemObjects[key]
+                    }
+                    else {
+                        if (me.visibleItemObjects[key]?.item) {
+                            me.visibleItemObjects[key]?.item.setAttribute('options', JSON.stringify({
+                                ...me.visibleItemObjects[key]?.option,
+                                ...options,
+                                imageMargin: me.imageMargin,
+                                selectionevent: me.data.selectionevent,
+                                guiItem: me.guiItem,
+                            }));
+                        }
+                    }
                 }
             }
             if (this.data.width !== oldData?.width || this.data.height !== oldData?.height) {
@@ -349,11 +364,13 @@ export default function () {
                         }
                     } catch (e) { console.log(e) }
                     delete me.visibleObjects[key]
+                    delete me.visibleItemObjects[key]
                 });
                 to_add.forEach((option: { id: number, value: number, text: string }) => {
-                    let { entity } = me.createOptionEl(option, (Math.PI / me.visible_items / 2) * option.id);
+                    let { entity, item, option: opt } = me.createOptionEl(option, (Math.PI / me.visible_items / 2) * option.id);
                     me.sprocket.appendChild(entity);
                     me.visibleObjects[option.id] = entity;
+                    me.visibleItemObjects[option.id] = { item, option: opt };
                 })
                 // console.log(`me.currentIndexScroll: ${me.currentIndexScroll}`)
                 // this.currentIndex = Math.floor(me.currentIndexScroll % me.visible_items);
@@ -407,7 +424,18 @@ export default function () {
                 let entity: any = document.createElement('a-entity');
                 entity.setAttribute('rotation', `0 0 0`)
                 entity.appendChild(item);
-                return { entity };
+                return {
+                    entity, item, option: {
+                        ...options,
+                        imageMargin: me.imageMargin,
+                        selectionevent: me.data.selectionevent,
+                        guiItem: me.guiItem,
+                        value,
+                        id,
+                        text,
+                        url,
+                    }
+                };
             }
             let entity: any = document.createElement('a-entity');
             entity.setAttribute('rotation', `0 0 0`)
