@@ -235,14 +235,14 @@ export default function () {
                 let keys = Object.keys(me.visibleObjects);
                 for (let k = 0; k < keys.length; k++) {
                     let key = parseInt(keys[k]);
-                    if (JSON.stringify(this.data.options?.[key]) !== JSON.stringify(oldData.options?.[key] || '')) {
-                        let vo = me.visibleObjects[key];
-                        try {
-                            if (vo?.parentNode)
-                                vo.parentNode.removeChild(vo);
-                        } catch (e) { console.log(e) }
-                        delete me.visibleObjects[key]
-                    }
+                    // if (JSON.stringify(this.data.options?.[key]) !== JSON.stringify(oldData.options?.[key] || '')) {
+                    let vo = me.visibleObjects[key];
+                    try {
+                        if (vo?.parentNode)
+                            vo.parentNode.removeChild(vo);
+                    } catch (e) { console.log(e) }
+                    delete me.visibleObjects[key]
+                    // }
                 }
             }
             if (this.data.width !== oldData?.width || this.data.height !== oldData?.height) {
