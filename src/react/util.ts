@@ -65,9 +65,9 @@ export function removeSubstring(originalString: string, stringToRemove: string):
  * @param eventName The name of the custom event.
  * @param detail The data to be attached to the event's 'detail' property.
  */
-export function raiseCustomEvent<T>(eventName: string, detail: T, canvasLayer?: any): void {
+export function raiseCustomEvent<T>(eventName: string, detail: T, canvasLayer?: any, opts?: any): void {
     // Create a custom event with the given name and detail
-    const event = new CustomEvent<T>(eventName, { detail, bubbles: true });
+    const event = new CustomEvent<T>(eventName, { detail, bubbles: true, ...(opts || {}) });
     // Dispatch the event on the window object or another suitable target
     if (canvasLayer) {
         canvasLayer.dispatchEvent(event);

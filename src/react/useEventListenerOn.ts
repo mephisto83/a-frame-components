@@ -195,12 +195,18 @@ export function setAttribute(props: { [`frame-id`]: string }, name: string, valu
 export function updateAttribute(props: { [`frame-id`]: string }, name: string, value: any) {
     let el = document.querySelector(`[frame-id="${props['frame-id']}"]`)
     if (el) {
-        raiseCustomEvent('frame-update-attribute', { name, value }, el);
+        updateAttributeEl(el, name, value);
+    }
+}
+
+export function updateAttributeEl(el: any, name: string, value: any) {
+    if (el) {
+        raiseCustomEvent('frame-update-attribute', { name, value }, el, { bubble: false });
     }
 }
 
 export function watchAttribute(el: any, args: {
-    [name: string]: (name: string, value: string, el: any) => void
+    [name: string]: (name: string, value: any, el: any) => void
 }) {
     el.addEventListener('frame-update-attribute', (evt) => {
         let { detail } = evt;

@@ -5,6 +5,7 @@ import { GetBackgroundColor, GetColor } from '../systems/ui';
 import InteractionMixin from './interaction-mixin';
 import { PAINTER_CONSTANTS } from '../constants';
 import mixin from '../../gui/components/mixin';
+import { updateAttribute, updateAttributeEl, watchAttribute } from '../useEventListenerOn';
 const THREE: any = (window as any).THREE;
 
 
@@ -42,6 +43,7 @@ export default function () {
             itemWidth: { type: 'number', default: 0 },
             iconFont: { type: 'string', default: '' },
             icon: { type: 'string', default: '' },
+            direct: { type: 'boolean', default: false },
             speed: { type: 'string', default: 0 },
             iconFontSize: { type: 'string', default: '' },
             options: {
@@ -218,6 +220,26 @@ export default function () {
             this.setupRayListener(outerBox, 'interactive', this.handleInifniteListInteractions);
             this.updateSubComponents();
             me.loadedFont = true;
+            watchAttribute(me.el, {
+                options: (name: string, value: any, el: any) => {
+                    if (JSON.stringify(value) !== JSON.stringify(me.oldOptions || '')) {
+                        me.directOptions = value;
+                        let options = me.getOptions();
+                        me.options = options;
+                        let keys = Object.keys(me.visibleObjects);
+                        for (let k = 0; k < keys.length; k++) {
+                            let key = parseInt(keys[k]);
+                            let vo = me.visibleObjects[key];
+                            try {
+                                if (vo?.parentNode)
+                                    vo.parentNode.removeChild(vo);
+                            } catch (e) { console.log(e) }
+                            delete me.visibleObjects[key]
+                        }
+                    }
+
+                }
+            })
         },
         ...mixin,
         getWidth: function () {
@@ -229,20 +251,20 @@ export default function () {
         ...InteractionMixin,
         update: function (oldData) {
             let me = this;
-            if (JSON.stringify(this.data.options) !== JSON.stringify(oldData.options || '')) {
-                let options = me.getOptions();
-                me.options = options;
-                let keys = Object.keys(me.visibleObjects);
-                for (let k = 0; k < keys.length; k++) {
-                    let key = parseInt(keys[k]);
-                    // if (JSON.stringify(this.data.options?.[key]) !== JSON.stringify(oldData.options?.[key] || '')) {
-                    let vo = me.visibleObjects[key];
-                    try {
-                        if (vo?.parentNode)
-                            vo.parentNode.removeChild(vo);
-                    } catch (e) { console.log(e) }
-                    delete me.visibleObjects[key]
-                    // }
+            if (!this.data.direct) {
+                if (JSON.stringify(this.data.options) !== JSON.stringify(oldData.options || '')) {
+                    let options = me.getOptions();
+                    me.options = options;
+                    let keys = Object.keys(me.visibleObjects);
+                    for (let k = 0; k < keys.length; k++) {
+                        let key = parseInt(keys[k]);
+                        let vo = me.visibleObjects[key];
+                        try {
+                            if (vo?.parentNode)
+                                vo.parentNode.removeChild(vo);
+                        } catch (e) { console.log(e) }
+                        delete me.visibleObjects[key]
+                    }
                 }
             }
             if (this.data.width !== oldData?.width || this.data.height !== oldData?.height) {
@@ -395,16 +417,30 @@ export default function () {
             let { value, id, text, url } = options;
             if (me?.data?.itemtemplate) {
                 let item = document.createElement(me.data.itemtemplate);
-                item.setAttribute('options', JSON.stringify({
-                    ...options,
-                    imageMargin: me.imageMargin,
-                    selectionevent: me.data.selectionevent,
-                    guiItem: me.guiItem,
-                    value,
-                    id,
-                    text,
-                    url,
-                }));
+                if (me.data.direct) {
+                    updateAttributeEl(item, 'optons', {
+                        ...options,
+                        imageMargin: me.imageMargin,
+                        selectionevent: me.data.selectionevent,
+                        guiItem: me.guiItem,
+                        value,
+                        id,
+                        text,
+                        url,
+                    })
+                }
+                else {
+                    item.setAttribute('options', JSON.stringify({
+                        ...options,
+                        imageMargin: me.imageMargin,
+                        selectionevent: me.data.selectionevent,
+                        guiItem: me.guiItem,
+                        value,
+                        id,
+                        text,
+                        url,
+                    }));
+                }
                 item.setAttribute('selectionevent', this.data.selectionevent);
                 let entity: any = document.createElement('a-entity');
                 entity.setAttribute('rotation', `0 0 0`)
@@ -478,8 +514,16 @@ export default function () {
             return (textEntity);
         },
         getOptions: function () {
-            if (this?.data?.options?.length) {
-                return this.data.options;
+            let me = this;
+            if (this.data.direct) {
+                if (me?.directOptions?.length) {
+                    return me?.directOptions;
+                }
+            }
+            else {
+                if (this?.data?.options?.length) {
+                    return this.data.options;
+                }
             }
             return [
                 "Apple",
@@ -612,7 +656,8 @@ export default function () {
             itemheight: 'infinity-list.itemHeight',
             itemwidth: 'infinity-list.itemWidth',
             selected: 'infinity-list.selected',
-            hideclose: 'infinity-list.hideClose'
+            hideclose: 'infinity-list.hideClose',
+            'direct': 'infinity-list.direct',
         }
     });
     // Example usage in an A-Frame scene

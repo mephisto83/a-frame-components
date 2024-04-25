@@ -7,7 +7,7 @@ declare module 'a-frame-components' {
     export function setAttribute(props: { [`frame-id`]: string }, name: string, value: any);
     export function updateAttribute(props: { [`frame-id`]: string }, name: string, value: any);
     export function watchAttribute(el: any, args: {
-        [name: string]: (name: string, value: string, el: any) => void
+        [name: string]: (name: string, value: any, el: any) => void
     })
     export function createElement(elementType: any, attributesDic: { [str: string]: any }): (moreAttr: { [str: string]: any }) => Element;
     export function useEventListenerOn(
