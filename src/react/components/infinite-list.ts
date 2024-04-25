@@ -418,7 +418,7 @@ export default function () {
             if (me?.data?.itemtemplate) {
                 let item = document.createElement(me.data.itemtemplate);
                 if (me.data.direct) {
-                    updateAttributeEl(item, 'optons', {
+                    updateAttributeEl(item, 'options', {
                         ...options,
                         imageMargin: me.imageMargin,
                         selectionevent: me.data.selectionevent,
