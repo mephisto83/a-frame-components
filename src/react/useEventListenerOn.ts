@@ -201,7 +201,7 @@ export function updateAttribute(props: { [`frame-id`]: string }, name: string, v
 
 export function updateAttributeEl(el: any, name: string, value: any) {
     if (el) {
-        raiseCustomEvent('frame-update-attribute', { name, value }, el, { bubble: false });
+        raiseCustomEvent('frame-update-attribute', { name, value }, el, { bubbles: false });
     }
 }
 
