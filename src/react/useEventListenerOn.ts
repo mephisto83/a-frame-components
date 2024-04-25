@@ -222,7 +222,7 @@ export function watchAttribute(el: any, args: {
             args[name](name, value, el);
         }
     })
-    raiseCustomEvent('frame-update-init', {}, undefined)
+    raiseCustomEvent('frame-update-init', {}, el)
 }
 
 export function findFrameElement(props: { [`frame-id`]: string }) {

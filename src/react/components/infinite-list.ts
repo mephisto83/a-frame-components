@@ -375,10 +375,15 @@ export default function () {
                     delete me.visibleObjects[key]
                 });
                 to_add.forEach((option: { id: number, value: number, text: string }) => {
-                    let { entity, onAppend } = me.createOptionEl(option, (Math.PI / me.visible_items / 2) * option.id);
+                    let {
+                        entity,
+                        onAppend
+                    } = me.createOptionEl(option, (Math.PI / me.visible_items / 2) * option.id);
                     me.sprocket.appendChild(entity);
                     me.visibleObjects[option.id] = entity;
-                    if (onAppend) { onAppend(); }
+                    if (onAppend) {
+                        onAppend();
+                    }
                 })
                 // console.log(`me.currentIndexScroll: ${me.currentIndexScroll}`)
                 // this.currentIndex = Math.floor(me.currentIndexScroll % me.visible_items);
