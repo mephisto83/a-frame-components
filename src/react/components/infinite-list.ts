@@ -417,19 +417,7 @@ export default function () {
             let { value, id, text, url } = options;
             if (me?.data?.itemtemplate) {
                 let item = document.createElement(me.data.itemtemplate);
-                if (me.data.direct) {
-                    updateAttributeEl(item, 'options', {
-                        ...options,
-                        imageMargin: me.imageMargin,
-                        selectionevent: me.data.selectionevent,
-                        guiItem: me.guiItem,
-                        value,
-                        id,
-                        text,
-                        url,
-                    })
-                }
-                else {
+                if (!me.data.direct) {
                     item.setAttribute('options', JSON.stringify({
                         ...options,
                         imageMargin: me.imageMargin,
@@ -445,6 +433,18 @@ export default function () {
                 let entity: any = document.createElement('a-entity');
                 entity.setAttribute('rotation', `0 0 0`)
                 entity.appendChild(item);
+                if (me.data.direct) {
+                    updateAttributeEl(item, 'options', {
+                        ...options,
+                        imageMargin: me.imageMargin,
+                        selectionevent: me.data.selectionevent,
+                        guiItem: me.guiItem,
+                        value,
+                        id,
+                        text,
+                        url,
+                    })
+                }
                 return { entity };
             }
             let entity: any = document.createElement('a-entity');
