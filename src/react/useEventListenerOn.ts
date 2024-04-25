@@ -202,6 +202,13 @@ export function updateAttribute(props: { [`frame-id`]: string }, name: string, v
 export function updateAttributeEl(el: any, name: string, value: any) {
     if (el) {
         raiseCustomEvent('frame-update-attribute', { name, value }, el, { bubbles: false });
+        const handle = (evt: any) => {
+            evt.preventDefault();
+            evt.stopPropagation();  // Stop the event from bubbling up
+            raiseCustomEvent('frame-update-attribute', { name, value }, el, { bubbles: false });
+            el.removeEventListener('frame-update-init', handle);
+        };
+        el.addEventListener('frame-update-init', handle)
     }
 }
 
@@ -215,6 +222,7 @@ export function watchAttribute(el: any, args: {
             args[name](name, value, el);
         }
     })
+    raiseCustomEvent('frame-update-init', {}, undefined)
 }
 
 export function findFrameElement(props: { [`frame-id`]: string }) {
