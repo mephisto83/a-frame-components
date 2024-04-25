@@ -192,6 +192,24 @@ export function setAttribute(props: { [`frame-id`]: string }, name: string, valu
         el.setAttribute(name, value);
     }
 }
+export function updateAttribute(props: { [`frame-id`]: string }, name: string, value: any) {
+    let el = document.querySelector(`[frame-id="${props['frame-id']}"]`)
+    if (el) {
+        raiseCustomEvent('frame-update-attribute', { name, value }, el);
+    }
+}
+
+export function watchAttribute(el: any, args: {
+    [name: string]: (name: string, value: string, el: any) => void
+}) {
+    el.addEventListener('frame-update-attribute', (evt) => {
+        let { detail } = evt;
+        let { name, value } = detail;
+        if (args[name]) {
+            args[name](name, value, el);
+        }
+    })
+}
 
 export function findFrameElement(props: { [`frame-id`]: string }) {
     let el = document.querySelector(`[frame-id="${props['frame-id']}"]`)
