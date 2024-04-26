@@ -1,6 +1,6 @@
 import { AFRAME } from "../../react/root";
 import { key_grey, key_grey_dark, key_offwhite, key_orange, key_white } from "../vars";
-
+import mixin from "./mixin";
 export default function () {
     AFRAME.registerComponent('gui-icon-label-button', {
         schema: {
@@ -108,6 +108,7 @@ export default function () {
 
 
         },
+        ...mixin,
         play: function () {
 
         },
