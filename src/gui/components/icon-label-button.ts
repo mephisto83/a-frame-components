@@ -105,8 +105,6 @@ export default function () {
 
             ////WAI ARIA Support
             el.setAttribute('role', 'button');
-
-
         },
         ...mixin,
         play: function () {
