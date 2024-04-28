@@ -1,3 +1,4 @@
+import { watchAttribute } from "a-frame-components";
 import { AFRAME } from "../../react/root";
 import { GetColor } from "../../react/systems/ui";
 export default function () {
@@ -8,7 +9,23 @@ export default function () {
         },
         init: function () {
             let me = this;
-            let { guiItem, value, id, text, url, imageMargin } = JSON.parse(this.data.options);  // Component data
+            var el = this.el;
+
+            watchAttribute(el, {
+                'options': (name, v, el) => {
+                    let { guiItem, value, id, text, url, imageMargin } = v;  // Component data
+                    me.render({ guiItem, value, id, text, url, imageMargin });
+                }
+            });
+
+            if (this.data.options) {
+                let { guiItem, value, id, text, url, imageMargin } = JSON.parse(this.data.options);  // Component data
+                me.render({ guiItem, value, id, text, url, imageMargin });
+            }
+        },
+        render: function ({ guiItem, value, id, text, url, imageMargin }: any) {
+            let me = this;
+            var el = this.el;
             me.imageMargin = imageMargin;
             me.guiItem = guiItem;
 
@@ -91,19 +108,6 @@ export default function () {
             entity.setAttribute('position', `0 ${(-height / 2)} .1`)
             entity.appendChild(menuContainer);
             return entity;
-            //     <frame-menu-container
-            //     ref={menuContainerRef}
-            //     menu-direction={'up'}
-            //     flex-direction="column"
-            //     justify-content="flexStart"
-            //     align-items="flexStart"
-            //     component-padding="0.01"
-            //     width="4"
-            //     text-value="All Images"
-            //     menu-item-height={.2}
-            //     menu-item-width={1.0}
-            //     position="0 0 0" rotation="0 180 0"
-            // >
         },
         createText: function (newText) {
             var textEntity = document.createElement("a-entity");
