@@ -13,17 +13,16 @@ export default function () {
 
             watchAttribute(el, {
                 'options': (name, v, el) => {
-                    let { guiItem, value, id, text, url, imageMargin } = v;  // Component data
-                    me.render({ guiItem, value, id, text, url, imageMargin });
+                    me.render(v);
                 }
             });
 
             if (this.data.options) {
-                let { guiItem, value, id, text, url, imageMargin } = JSON.parse(this.data.options);  // Component data
-                me.render({ guiItem, value, id, text, url, imageMargin });
+                me.render(JSON.parse(this.data.options));
             }
         },
-        render: function ({ guiItem, value, id, text, url, imageMargin }: any) {
+        render: function (args: any) {
+            const { guiItem, value, id, text, url, imageMargin } = args;
             let me = this;
             var el = this.el;
             me.imageMargin = imageMargin;
@@ -56,14 +55,14 @@ export default function () {
             buttonContainer.setAttribute('width', me.guiItem.width);
             buttonContainer.classList.add('raycastable')
             buttonContainer.addEventListener('click', function () {
-                me.el.emit(me.data.selectionevent, { value, id, text, url, options: JSON.parse(me.data.options) });
+                me.el.emit(me.data.selectionevent, { value, id, text, url, options: JSON.parse(args) });
             })
 
             let menu = me.createMenu({
                 width: me.guiItem.width,
                 text: text || value || ``,
                 height: me.guiItem.height,
-                options: JSON.parse(me.data.options)
+                options: JSON.parse(args)
             });
             buttonContainer.appendChild(imageEntity);
             entity.appendChild(menu);
