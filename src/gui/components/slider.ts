@@ -335,6 +335,8 @@ export default function () {
             'title-text-font': 'slider.title-text-font',
             'percentage-text-font': 'slider.percentage-text-font',
             orientation: 'slider.orientation',
+            min: 'slider.min',
+            max: 'slider.max',
         }
     });
     AFRAME.registerComponent('gui-handle', {
