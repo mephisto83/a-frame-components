@@ -55,14 +55,14 @@ export default function () {
             buttonContainer.setAttribute('width', me.guiItem.width);
             buttonContainer.classList.add('raycastable')
             buttonContainer.addEventListener('click', function () {
-                me.el.emit(me.data.selectionevent, { value, id, text, url, options: JSON.parse(args) });
+                me.el.emit(me.data.selectionevent, { value, id, text, url, options: (args) });
             })
 
             let menu = me.createMenu({
                 width: me.guiItem.width,
                 text: text || value || ``,
                 height: me.guiItem.height,
-                options: JSON.parse(args)
+                options: (args)
             });
             buttonContainer.appendChild(imageEntity);
             entity.appendChild(menu);
